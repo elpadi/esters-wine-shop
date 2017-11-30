@@ -1,0 +1,16 @@
+
+
+
+
+ .nav-justified {
+    width: 100%;
+    text-align: center;
+    > li {
+      float: none;
+      display: inline-block;
+		width: initial;
+		a {
+			padding: 15px 15px;
+		}
+    }
+  }

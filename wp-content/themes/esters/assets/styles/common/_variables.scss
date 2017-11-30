@@ -1,0 +1,59 @@
+// Glyphicons font path
+$icon-font-path:        "../fonts/";
+
+// Grid settings
+$main-sm-columns:       12;
+$sidebar-sm-columns:    4;
+
+// Colors
+$default:               #f6f4eb;
+$primary:               #bf9d3e; 
+$dark:                  #A08068;
+
+// Fonts
+$icons:                 "Ionicons";
+
+// Fonts
+
+@mixin sans-bold() {
+    font-family:'Proxima N W15 Smbd';
+}
+
+@mixin sans-med() {
+    font-family:'Proxima Nova W01 Medium';
+}
+
+@mixin sans-reg() {
+    font-family:'Proxima Nova W08 Reg';
+}
+
+@mixin reg() {
+    font-family: "GenerellTWRegular";
+}
+
+@mixin italic() {
+    font-family: "GenerellTWItalic";
+}
+
+// Easing
+
+@mixin slowest-easing() {
+    -webkit-transition: all 0.8s ease-out;
+    -moz-transition: all 0.8s ease-out;
+    -o-transition: all 0.8s ease-out;
+    transition: all 0.8s ease-out;
+}
+
+@mixin slow-easing() {
+    -webkit-transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+    transition: all 0.5s ease-out;
+}
+
+@mixin easing() {
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
