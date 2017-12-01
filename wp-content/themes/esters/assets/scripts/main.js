@@ -21,11 +21,9 @@
         $('.filter-dropdown').click(function() {
           $('#filtering-form').toggleClass('active');
         });
-        $(window).load(function() {
-          setTimeout(function() {
-            $(".loader").fadeOut('fast');
-          }, 1000);
-        });
+				setTimeout(function() {
+					$(".loader").fadeOut('fast');
+				}, 1000);
         (function() {
           $(document).on('click', '.hamburger-menu', function() {
             $('.banner').toggleClass('active');
