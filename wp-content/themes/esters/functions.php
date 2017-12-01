@@ -696,3 +696,19 @@ if( function_exists('acf_add_options_page') ) {
 	));
 	
 }
+
+// Remove unwanted WooCommerce content
+add_action('init', function() {
+	remove_action('woocommerce_before_shop_loop', 'woocommerce_result_count', 20);
+	remove_action('woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30);
+	remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10);
+});
+
+add_action('esters_store_wrapper_outer_class', function($classes) {
+	if (is_product_category() || is_product_tag()) $classes[] = 'products-wrapper';
+	return $classes;
+});
+add_action('esters_store_wrapper_inner_class', function($classes) {
+	if (is_product_category() || is_product_tag()) $classes[] = 'product-bg';
+	return $classes;
+});

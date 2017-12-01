@@ -651,9 +651,9 @@ form.woocommerce-checkout {
 	}
 }
 
-.woocommerce div.product p.price, .woocommerce div.product span.price {
-   color: #bf9d3e;
-    font-size: 1.25em;
+.woocommerce #content .products .price {
+	color: #bf9d3e;
+	font-size: 1.25em;
 	display: block;
 	margin: 0 0 10px;
 }

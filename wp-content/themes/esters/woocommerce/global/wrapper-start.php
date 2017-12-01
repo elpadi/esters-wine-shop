@@ -42,6 +42,9 @@ switch( $template ) {
 		echo '<div id="primary" class="content-area twentysixteen"><main id="main" class="site-main" role="main">';
 		break;
 	default :
-		echo '<div class="container"><div id="content" role="main">';
+		printf('<section id="content" role="main" class="%s"><div class="%s">',
+			implode(' ', apply_filters('esters_store_wrapper_outer_class', [])),
+			implode(' ', apply_filters('esters_store_wrapper_inner_class', ['container']))
+		);
 		break;
 }

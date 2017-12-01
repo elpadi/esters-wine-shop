@@ -27,75 +27,44 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	return;
 }
 ?>
-<li class="col-xs-12 col-sm-6 col-md-4 product-single ">
-    <?php
-        /**
-         * woocommerce_before_shop_loop_item hook.
-         *
-         * @hooked woocommerce_template_loop_product_link_open - 10
-         */
-        do_action( 'woocommerce_before_shop_loop_item' );
+<li <?php post_class('col-xs-12 col-sm-6 col-md-4 product-single'); ?>>
+	<?php
+	/**
+	 * woocommerce_before_shop_loop_item hook.
+	 *
+	 * @hooked woocommerce_template_loop_product_link_open - 10
+	 */
+	do_action( 'woocommerce_before_shop_loop_item' );
 
-        /**
-         * woocommerce_before_shop_loop_item_title hook.
-         *
-         * @hooked woocommerce_show_product_loop_sale_flash - 10
-         * @hooked woocommerce_template_loop_product_thumbnail - 10
-         */
-		
-		//add condition for featured image or custom meta
-		remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_show_product_loop_sale_flash', 10 ); 
-	    remove_action( 'woocommerce_before_shop_loop_item_title', 'woocommerce_template_loop_product_thumbnail', 10 ); 
-		
-	if(get_field('thumbnail_grid_image'))
-		{
-			echo '<img src="'.get_field('thumbnail_grid_image').'" class="img-responsive" alt="'.$post->post_title.'" />';
-		} else {
+	/**
+	 * woocommerce_before_shop_loop_item_title hook.
+	 *
+	 * @hooked woocommerce_show_product_loop_sale_flash - 10
+	 * @hooked woocommerce_template_loop_product_thumbnail - 10
+	 */
+	do_action( 'woocommerce_before_shop_loop_item_title' );
 
-					$image = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'single-post-thumbnail' );
-					 echo '<img src="'.$image[0].'" alt="'.$post->post_title.'" class="img-responsive" />';
-		}
-			do_action( 'woocommerce_before_shop_loop_item_title' );
-        ?>
-        
-        
-        
+	/**
+	 * woocommerce_shop_loop_item_title hook.
+	 *
+	 * @hooked woocommerce_template_loop_product_title - 10
+	 */
+	do_action( 'woocommerce_shop_loop_item_title' );
 
+	/**
+	 * woocommerce_after_shop_loop_item_title hook.
+	 *
+	 * @hooked woocommerce_template_loop_rating - 5
+	 * @hooked woocommerce_template_loop_price - 10
+	 */
+	do_action( 'woocommerce_after_shop_loop_item_title' );
 
-        <div class="product-meta">
-      
-        
-        <?php
-        /**
-         * woocommerce_shop_loop_item_title hook.
-         *
-         * @hooked woocommerce_template_loop_product_title - 10
-         */
-        do_action( 'woocommerce_shop_loop_item_title' );
-
-        /**
-         * woocommerce_after_shop_loop_item_title hook.
-         *
-         * @hooked woocommerce_template_loop_rating - 5
-         * @hooked woocommerce_template_loop_price - 10
-         */
-			
-			
-			//removed all meta and content info
-			
-			//do_action('woocommerce_template_loop_price');
-			
-          do_action( 'woocommerce_after_shop_loop_item_title' );
-
-        /**
-         * woocommerce_after_shop_loop_item hook.
-         *
-         * @hooked woocommerce_template_loop_product_link_close - 5
-         * @hooked woocommerce_template_loop_add_to_cart - 10
-         */
-        do_action( 'woocommerce_after_shop_loop_item' );
-        ?>
-
-        </div>
-
+	/**
+	 * woocommerce_after_shop_loop_item hook.
+	 *
+	 * @hooked woocommerce_template_loop_product_link_close - 5
+	 * @hooked woocommerce_template_loop_add_to_cart - 10
+	 */
+	do_action( 'woocommerce_after_shop_loop_item' );
+	?>
 </li>
