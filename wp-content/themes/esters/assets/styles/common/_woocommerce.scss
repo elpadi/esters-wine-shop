@@ -786,6 +786,9 @@ form.woocommerce-checkout {
     }
 }
 
+.woocommerce-cart .woocommerce {
+	min-height: 150px;
+}
 .woocommerce-cart .woocommerce .cart-collaterals .button,
 .woocommerce-cart .woocommerce .cart .button {
 	display: block;
