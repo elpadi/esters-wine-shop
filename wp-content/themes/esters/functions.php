@@ -702,6 +702,7 @@ add_action('init', function() {
 	remove_action('woocommerce_before_shop_loop', 'woocommerce_result_count', 20);
 	remove_action('woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30);
 	remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10);
+	remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40);
 });
 
 add_action('esters_store_wrapper_outer_class', function($classes) {
@@ -712,3 +713,18 @@ add_action('esters_store_wrapper_inner_class', function($classes) {
 	if (is_product_category() || is_product_tag()) $classes[] = 'product-bg';
 	return $classes;
 });
+add_action('woocommerce_before_shop_loop_item', function() {
+	echo '<div class="product-meta">';
+}, 20);
+add_action('woocommerce_after_shop_loop_item', function() {
+	echo '</div>';
+}, -10);
+// hide coupon fields in shopping cart
+add_filter('woocommerce_coupons_enabled', function($isEnabled) {
+	if (is_cart()) return false;
+	return $isEnabled;
+});
+
+function esters_shipping_no_address_message() {
+	_e('Shipping costs will be calculated once you have provided your address.', 'woocommerce');
+}

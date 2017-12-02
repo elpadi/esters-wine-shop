@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 wc_print_notices();
 
 do_action( 'woocommerce_before_cart' ); ?>
-<div class="container">
+
 <form action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
 
 <?php do_action( 'woocommerce_before_cart_table' ); ?>
@@ -129,7 +129,6 @@ do_action( 'woocommerce_before_cart' ); ?>
 
 		do_action( 'woocommerce_cart_contents' );
 		?>
-        <!--
 		<tr>
 			<td colspan="6" class="actions">
 
@@ -149,7 +148,7 @@ do_action( 'woocommerce_before_cart' ); ?>
 				<?php wp_nonce_field( 'woocommerce-cart' ); ?>
 			</td>
 		</tr>
-        -->
+
 		<?php do_action( 'woocommerce_after_cart_contents' ); ?>
 	</tbody>
 </table>
@@ -157,12 +156,11 @@ do_action( 'woocommerce_before_cart' ); ?>
 <?php do_action( 'woocommerce_after_cart_table' ); ?>
 
 </form>
-</div>
-<div class="container">
 
-    <div class="cart-collaterals">
-        <?php do_action( 'woocommerce_cart_collaterals' ); ?>
-    </div>
-   
+<div class="cart-collaterals">
+
+	<?php do_action( 'woocommerce_cart_collaterals' ); ?>
+
 </div>
+
 <?php do_action( 'woocommerce_after_cart' ); ?>

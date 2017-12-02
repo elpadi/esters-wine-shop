@@ -662,6 +662,11 @@ form.woocommerce-checkout {
 	margin-top: 2em;
 }
 
+.entry-section .container .woocommerce .button:disabled {
+	color: #fbf3ac;
+	padding: 15px 30px;
+}
+
 
 .woocommerce button.button.alt.disabled {
 	    background: #bf9d3e;
@@ -770,7 +775,7 @@ form.woocommerce-checkout {
     }
     tr {
         border-bottom: 1px solid $default;
-        height: 30px;
+        min-height: 30px;
         line-height: 30px;
     }
     .button {
@@ -779,6 +784,19 @@ form.woocommerce-checkout {
         margin: 0 auto;
         text-transform: uppercase;
     }
+}
+
+.woocommerce-cart .woocommerce .cart-collaterals .button,
+.woocommerce-cart .woocommerce .cart .button {
+	display: block;
+	max-width: 250px;
+	margin: auto;
+}
+.woocommerce-cart .woocommerce .wc-proceed-to-checkout {
+	padding-bottom: 0;
+}
+.woocommerce-cart .woocommerce .cart-collaterals .checkout-button {
+	margin-bottom: 0;
 }
 
 

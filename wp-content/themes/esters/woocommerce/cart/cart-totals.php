@@ -40,7 +40,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 				<td data-title="<?php echo esc_attr( wc_cart_totals_coupon_label( $coupon, false ) ); ?>"><?php wc_cart_totals_coupon_html( $coupon ); ?></td>
 			</tr>
 		<?php endforeach; ?>
-		<!--
+
 		<?php if ( WC()->cart->needs_shipping() && WC()->cart->show_shipping() ) : ?>
 
 			<?php do_action( 'woocommerce_cart_totals_before_shipping' ); ?>
@@ -48,16 +48,23 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<?php wc_cart_totals_shipping_html(); ?>
 
 			<?php do_action( 'woocommerce_cart_totals_after_shipping' ); ?>
-	
+
 		<?php elseif ( WC()->cart->needs_shipping() && 'yes' === get_option( 'woocommerce_enable_shipping_calc' ) ) : ?>
-			
+
 			<tr class="shipping">
 				<th><?php _e( 'Shipping', 'woocommerce' ); ?></th>
 				<td data-title="<?php esc_attr_e( 'Shipping', 'woocommerce' ); ?>"><?php woocommerce_shipping_calculator(); ?></td>
 			</tr>
-			
+
+		<?php else: ?>
+
+			<tr class="shipping">
+				<th><?php _e( 'Shipping', 'woocommerce' ); ?></th>
+				<td data-title="<?php esc_attr_e( 'Shipping', 'woocommerce' ); ?>"><?php esters_shipping_no_address_message(); ?></td>
+			</tr>
+
 		<?php endif; ?>
-		-->
+
 		<?php foreach ( WC()->cart->get_fees() as $fee ) : ?>
 			<tr class="fee">
 				<th><?php echo esc_html( $fee->name ); ?></th>
@@ -65,7 +72,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 			</tr>
 		<?php endforeach; ?>
 
-		
 		<?php if ( wc_tax_enabled() && 'excl' === WC()->cart->tax_display_cart ) :
 			$taxable_address = WC()->customer->get_taxable_address();
 			$estimated_text  = WC()->customer->is_customer_outside_base() && ! WC()->customer->has_calculated_shipping()
@@ -86,14 +92,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 				</tr>
 			<?php endif; ?>
 		<?php endif; ?>
-		
+
 		<?php do_action( 'woocommerce_cart_totals_before_order_total' ); ?>
-		
-	
-		<tr class="order-total">
-			<th>Shipping</th>
-			<td data-title="<?php esc_attr_e( 'Total', 'woocommerce' ); ?>"><p>Shipping costs will be calculated once you have provided your address.</p></td>
-		</tr>
+
 		<tr class="order-total">
 			<th><?php _e( 'Total', 'woocommerce' ); ?></th>
 			<td data-title="<?php esc_attr_e( 'Total', 'woocommerce' ); ?>"><?php wc_cart_totals_order_total_html(); ?></td>
