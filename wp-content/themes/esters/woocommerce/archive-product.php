@@ -22,16 +22,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 get_header( 'shop' ); ?>
 
-	<?php
-		/**
-		 * woocommerce_before_main_content hook.
-		 *
-		 * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
-		 * @hooked woocommerce_breadcrumb - 20
-		 */
-		do_action( 'woocommerce_before_main_content' );
-	?>
-
 		<div class="text-center filter-section">
 		<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
 
@@ -41,6 +31,16 @@ get_header( 'shop' ); ?>
 
 		<?php if ( apply_filters( 'esters_show_product_filter', true ) ) get_template_part('templates/product-filter'); ?>
 		</div>
+
+	<?php
+		/**
+		 * woocommerce_before_main_content hook.
+		 *
+		 * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
+		 * @hooked woocommerce_breadcrumb - 20
+		 */
+		do_action( 'woocommerce_before_main_content' );
+	?>
 
 		<?php
 			/**
