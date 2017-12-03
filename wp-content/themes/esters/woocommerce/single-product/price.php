@@ -21,27 +21,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 global $product;
-$product_type = $product->product_type;
+
 ?>
 <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
-	<?php if ($product_type == "subscription") { 
-	
-	echo '<p class="price">'. $product->get_price_html().' / month</p>';
-} else {
-	echo '<p class="price">'. $product->get_price_html().' </p>';
-}
-	?>
-	
+
+	<p class="price"><?php echo $product->get_price_html(); ?></p>
 
 	<meta itemprop="price" content="<?php echo esc_attr( $product->get_display_price() ); ?>" />
 	<meta itemprop="priceCurrency" content="<?php echo esc_attr( get_woocommerce_currency() ); ?>" />
 	<link itemprop="availability" href="http://schema.org/<?php echo $product->is_in_stock() ? 'InStock' : 'OutOfStock'; ?>" />
-	
-	
-	<?php if ( wc_product_sku_enabled() && ( $product->get_sku() || $product->is_type( 'variable' ) ) ) : ?>
-
-		<span class="sku_wrapper"><?php _e( 'SKU:', 'woocommerce' ); ?> <span class="sku" itemprop="sku"><?php echo ( $sku = $product->get_sku() ) ? $sku : __( 'N/A', 'woocommerce' ); ?></span></span>
-
-	<?php endif; ?>
 
 </div>

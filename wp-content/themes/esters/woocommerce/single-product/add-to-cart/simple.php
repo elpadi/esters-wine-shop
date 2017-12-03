@@ -36,23 +36,11 @@ if ( ! $product->is_purchasable() ) {
 	echo apply_filters( 'woocommerce_stock_html', $availability_html, $availability['availability'], $product );
 ?>
 
-<div class="entry">
-    <?php echo the_content();?>
-</div>
-
 <?php if ( $product->is_in_stock() ) : ?>
 
 	<?php do_action( 'woocommerce_before_add_to_cart_form' ); ?>
 
-    <div class="button-group hidden">
-        <a id="month" class="btn btn-outline btn-sm">1 Month</a>
-        <a id="year" class="btn btn-outline btn-sm">1 Year</a>
-        <a id="months" class="btn btn-outline btn-sm">6 months</a>
-    </div>
-
 	<form class="cart" method="post" enctype='multipart/form-data'>
-
-        
 	 	<?php do_action( 'woocommerce_before_add_to_cart_button' ); ?>
 
 	 	<?php
@@ -66,12 +54,10 @@ if ( ! $product->is_purchasable() ) {
 	 	?>
 
 	 	<input type="hidden" name="add-to-cart" value="<?php echo esc_attr( $product->id ); ?>" />
-        
+
 	 	<button type="submit" class="single_add_to_cart_button button alt"><?php echo esc_html( $product->single_add_to_cart_text() ); ?></button>
 
 		<?php do_action( 'woocommerce_after_add_to_cart_button' ); ?>
-
-        
 	</form>
 
 	<?php do_action( 'woocommerce_after_add_to_cart_form' ); ?>
