@@ -13,7 +13,7 @@
  * @see     https://docs.woocommerce.com/document/template-structure/
  * @author  WooThemes
  * @package WooCommerce/Templates
- * @version 2.6.1
+ * @version 3.0.0
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -27,7 +27,7 @@ if ( empty( $product ) || ! $product->is_visible() ) {
 	return;
 }
 ?>
-<li <?php post_class('col-xs-12 col-sm-6 col-md-4 product-single'); ?>>
+<li <?php post_class(); ?>>
 	<?php
 	/**
 	 * woocommerce_before_shop_loop_item hook.
