@@ -4,7 +4,9 @@
     "type": "project",
     "require": {
         "johnpbloch/wordpress-core-installer": "^1.0",
-        "johnpbloch/wordpress-core": "4.9.*"
+        "johnpbloch/wordpress-core": "4.9.*",
+        "wpackagist-plugin/woocommerce": "*",
+        "wpackagist-plugin/woo-order-test": "1.5"
     },
     "license": "GPL-3.0",
     "repositories":[
