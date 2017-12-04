@@ -7,6 +7,11 @@
 @import "../../bower_components/slick-carousel/slick/slick.scss";
 // endbower
 
+// woocommerce styles + minor edits
+@import "woocommerce/general.css";
+@import "woocommerce/layout.css";
+@import "woocommerce/smallscreen.css";
+
 @import "common/global";
 @import "common/woocommerce";
 @import "components/buttons";

@@ -1,6 +1,6 @@
 <?php
 // Remove Woo Styles
-// add_filter( 'woocommerce_enqueue_styles', '__return_empty_array' );
+add_filter('woocommerce_enqueue_styles', '__return_empty_array');
 
 add_filter( 'woocommerce_product_tabs', 'woo_remove_product_tabs', 98 );
 
@@ -183,13 +183,12 @@ function woo_related_products_limit() {
 	$args['posts_per_page'] = 6;
 	return $args;
 }
-add_filter( 'woocommerce_output_related_products_args', 'jk_related_products_args' );
-  function jk_related_products_args( $args ) {
-	$args['posts_per_page'] = 3; // 4 related products
-	$args['columns'] = 2; // arranged in 2 columns
-	return $args;
-}
  */
+add_filter('woocommerce_output_related_products_args', function( $args ) {
+	$args['posts_per_page'] = 3;
+	$args['columns'] = 3;
+	return $args;
+});
 
 // Remove unwanted WooCommerce content
 add_action('init', function() {
@@ -223,24 +222,24 @@ add_filter('woocommerce_coupons_enabled', function($isEnabled) {
 });
 
 function esters_shipping_no_address_message() {
-	_e('Shipping costs will be calculated once you have provided your address.', 'woocommerce');
+	print('Shipping costs will be calculated once you have provided your address.');
 }
 
+function product_loop_width_class_fix($classes) {
+	foreach (['first','last'] as $class) {
+		$key = array_search($class, $classes, true);
+		if ($key !== false) unset($classes[$key]);
+	}
+	return $classes;
+}
 add_filter('post_class', function($classes) {
-	$classes = array_unique($classes);
-	if (is_product()) $classes[] = 'single-product';
-	if (is_product_category() || is_product_tag()) {
-		foreach (['first','last','product'] as $class) {
-			$key = array_search($class, $classes, true);
-			if ($key !== false) unset($classes[$key]);
-		}
+	if (is_woocommerce()) {
+		$classes = product_loop_width_class_fix(array_unique($classes));
 		$classes = array_merge($classes, ['col-xs-12','col-sm-6','col-md-4','product-single']);
+		if (is_product()) $classes[] = 'single-product';
 	}
 	return $classes;
 }, 100);
-add_filter('woocommerce_related_products_columns', function($columns) {
-	return 4;
-});
 
 add_action('woocommerce_shop_loop_item_title', function() {
 	printf('<h3>%s</h3>', get_the_title());

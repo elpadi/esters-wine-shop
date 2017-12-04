@@ -1302,55 +1302,6 @@ p.not-found {
         }
     }
 }
-#content {
-    .esters-products {
-        margin: 0;
-        position: relative;
-    }
-    ul.products li {
-        overflow: hidden;
-    }
-    .products li .product-meta {
-        min-height: 100%;
-        padding: 0;
-        h3 {
-            font-size: 16px;
-        }
-    }
-}
-//Single Product
-.simple-product {
-    .images > a {
-        display: block;
-        background: #fff;
-        padding: 15px;
-    }
-    .images img {
-        width: 100%;
-        height: auto;
-        margin: auto;
-        display: block;
-        border: 1px solid #bf9d3e;
-        padding: 20px;
-    }
-    .thumbnails {
-        text-align: center;
-        a {
-            display: inline-block;
-            width: 50px;
-            background: #fff;
-            margin: 10px 5px;
-            img {
-                padding: 3px;
-            }
-        }
-    }
-}
-.related.products {
-    overflow: hidden;
-    width: 100%;
-    margin: 45px 0 45px;
-}
 //search products
 #searchform {
     position: relative;
