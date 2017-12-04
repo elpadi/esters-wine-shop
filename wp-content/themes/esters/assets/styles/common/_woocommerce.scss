@@ -549,7 +549,7 @@ form.woocommerce-checkout {
     }
     margin: 20px auto;
     li {
-        margin-bottom: 30px;
+        margin-bottom: 50px;
         a {
             img {
                 width: 100%;
@@ -609,7 +609,7 @@ form.woocommerce-checkout {
             padding: 30px;
             text-align: center;
             h3 {
-                margin: 0 auto 10px;
+                margin: 1.7em auto 10px;
                 font-size: 20px;
                 text-transform: uppercase;
                 letter-spacing: 2px;
@@ -658,6 +658,9 @@ form.woocommerce-checkout {
 	margin: 0 0 10px;
 }
 
+.woocommerce-cart .woocommerce {
+	text-align: center;
+}
 .woocommerce .product .cart {
 	margin-top: 2em;
 }
