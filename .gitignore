@@ -26,3 +26,5 @@ wp-content/themes/esters/fav
 /vendor/
 wp-content/updraft
 wp-content/w3tc-config
+wp-content/themes/esters/bower_components/
+wp-content/themes/esters/package-lock.json
