@@ -97,12 +97,24 @@ function display_sidebar() {
  * Theme assets
  */
 function assets() {
-  wp_enqueue_style('sage/css', Assets\asset_path('styles/main.css'), false, null);
+  wp_register_style('main-css', Assets\asset_path('styles/main.css', 'dist'), false, null);
 
-  if (is_single() && comments_open() && get_option('thread_comments')) {
+  wp_register_script('bootstrap', Assets\asset_path('bootstrap-sass/assets/javascripts/bootstrap.min.js', 'bower_components'), [], null, true);
+  wp_register_script('bootstrap-select', Assets\asset_path('bootstrap-select/dist/js/bootstrap-select.min.js', 'bower_components'), ['bootstrap'], null, true);
+	
+	wp_register_script('jquery', Assets\asset_path('jquery/dist/jquery.min.js', 'bower_components'), [], null, true);
+	wp_register_script('bxslider', Assets\asset_path('bxslider-4/dist/jquery.bxslider.min.js', 'bower_components'), ['jquery'], null, true);
+	wp_register_script('scrollreveal', Assets\asset_path('scrollreveal/dist/scrollreveal.min.js', 'bower_components'), ['jquery'], null, true);
+	wp_register_script('slick', Assets\asset_path('slick-carousel/slick/slick.min.js', 'bower_components'), ['jquery'], null, true);
+	wp_register_script('waypoints', Assets\asset_path('waypoints/lib/jquery.waypoints.min.js', 'bower_components'), ['jquery'], null, true);
+	
+	wp_register_script('main-js', Assets\asset_path('scripts/main.js'), ['bootstrap-select','bxslider','scrollreveal','slick','waypoints'], null, true);
+	
+	if (is_single() && comments_open() && get_option('thread_comments')) {
     wp_enqueue_script('comment-reply');
   }
 
-  wp_enqueue_script('sage/js', Assets\asset_path('scripts/main.js'), ['jquery'], null, true);
+  wp_enqueue_script('main-js');
+  wp_enqueue_style('main-css');
 }
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);

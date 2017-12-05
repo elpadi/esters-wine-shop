@@ -84,6 +84,11 @@ body {
    
 }
 
+.checkbox input[type="checkbox"] {
+	position: static;
+	margin-left: 0;
+}
+
 .woocommerce button.button.alt.disabled, .woocommerce button.button.alt.disabled:hover, {
 	    background: #bf9d3e;
 }

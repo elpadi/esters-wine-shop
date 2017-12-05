@@ -660,12 +660,15 @@ form.woocommerce-checkout {
     ul.products li {
         overflow: hidden;
     }
-    .products li.product .product-meta {
+    .products li .product-meta {
         min-height: 100%;
         h3 {
             font-size: 16px;
         }
     }
+}
+body.shop-landing li .product-meta h3 {
+	margin-top: 0;
 }
 body:not(.single-product) li.product .product-meta {
 	padding: 0;
@@ -905,6 +908,7 @@ div.single-product {
     }
 }
 
+/*
 .custom_checkbox {
     margin: 20px auto 0;
     h3 {
@@ -919,6 +923,7 @@ div.single-product {
         }
     }
 }
+*/
 
 .woocommerce form.checkout_coupon {
     background: #fff;

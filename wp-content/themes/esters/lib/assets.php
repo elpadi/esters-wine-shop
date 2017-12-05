@@ -39,7 +39,9 @@ class JsonManifest {
   }
 }
 
-function asset_path($filename) {
+function asset_path($filename, $dir='assets') {
+	return sprintf('%s/%s/%s', get_template_directory_uri(), $dir, $filename);
+	/*
   $dist_path = get_template_directory_uri() . '/dist/';
   $directory = dirname($filename) . '/';
   $file = basename($filename);
@@ -55,4 +57,5 @@ function asset_path($filename) {
   } else {
     return $dist_path . $directory . $file;
   }
+	 */
 }
