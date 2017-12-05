@@ -28,32 +28,17 @@
 	</div>
 	<div class="panel-group tastings-inner" id="accordion" role="tablist" aria-multiselectable="true">
 		<div class="container">
-			<?php 
-	  
-	  	// $date =  date_i18n( get_option( 'date_format' ), strtotime( '11/15-1976' ) );
-		$date = date('Y-m-d');
-		query_posts( array( 'post_type' => 'events',	'meta_key' => 'real_date', 'orderby' => 'meta_value meta_value_num', 'order' => 'ASC', 
-		'meta_compare' => '>=', 
-		'meta_value' => $date) );
-
-		$first = true;
-		
-        if ( have_posts() ) : while ( have_posts() ) : the_post(); 
-		
-		if ( $first == true ) {
-			
-			$class = "in";
-			$first = false;
-			
-		}
-		
-		else {
-			
-			$class=" ";
-			
+			<?php Roots\Sage\Extras\upcoming_events_query(); if (have_posts()):
+			$first = true;
+      while ( have_posts() ) : the_post(); 
+			if ( $first == true ) {
+				$class = "in";
+				$first = false;
 			}
-		
-		?>
+			else {
+				$class=" ";
+			}
+			?>
 			<div class="panel">
 				<a role="button" data-toggle="collapse" data-parent="#accordion" href="#<?php echo the_ID();?>" aria-expanded="true" aria-controls="<?php echo the_ID();?>">
 					<div class="row event-head event-link">
@@ -89,7 +74,19 @@
 					</div>
 				</div>
 			</div>
-			<?php endwhile; endif; wp_reset_query(); ?>
+			<?php endwhile; else: ?>
+			<div class="panel">
+				<div class="first" role="tabpanel" aria-labelledby="EventInfo">
+					<div class="panel-body">
+						<div class="text-center">
+							<h2 class="sec-title">
+								<?php _e('There are no upcoming events at this time.'); ?>
+							</h2>
+						</div>
+					</div>
+				</div>
+			</div>
+			<?php endif; wp_reset_query(); ?>
 		</div>
 	</div>
 
