@@ -1,0 +1,96 @@
+#menu-announcement {
+	padding: .6em 1em .4em;
+	background: #bf9d3e;
+}
+
+#menu-announcement p {
+	margin-bottom: 0;
+	font-family: Proxima N W15 Smbd;
+	font-size: 1.14285714em;
+	letter-spacing: .1em;
+	text-transform: uppercase;
+	text-align: center;
+	color: #fff;
+}
+
+.menu-nav {
+    border-bottom: 1px solid #bf9d3e;
+}
+
+.menu-nav {
+	display: flex;
+    justify-content: center;
+	flex-wrap: wrap;
+	border: none;
+	font-family: GenerellTWRegular;
+    color: #a08068;
+    font-size: 38px;
+    line-height: 1.2;
+	text-transform: uppercase;
+}
+
+.menu-nav li {
+	margin: 0 15px;
+}
+.menu-nav li a {
+	padding: 0;
+	color: #a08068;
+}
+
+.menu-nav li.active a {
+	color: #179F9A;
+}
+
+.menu-entry {
+    background: #fff;
+    padding: 20px 40px
+}
+
+.menu-note {
+    border-bottom: 1px solid #bf9d3e;
+    padding: 8px 0 10px;
+	text-align: center;
+}
+
+.menu-note a {
+    font-size: 1em;
+	color: #a08068;
+	letter-spacing: .02em;
+}
+
+.menu-container {
+    border-bottom: 1px solid #bf9d3e;
+    padding-bottom: 10px;
+}
+
+.menu-container:last-of-type {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.menu-content{
+	margin-bottom: .8em;
+}
+.menu-content p {
+    font-family: GenerellTWRegular;
+    color: #a08068;
+    font-size: 17px;
+    line-height: 1.2;
+    margin: 0;
+	text-align: left;
+}
+
+.menu-subhead {
+	margin: 1em 0 .6em;
+	font-family: GenerellTWRegular;
+    color: #a08068;
+    font-size: 21px;
+    line-height: 1.2;
+	font-style: italic;
+}
+
+.menu-section-note {
+	font-style: italic;
+}
+
+

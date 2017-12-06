@@ -23,13 +23,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 get_header( 'shop' ); ?>
 
 		<div class="text-center filter-section">
-		<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
-
+			<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
 			<h2 class="sec-title large fadein"><?php woocommerce_page_title(); ?></h2>
+			<?php endif; ?>
 
-		<?php endif; ?>
-
-		<?php if ( apply_filters( 'esters_show_product_filter', true ) ) get_template_part('templates/product-filter'); ?>
+			<?php do_action('esters_product_listing_header'); ?>
 		</div>
 
 	<?php

@@ -13,10 +13,10 @@ JSFILES   = $(wildcard $(JSDIR)/bundles/*.js)
 SASSFILES = $(shell find $(SASSDIR) -name '*.scss' | grep -v '/_')
 
 # default target
-all: build
+all: sass
 
 # build all front-end assets
-build: sass requirejs manifest
+#build: sass requirejs manifest
 
 # run tests
 test: test-js test-php
