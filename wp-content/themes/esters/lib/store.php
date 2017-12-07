@@ -253,3 +253,9 @@ add_filter('woocommerce_show_page_title', function($canShow) {
 	if (is_product_category('gift-boxes')) return false;
 	return $canShow;
 });
+
+add_action('woocommerce_after_single_product_summary', function() {
+	global $product;
+	if (!$product || $product->product_type !== 'subscription') return;
+	echo get_field('subscription_info', 'options');
+});
