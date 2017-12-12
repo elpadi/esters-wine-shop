@@ -44,6 +44,9 @@
     font-family: GenerellTWItalic;
     src: url("../fonts/Generell TW-ItalicWeb.woff") format("woff");
 }
+#error-page .loader {
+	display: none;
+}
 body {
     background: $default;
     color: $primary;
