@@ -257,5 +257,5 @@ add_filter('woocommerce_show_page_title', function($canShow) {
 add_action('woocommerce_after_single_product_summary', function() {
 	global $product;
 	if (!$product || $product->product_type !== 'subscription') return;
-	echo get_field('subscription_info', 'options');
+	printf('<div class="fine-print">%s</div>', get_field('subscription_info', 'options'));
 });
