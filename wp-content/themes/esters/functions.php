@@ -17,6 +17,7 @@ $sage_includes = [
   'lib/wrapper.php',   // Theme wrapper class
   'lib/customizer.php', // Theme customizer
   'lib/store.php', // Store functions
+  'lib/gift.php', // Store functions
   'lib/ajax.php', // Ajax functions
 ];
 
