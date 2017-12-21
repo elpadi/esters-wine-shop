@@ -23,7 +23,6 @@ function _get_gift_fields() {
 		'city' => ['City', 'text'],
 		'state' => ['State', 'text'],
 		'zip' => ['Zip', 'text'],
-		'phone' => ['Phone', 'phone'],
 		'note' => ['Gift Note', 'textarea'],
 	];
 }
