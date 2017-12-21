@@ -124,6 +124,16 @@ add_filter('woocommerce_show_page_title', function($canShow) {
 
 add_action('woocommerce_after_single_product_summary', function() {
 	global $product;
-	if (!$product || $product->product_type !== 'subscription') return;
+	if (!$product || $product->get_type() !== 'subscription') return;
 	printf('<div class="fine-print">%s</div>', get_field('subscription_info', 'options'));
 });
+
+add_filter('woocommerce_empty_price_html', function($html, $product) {
+	return sprintf('<a href="%s" class="btn btn-outline">%s</a>', $product->add_to_cart_url(), strtoupper(__('Buy now')));
+}, 10, 2);
+
+add_filter('woocommerce_get_price_html', function($html, $product) {
+	if ($product->get_type() === 'subscription') return $html . ' / ' . __('month');
+	return $html;
+}, 10, 2);
+
