@@ -167,3 +167,9 @@ if( function_exists('acf_add_options_page') ) {
 	
 }
 
+function order_online_button($index) {
+	return sprintf('<a href="%s" target="_blank">%s</a>',
+		get_field("option_{$index}_link", 'option'),
+		get_field("option_{$index}_text", 'option')
+	);
+}

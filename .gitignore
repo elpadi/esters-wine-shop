@@ -19,7 +19,6 @@ wp-content/plugins/*
 wp-content/themes/*
 !wp-content/themes/esters
 wp-content/themes/esters/assets/fonts
-wp-content/themes/esters/dist
 wp-content/themes/esters/fav
 
 /wordpress
@@ -28,3 +27,4 @@ wp-content/updraft
 wp-content/w3tc-config
 wp-content/themes/esters/bower_components/
 wp-content/themes/esters/package-lock.json
+wp-content/themes/esters/dist/styles/vendor

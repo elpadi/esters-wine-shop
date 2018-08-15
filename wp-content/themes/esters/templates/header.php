@@ -1,8 +1,13 @@
 <div id="order-online">
 	<div id="order-online-inside">
 		<h2><?php the_field('title_order', 'option'); ?></h2>
-		<p><a href="<?php the_field('option_1_link', 'option'); ?>" target="_blank"><?php the_field('option_1_text', 'option'); ?></a></p>
-		<p><a href="<?php the_field('option_2_link', 'option'); ?>" target="_blank"><?php the_field('option_2_text', 'option'); ?></a></p>
+		<p>
+			<?= order_online_button(1); ?>
+			<span class="separator">&nbsp;</span>
+			<?= order_online_button(2); ?>
+			<span class="separator">&nbsp;</span>
+			<?= order_online_button(3); ?>
+		</p>
 	</div>
 </div>
    <div class="mobile-header visible-xs visible-sm">
