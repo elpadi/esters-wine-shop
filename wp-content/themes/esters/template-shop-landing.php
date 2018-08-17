@@ -1,4 +1,6 @@
 <?php
+extract(get_field('wine_clubs'));
+extract(get_field('shop_online'));
 /**
  * Template Name: Shop Landing
  */
@@ -9,8 +11,8 @@
             <div class="row equalHeights">
                 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                     <div class="entry">
-                        <h3>Join Our Wine Clubs!</h3>
-                        <p>Do you love wine and want to bring the Esters experience home with you on the regular? Each month, wines for the clubs are hand selected by our sommelier team: delicious, Esters-approved wines, from small producers. We have three different options, because wine is not one-size-fits-all.</p>
+						<h3><?= $wine_clubs_title; ?></h3>
+						<?= $wine_clubs_copy; ?>
                         <ul class="list-inline">
                             <li><a class="btn btn-outline" href="<?= esc_url(home_url('/')); ?>product/savvy-sipper">Savvy Sipper</a></li>
                             <li><a class="btn btn-outline" href="<?= esc_url(home_url('/')); ?>product/adventurer/">Adventurer</a></li>
@@ -22,8 +24,8 @@
 					<div class="entry">
 						<div class="row">
 							<div class="col-xs-12 col-sm-12 col-md-7 col-lg-8">
-								<h3>Shop Online!</h3>
-								<p>Do you love wine and want to bring the Esters experience home with you on the regular? Esters-approved wines, from small producers and local vineyards!</p>
+								<h3><?= $shop_online_title; ?></h3>
+								<?= $shop_online_copy; ?>
 								<br>
 								<ul class="list-inline"><li>
 									<a class="btn btn-outline" href="<?= esc_url(home_url('/')); ?>shop/wines/">Shop Now!</a>
@@ -43,3 +45,4 @@
 		</div><!-- wrapper -->
 	</div><!-- container -->
 </section>
+<?php
