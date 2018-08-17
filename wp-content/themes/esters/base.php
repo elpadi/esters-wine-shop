@@ -10,7 +10,7 @@ use Roots\Sage\Wrapper;
 
   <body <?php body_class(); ?>>
       
-<div class="loader"></div>      
+<?php if (!WP_DEBUG) echo '<div class="loader"></div>'; ?>
       
     <!--[if IE]>
       <div class="alert alert-warning">
