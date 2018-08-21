@@ -28,3 +28,5 @@ wp-content/w3tc-config
 wp-content/themes/esters/bower_components/
 wp-content/themes/esters/package-lock.json
 wp-content/themes/esters/dist/styles/vendor
+var-dumper-3.4/
+wp
