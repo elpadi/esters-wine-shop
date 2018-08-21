@@ -1,11 +1,9 @@
-@charset "UTF-8";
-/*! Bootstrap v3.3.6 (http://getbootstrap.com) Copyright 2011-2015 Twitter, Inc. Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE) */
-/*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
-@import url(vendor/bootstrap-select.css);
-@import url(woocommerce/general.css);
-@import url(woocommerce/layout.css);
-@import url(woocommerce/smallscreen.css);
 @import url("http://fast.fonts.net/t/1.css?apiType=css&projectid=047f51b9-98d4-4f12-b5f3-2cc8a182358a");
+@import 'vendor/bootstrap-select.css';
+@import 'woocommerce/general.css';
+@import 'woocommerce/layout.css';
+@import 'woocommerce/smallscreen.css';
+@import 'components/order-online.css';
 html {
 	font-family: sans-serif;
 	-ms-text-size-adjust: 100%;
@@ -13566,46 +13564,7 @@ margin: 1px auto 0 -20px !important;
 .nav-justified > li a, .nav-tabs.nav-justified > li a {
 	padding: 15px 15px;
 }
-#order-online {
-	font-size: 0.9em;
-	position: absolute;
-	top: 0;
-	right: 10%;
-	z-index: 1000;
-	padding: 0 1px 1px;
-	background: #f6f4eb;
-	border-right: 3px solid #a08068;
-	border-bottom: 3px solid #a08068;
-	border-left: 3px solid #a08068;
-}
-#order-online h2 {
-	margin: 0 0 5px;
-	font-family: "Times New Roman", Times, serif;
-	font-size: 1.8em;
-	color: #a08068;
-}
-#order-online p {
-	margin: 0;
-}
-#order-online .separator {
-	background: url(../images/dot.svg) center center /5px auto repeat-y;
-	margin: 0 5px 0;
-	position: relative;
-	bottom: 1px;
-}
-#order-online a {
-	display: inline-block;
-	padding: 3px 0;
-	font-family: Proxima N W15 Smbd;
-	text-transform: uppercase;
-}
-#order-online-inside {
-	padding: 12px 12px 5px;
-	border-right: 2px solid #a08068;
-	border-bottom: 2px solid #a08068;
-	border-left: 2px solid #a08068;
-	text-align: center;
-}
+/*
 @media screen and (max-width: 700px) {
 	#order-online {
 		position: static;
@@ -13636,6 +13595,7 @@ margin: 1px auto 0 -20px !important;
 		font-size: 16px;
 	}
 }
+*/
 .page-template-template-private-events .contact {
 	position: relative;
 	z-index: 10;
@@ -13855,7 +13815,7 @@ margin: 1px auto 0 -20px !important;
 	transition: all .4s ease-in-out;
 }
 .private-dining .bxslider .item .center-item.taller, .holiday-lunch-event .bxslider .item .center-item.taller {
-	top: 40%;
+	top: 15%;
 }
 .private-dining .bxslider .item .center-item h2, .holiday-lunch-event .bxslider .item .center-item h2 {
 	font-size: 34px;
@@ -13877,16 +13837,6 @@ margin: 1px auto 0 -20px !important;
 	z-index: 9;
 }
 .private-dining .bxslider .item .center-item .additional-desc, .holiday-lunch-event .bxslider .item .center-item .additional-desc {
-	max-height: 0;
-	overflow: hidden;
-	-webkit-transition: max-height 1.2s;
-	-moz-transition: max-height 1.2s;
-	transition: max-height 1.2s;
-	overflow: hidden;
-	-webkit-transition: 1.2s ease-in-out;
-	-moz-transition: 1.2s ease-in-out;
-	-o-transition: 1.2s ease-in-out;
-	transition: 1.2s ease-in-out;
 }
 .private-dining .bxslider .item .center-item .additional-desc p, .holiday-lunch-event .bxslider .item .center-item .additional-desc p {
 	font-size: 18px;

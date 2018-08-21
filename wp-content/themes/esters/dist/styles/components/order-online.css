@@ -1,0 +1,88 @@
+#order-online {
+	text-align: center;
+	margin: auto;
+	z-index: 1000;
+	padding: 0 1px 1px;
+	background: #f6f4eb;
+	font-size: 0.8em;
+	left: 0;
+	right: calc(50% + 90px);
+	width: 340px;
+}
+#order-online-inside {
+	padding: 10px 0;
+	border-bottom: 2px solid #a08068;
+}
+#order-online h2 {
+	margin: 0 0 5px;
+	font-family: "Times New Roman", Times, serif;
+	font-size: 1.8em;
+	color: #a08068;
+}
+#order-online p {
+	margin: 0;
+	font-size: 1.3em;
+}
+#order-online .separator {
+	background: url(../../images/dot.svg) center center /5px auto repeat-y;
+	margin: 0 5px 0;
+	position: relative;
+	bottom: 1px;
+}
+#order-online a {
+	display: inline-block;
+	font-family: Proxima N W15 Smbd;
+	text-transform: uppercase;
+}
+@media (min-width: 701px) {
+	#order-online, #order-online-inside {
+		border: 3px solid #a08068;
+		border-top: none;
+	}
+	#order-online {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: calc(50% + 90px);
+		font-size: 0.8em;
+		width: 230px;
+	}
+	#order-online-inside {
+		padding: 12px 0 5px;
+		border-width: 2px;
+	}
+	#order-online p > a:first-child {
+		display: block;
+	}
+	#order-online p > a:first-child + span {
+		display: none;
+	}
+}
+@media (min-width: 900px) {
+	#order-online p > a:first-child {
+		display: inline-block;
+	}
+	#order-online p > a:first-child + span {
+		display: inline;
+	}
+}
+@media (min-width: 993px) {
+	#order-online {
+		width: 350px;
+		font-size: 0.9em;
+		left: auto;
+		right: 10px;
+	}
+	#order-online p > a {
+		padding: 3px 0;
+	}
+}
+@media (min-width: 1040px) {
+	#order-online {
+		font-size: 0.9em;
+		left: calc(50% + 136px);
+		width: 350px;
+		right: 0;
+	}
+}
+
