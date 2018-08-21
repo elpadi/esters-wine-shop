@@ -117,10 +117,6 @@ add_action('esters_product_listing_header', function() {
 	if (is_product_category('wines')) get_template_part('templates/product-filter');
 	if (is_product_category('gift-boxes')) get_template_part('templates/gifts-header');
 });
-add_filter('woocommerce_show_page_title', function($canShow) {
-	if (is_product_category('gift-boxes')) return false;
-	return $canShow;
-});
 
 add_action('woocommerce_after_single_product_summary', function() {
 	global $product;
