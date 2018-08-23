@@ -10,6 +10,7 @@
  * @link https://github.com/roots/sage/pull/1042
  */
 $sage_includes = [
+  'lib/events.php',    // Scripts and stylesheets
   'lib/assets.php',    // Scripts and stylesheets
   'lib/extras.php',    // Custom functions
   'lib/setup.php',     // Theme setup
@@ -78,81 +79,6 @@ function search_filter($query) {
 }
 
 add_action('pre_get_posts','search_filter');
-
-// custom meta fields
-
-if(function_exists("register_field_group"))
-{
-	register_field_group(array (
-		'id' => 'acf_private-events',
-		'title' => 'Private Events',
-		'fields' => array (
-			array (
-				'key' => 'field_588a448046f6d',
-				'label' => 'Events Slider',
-				'name' => 'events_slider',
-				'type' => 'repeater',
-				'sub_fields' => array (
-					array (
-						'key' => 'field_588a44ac46f6e',
-						'label' => 'Slider Image',
-						'name' => 'slider_image',
-						'type' => 'image',
-						'column_width' => '',
-						'save_format' => 'url',
-						'preview_size' => 'thumbnail',
-						'library' => 'all',
-					),
-					array (
-						'key' => 'field_588a44c546f6f',
-						'label' => 'Slider Title',
-						'name' => 'slider_title',
-						'type' => 'text',
-						'column_width' => '',
-						'default_value' => '',
-						'placeholder' => '',
-						'prepend' => '',
-						'append' => '',
-						'formatting' => 'html',
-						'maxlength' => '',
-					),
-					array (
-						'key' => 'field_588a44e146f70',
-						'label' => 'Slider Copy',
-						'name' => 'slider_copy',
-						'type' => 'wysiwyg',
-						'column_width' => '',
-						'default_value' => '',
-						'toolbar' => 'full',
-						'media_upload' => 'no',
-					),
-				),
-				'row_min' => '',
-				'row_limit' => '',
-				'layout' => 'table',
-				'button_label' => 'Add Row',
-			),
-		),
-		'location' => array (
-			array (
-				array (
-					'param' => 'page_template',
-					'operator' => '==',
-					'value' => 'template-private-events.php',
-					'order_no' => 0,
-					'group_no' => 0,
-				),
-			),
-		),
-		'options' => array (
-			'position' => 'normal',
-			'layout' => 'default',
-			'hide_on_screen' => array (
-			),
-		),
-		'menu_order' => 0,
-	));
-}
 
 // Adds ACF options
 if( function_exists('acf_add_options_page') ) {

@@ -2,6 +2,7 @@
 /**
  * Template Name: Private Events Template
  */
+$location_id = get_field('gather_location_id');
 ?>
 <div class="private-dining">
 	<div class="row">
@@ -36,7 +37,7 @@
 			<!-- // new nav -->
 			<h3 class="sub-head">Private Event Request</h3>
 			<!--p>Please complete the form below so that we may better assist you.</p-->
-			<?php //echo do_shortcode('[contact-form-7 id="843" title="Private Events"]'); ?>
+			<?php if ($location_id): ?>
 			<p>
 				<script>
 				function addBtnClasses() {
@@ -52,8 +53,9 @@
 					}, 2000);
 				}
 				</script>
-				<script type="text/javascript" src="https://gatherhere.com/js/leadform.js" id="gather-loader" data-locationid="uzf7lw2m" onload="addBtnClasses()"></script>
+				<script type="text/javascript" src="https://gatherhere.com/js/leadform.js" id="gather-loader" data-locationid="<?= $location_id; ?>" onload="addBtnClasses()"></script>
 			</p>
+			<?php endif; ?>
 			<div class="entry-sm menu-select">
 				<p>If you have any further questions, please email <a href="mailto:events@esterswineshop.com">events@esterswineshop.com</a></p>
 			</div>
