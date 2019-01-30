@@ -326,8 +326,8 @@ $('select').each(function(){
 				  gr.slideUp(700);
 			  }
 		  });
-		  // disable the gift checkbox if local pickup
-		  var f = $(document.forms.checkout).on('change', function() {
+		  $(document.forms.checkout).on('change', function() {
+			  // disable the gift checkbox if local pickup
 			  var rad = this.querySelector('.shipping_method:checked');
 			  if (rad) {
 				  ckbox.prop('disabled', rad.id.indexOf('local_pickup') != -1);
@@ -336,8 +336,15 @@ $('select').each(function(){
 					  gr.slideUp(700);
 				  }
 			  }
-		  });
-		  
+		  }).on('submit', function() {
+              // fill the hidden gift recipient fields from the shipping fields
+              var _ = document.getElementById.bind(document);
+              _('recipient_name').value = _('shipping_first_name').value + ' ' + _('shippi
+              _('recipient_address').value = _('shipping_address_1').value + ' ' + _('ship
+              _('recipient_city').value = _('shipping_city').value;
+              _('recipient_state').value = _('shipping_state').value;
+              _('recipient_zip').value = _('shipping_postcode').value;
+          });
 	  }
 	 },
       
