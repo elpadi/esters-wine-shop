@@ -30,7 +30,8 @@ class GiftBoxShipping {
 	}
 
 	protected function checkForGiftBoxes() {
-		$c = WC()->cart->get_cart();
+		$wc = WC();
+		$c = $wc->cart ? $wc->cart->get_cart() : [];
 		foreach ($c as $k => $v) {
 			if ($this->hasGiftBoxes || has_term('gift-boxes', 'product_cat', $v['product_id'])) {
 				$this->hasGiftBoxes = true;
