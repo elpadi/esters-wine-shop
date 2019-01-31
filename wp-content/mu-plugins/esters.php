@@ -70,6 +70,31 @@ add_action('wp_loaded', function() {
 	$esters_gift_box_shipping = new GiftBoxShipping();
 });
 
+add_filter('woocommerce_package_rates', function ($rates, $package) {
+	$hasGiftCard = false;
+	$hasOtherItems = false;
+	foreach ($package['contents'] as $k => $p) {
+		if (!$hasGiftCard || !$hasOtherItems) {
+			$t = $p['data']->get_title();
+			if (!$hasGiftCard && strpos($t, 'Gift Card') !== FALSE) $hasGiftCard = TRUE;
+			if (!$hasOtherItems && strpos($t, 'Gift Card') === FALSE) $hasOtherItems = TRUE;
+		}
+		else break;
+	}
+
+	// remove usps option if there are items which are not gift cards
+	if ($hasOtherItems) foreach (array_filter(array_keys($rates), function($k) use ($rates) {
+		return strpos($rates[$k]->get_label(), 'USPS') !== FALSE;
+	}) as $k) {
+		unset($rates[$k]);
+	}
+
+	// advice customer to purchase gift cards separately
+	if ($hasGiftCard && $hasOtherItems) wc_add_notice("Gift cards can be shipped through the U.S. Postal Service for $1 each, but must be purchased separate from other items.");
+
+    return $rates;
+}, 10, 2);
+
 /*
 if (WP_DEBUG) {
 
