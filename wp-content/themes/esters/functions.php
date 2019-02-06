@@ -1,4 +1,7 @@
 <?php
+// disable block editor
+add_filter( 'use_block_editor_for_post', '__return_false', 666 );
+
 /**
  * Sage includes
  *
@@ -18,6 +21,7 @@ $sage_includes = [
   'lib/wrapper.php',   // Theme wrapper class
   'lib/customizer.php', // Theme customizer
   'lib/store.php', // Store functions
+  'lib/store_options.php', // Store settings fields
   'lib/gift.php', // Store functions
   'lib/ajax.php', // Ajax functions
 ];

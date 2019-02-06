@@ -1,5 +1,6 @@
 *.log
 wp-config.php
+wp-config.*.php
 wp-content/advanced-cache.php
 wp-content/backup-db/
 wp-content/backups/
@@ -30,3 +31,5 @@ wp-content/themes/esters/package-lock.json
 wp-content/themes/esters/dist/styles/vendor
 var-dumper-3.4/
 wp
+backups
+node_modules

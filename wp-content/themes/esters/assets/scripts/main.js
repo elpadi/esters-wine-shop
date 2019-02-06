@@ -13,155 +13,8 @@
   // Use this variable to set up the common and page specific functions. If you
   // rename this variable, you will also need to rename the namespace below.
   var Sage = {
-    // All pages
-    'common': {
-      init: function() {
-        // JavaScript to be fired on all pages
-        $('.filter-select').selectpicker();
-        $('.filter-dropdown').click(function() {
-          $('#filtering-form').toggleClass('active');
-        });
-				setTimeout(function() {
-					$(".loader").fadeOut('fast');
-				}, 1000);
-        (function() {
-          $(document).on('click', '.hamburger-menu', function() {
-            $('.banner').toggleClass('active');
-            $('.bar').toggleClass('animate');
-          });
-          $('.main-menu li a').click(function() {
-            $('.banner').toggleClass('active');
-            $('.bar').toggleClass('animate');
-          });
-        })();
-        //equal heights		  
-        equalheight = function(container) {
-          var currentTallest = 0,
-            currentRowStart = 0,
-            rowDivs = new Array(),
-            $el,
-            topPosition = 0;
-          $(container).each(function() {
-            $el = $(this);
-            $($el).height('auto')
-            topPostion = $el.position().top;
-            if (currentRowStart != topPostion) {
-              for (currentDiv = 0; currentDiv < rowDivs.length; currentDiv++) {
-                rowDivs[currentDiv].height(currentTallest);
-              }
-              rowDivs.length = 0; // empty the array
-              currentRowStart = topPostion;
-              currentTallest = $el.height();
-              rowDivs.push($el);
-            } else {
-              rowDivs.push($el);
-              currentTallest = (currentTallest < $el.height()) ? ($el.height()) : (currentTallest);
-            }
-            for (currentDiv = 0; currentDiv < rowDivs.length; currentDiv++) {
-              rowDivs[currentDiv].height(currentTallest);
-            }
-          });
-        }
-        $(window).load(function() {
-          equalheight('.esters-products li');
-        });
-        $(window).resize(function() {
-          equalheight('.esters-products li');
-        });
-        // Custom Select
-        /*
-$('select').each(function(){
-    var $this = $(this), numberOfOptions = $(this).children('option').length;
-  
-    $this.addClass('select-hidden'); 
-    $this.wrap('<div class="select"></div>');
-    $this.after('<div class="select-styled"></div>');
-
-    var $styledSelect = $this.next('div.select-styled');
-    $styledSelect.text($this.children('option').eq(0).text());
-  
-    var $list = $('<ul />', {
-        'class': 'select-options'
-    }).insertAfter($styledSelect);
-  
-    for (var i = 0; i < numberOfOptions; i++) {
-        $('<li />', {
-            text: $this.children('option').eq(i).text(),
-            rel: $this.children('option').eq(i).val()
-        }).appendTo($list);
-    }
-  
-    var $listItems = $list.children('li');
-  
-    $styledSelect.click(function(e) {
-        e.stopPropagation();
-        $('div.select-styled.active').not(this).each(function(){
-            $(this).removeClass('active').next('ul.select-options').hide();
-        });
-        $(this).toggleClass('active').next('ul.select-options').toggle();
-    });
-  
-    $listItems.click(function(e) {
-        e.stopPropagation();
-        $styledSelect.text($(this).text()).removeClass('active');
-        $this.val($(this).attr('rel'));
-        $list.hide();
-        //console.log($this.val());
-    });
-  
-    $(document).click(function() {
-        $styledSelect.removeClass('active');
-        $list.hide();
-    });
-
-});  
-*/
-        $(document).ready(function() {
-          if (/Android|BlackBerry|iPhone|iPad|iPod|webOS/i.test(navigator.userAgent) === false) {
-            $(window).scroll(function() {
-              if ($(this).scrollTop() > 200) {
-                $('.mobile-header').addClass('fixed');
-              } else {
-                $('.mobile-header').removeClass('fixed');
-              }
-            });
-          }
-          $(window).scroll(function() {
-            if ($(this).scrollTop() > 200) {
-              $('.nav-container').addClass('fixed');
-            } else {
-              $('.nav-container').removeClass('fixed');
-            }
-            if ($(this).scrollTop() > 200) {
-              $('.hamburger-menu').addClass('fixed');
-            } else {
-              $('.hamburger-menu').removeClass('fixed');
-            }
-          });
-        });
-        $(document).ready(function() {
-          $('a[rel="relativeanchor"]').click(function() {
-            $('html, body').animate({
-              scrollTop: $($.attr(this, 'href')).offset().top - 80
-            }, 500);
-            return false;
-          });
-        });
-        // Scroll Reveal
-        window.sr = ScrollReveal({
-          //reset: true,
-          opacity: 0,
-          scale: 1,
-          duration: 800,
-          distance: '100px',
-          mobile: false,
-          viewFactor: 0.4
-        });
-        sr.reveal('.fadein');
-      },
-      finalize: function() {
-        // JavaScript to be fired on all pages, after page specific JS is fired
-      }
+		common: new CommonRoute(),
+		home: new HomeRoute(),
     },
     // Home page
     'home': {
@@ -447,6 +300,7 @@ $('select').each(function(){
   // Add additional events for more control over timing e.g. a finalize event
   var UTIL = {
     fire: function(func, funcname, args) {
+			console.log('UTIL.fire', func, funcname);
       var fire;
       var namespace = Sage;
       funcname = (funcname === undefined) ? 'init' : funcname;
@@ -458,6 +312,7 @@ $('select').each(function(){
       }
     },
     loadEvents: function() {
+			console.log('UTIL.loadEvents', document.body.className);
       // Fire common init JS
       UTIL.fire('common');
       // Fire page-specific init JS, and then finalize JS

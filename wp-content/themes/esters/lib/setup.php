@@ -97,13 +97,41 @@ function display_sidebar() {
  * Theme assets
  */
 function assets() {
+
+
+
+	global $post;
+	$theme_uri = get_template_directory_uri();
+	$theme_path = get_template_directory();
+	$load_css_file = function($rel_path, $path='') use ($theme_uri, $theme_path) {
+		Assets\load_asset_file('css', $theme_uri, $theme_path, $rel_path, $path);
+	};
+	$load_js_file = function($rel_path, $path='') use ($theme_uri, $theme_path) {
+		Assets\load_asset_file('js', $theme_uri, $theme_path, $rel_path, $path);
+	};
+
+
+
+
+		foreach (['vendor','base','components','templates/chapter','templates'] as $css_dir)
+			Assets\load_asset_dir($theme_path, 'css', $css_dir, $load_css_file);
+		$load_css_file('../foundation-icons/foundation-icons.css');
+		$load_css_file('../style.css');
+		$load_css_file('app.css');
+
+		foreach (['vendor','components','templates'] as $js_dir)
+			Assets\load_asset_dir($theme_path, 'js', "dist/$js_dir", $load_js_file);
+		$load_js_file('dist/tome.js');
+
+
+	/*
   wp_register_style('main-css', Assets\asset_path('styles/main.css', 'dist'), false, null);
 
   wp_register_script('bootstrap', Assets\asset_path('bootstrap-sass/assets/javascripts/bootstrap.min.js', 'bower_components'), [], null, true);
-  wp_register_script('bootstrap-select', Assets\asset_path('bootstrap-select/dist/js/bootstrap-select.min.js', 'bower_components'), ['bootstrap'], null, true);
 	
 	wp_register_script('jquery', Assets\asset_path('jquery/dist/jquery.min.js', 'bower_components'), [], null, true);
-	wp_register_script('bxslider', Assets\asset_path('bxslider-4/dist/jquery.bxslider.min.js', 'bower_components'), ['jquery'], null, true);
+  //wp_register_script('bootstrap-select', Assets\asset_path('bootstrap-select/dist/js/bootstrap-select.min.js', 'bower_components'), ['bootstrap'], null, true);
+	//wp_register_script('bxslider', Assets\asset_path('bxslider-4/dist/jquery.bxslider.min.js', 'bower_components'), ['jquery'], null, true);
 	wp_register_script('scrollreveal', Assets\asset_path('scrollreveal/dist/scrollreveal.min.js', 'bower_components'), ['jquery'], null, true);
 	wp_register_script('slick', Assets\asset_path('slick-carousel/slick/slick.min.js', 'bower_components'), ['jquery'], null, true);
 	wp_register_script('waypoints', Assets\asset_path('waypoints/lib/jquery.waypoints.min.js', 'bower_components'), ['jquery'], null, true);
@@ -116,5 +144,6 @@ function assets() {
 
   wp_enqueue_script('main-js');
   wp_enqueue_style('main-css');
+	 */
 }
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);

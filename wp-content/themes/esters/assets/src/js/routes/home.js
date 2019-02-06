@@ -1,0 +1,10 @@
+class HomeRoute {
+
+	init() {
+	}
+
+	finalize() {
+	}
+
+}
+

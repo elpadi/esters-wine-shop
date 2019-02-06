@@ -39,6 +39,23 @@ class JsonManifest {
   }
 }
 
+function load_asset_file($type, $theme_uri, $theme_path, $rel_path, $path='') {
+	if (empty($path)) $path = "$theme_path/$type/$rel_path";
+	if (!file_exists($path)) trigger_error("$type file $path is missing.", E_USER_ERROR);
+	if (apply_filters('can_load_asset_file', true, $rel_path, $type) == false) return null;
+	$uri = "$theme_uri/$type/$rel_path";
+	$handle = str_replace('/', '-', $rel_path);
+	$version = filemtime($path);
+	if ($type == 'css') wp_enqueue_style("esters-$handle", $uri, [], $version);
+	if ($type == 'js') wp_enqueue_script("esters-$handle", $uri, [], $version);
+}
+
+function load_asset_dir($theme_path, $type, $dir, $loader) {
+	foreach (glob("$theme_path/$type/$dir/*.$type") as $path) {
+		$loader(str_replace($theme_path."/$type/", '', $path), $path);
+	}
+}
+
 function asset_path($filename, $dir='assets') {
 	return sprintf('%s/%s/%s', get_template_directory_uri(), $dir, $filename);
 	/*
