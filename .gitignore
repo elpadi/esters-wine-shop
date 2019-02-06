@@ -33,3 +33,6 @@ var-dumper-3.4/
 wp
 backups
 node_modules
+*.tar.gz
+fonts
+images

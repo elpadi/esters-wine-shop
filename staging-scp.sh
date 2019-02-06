@@ -1,18 +1,18 @@
 #!/bin/bash
 
 SSH_ACCOUNT="kathrynesterswine@esterswineshop.com"
-SERVER_PATH="/home/kathrynesterswine/dev.esterswineshop.com"
+SERVER_PATH="/home/kathrynesterswine/esterswineshop.com"
 
 upload() {
 	echo "Uploading $1"
-	_rPath=$(echo $1 | sed 's,themes/esters/,themes/esters-staging/,')
-	scp -r "$1" "$SSH_ACCOUNT:$SERVER_PATH/$_rPath"
+	_stgPath=$(echo $1 | sed 's,themes/esters/,themes/esters-staging/,')
+	scp -r "$1" "$SSH_ACCOUNT:$SERVER_PATH/$_stgPath"
 }
 
 download() {
 	echo "Downloading $1"
-	_rPath=$(echo $1 | sed 's,themes/esters/,themes/esters-staging/,')
-	scp -r "$SSH_ACCOUNT:$SERVER_PATH/$_rPath" "$1"
+	_stgPath=$(echo $1 | sed 's,themes/esters/,themes/esters-staging/,')
+	scp -r "$SSH_ACCOUNT:$SERVER_PATH/$_stgPath" "$_stgPath"
 }
 
 if [[ -z "$1" ]]; then

@@ -97,12 +97,9 @@ function display_sidebar() {
  * Theme assets
  */
 function assets() {
-
-
-
 	global $post;
-	$theme_uri = get_template_directory_uri();
-	$theme_path = get_template_directory();
+	$theme_uri = get_template_directory_uri()."/assets/src";
+	$theme_path = get_template_directory()."/assets/src";
 	$load_css_file = function($rel_path, $path='') use ($theme_uri, $theme_path) {
 		Assets\load_asset_file('css', $theme_uri, $theme_path, $rel_path, $path);
 	};
@@ -110,19 +107,25 @@ function assets() {
 		Assets\load_asset_file('js', $theme_uri, $theme_path, $rel_path, $path);
 	};
 
+	wp_deregister_script('jquery');
+	wp_enqueue_script('jquery',
+		get_template_directory_uri()."/assets/node_modules/jquery/dist/jquery.min.js",
+		[],
+		filemtime(get_template_directory()."/assets/node_modules/jquery/dist/jquery.min.js")
+	);
 
+	$load_js_file('../../node_modules/scrollreveal/dist/scrollreveal.min.js');
 
+	$load_css_file('../../node_modules/bxslider/dist/jquery.bxslider.min.css');
+	$load_js_file('../../node_modules/bxslider/dist/jquery.bxslider.min.js');
 
-		foreach (['vendor','base','components','templates/chapter','templates'] as $css_dir)
-			Assets\load_asset_dir($theme_path, 'css', $css_dir, $load_css_file);
-		$load_css_file('../foundation-icons/foundation-icons.css');
-		$load_css_file('../style.css');
-		$load_css_file('app.css');
-
-		foreach (['vendor','components','templates'] as $js_dir)
-			Assets\load_asset_dir($theme_path, 'js', "dist/$js_dir", $load_js_file);
-		$load_js_file('dist/tome.js');
-
+	$load_css_file('../../node_modules/slick-carousel/slick/slick.css');
+	$load_css_file('../../node_modules/slick-carousel/slick/slick-theme.css');
+	$load_js_file('../../node_modules/slick-carousel/slick/slick.min.js');
+	
+	$load_css_file('../../node_modules/bootstrap/dist/css/bootstrap.min.css');
+	$load_js_file('../../node_modules/bootstrap/dist/js/bootstrap.min.js');
+	
 
 	/*
   wp_register_style('main-css', Assets\asset_path('styles/main.css', 'dist'), false, null);
@@ -145,5 +148,14 @@ function assets() {
   wp_enqueue_script('main-js');
   wp_enqueue_style('main-css');
 	 */
+	foreach (['styles/components','styles'] as $css_dir)
+		Assets\load_asset_dir($theme_path, 'css', "../../dist/$css_dir", $load_css_file);
+
+	foreach (['routes'] as $js_dir)
+		Assets\load_asset_dir($theme_path, 'js', $js_dir, $load_js_file);
+
+	foreach (['scripts','scripts/plugins'] as $js_dir)
+		Assets\load_asset_dir($theme_path, 'js', "../../$js_dir", $load_js_file);
+
 }
 add_action('wp_enqueue_scripts', __NAMESPACE__ . '\\assets', 100);

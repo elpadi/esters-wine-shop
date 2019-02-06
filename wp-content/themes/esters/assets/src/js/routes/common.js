@@ -19,7 +19,7 @@ class CommonRoute {
 			});
 		})();
 		//equal heights		  
-		equalheight = function(container) {
+		var equalheight = function(container) {
 			var currentTallest = 0,
 				currentRowStart = 0,
 				rowDivs = new Array(),
@@ -46,42 +46,38 @@ class CommonRoute {
 				}
 			});
 		}
-		$(window).load(function() {
+		$(window).on('load', function() {
 			equalheight('.esters-products li');
 		});
-		$(window).resize(function() {
+		$(window).on('resize', function() {
 			equalheight('.esters-products li');
 		});
-		$(document).ready(function() {
-			if (/Android|BlackBerry|iPhone|iPad|iPod|webOS/i.test(navigator.userAgent) === false) {
-				$(window).scroll(function() {
-					if ($(this).scrollTop() > 200) {
-						$('.mobile-header').addClass('fixed');
-					} else {
-						$('.mobile-header').removeClass('fixed');
-					}
-				});
-			}
+		if (/Android|BlackBerry|iPhone|iPad|iPod|webOS/i.test(navigator.userAgent) === false) {
 			$(window).scroll(function() {
 				if ($(this).scrollTop() > 200) {
-					$('.nav-container').addClass('fixed');
+					$('.mobile-header').addClass('fixed');
 				} else {
-					$('.nav-container').removeClass('fixed');
-				}
-				if ($(this).scrollTop() > 200) {
-					$('.hamburger-menu').addClass('fixed');
-				} else {
-					$('.hamburger-menu').removeClass('fixed');
+					$('.mobile-header').removeClass('fixed');
 				}
 			});
+		}
+		$(window).scroll(function() {
+			if ($(this).scrollTop() > 200) {
+				$('.nav-container').addClass('fixed');
+			} else {
+				$('.nav-container').removeClass('fixed');
+			}
+			if ($(this).scrollTop() > 200) {
+				$('.hamburger-menu').addClass('fixed');
+			} else {
+				$('.hamburger-menu').removeClass('fixed');
+			}
 		});
-		$(document).ready(function() {
-			$('a[rel="relativeanchor"]').click(function() {
-				$('html, body').animate({
-					scrollTop: $($.attr(this, 'href')).offset().top - 80
-				}, 500);
-				return false;
-			});
+		$('a[rel="relativeanchor"]').click(function() {
+			$('html, body').animate({
+				scrollTop: $($.attr(this, 'href')).offset().top - 80
+			}, 500);
+			return false;
 		});
 		// Scroll Reveal
 		window.sr = ScrollReveal({

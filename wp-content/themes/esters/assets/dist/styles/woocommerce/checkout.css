@@ -3,8 +3,19 @@ form.woocommerce-checkout {
 	padding: 20px;
 	margin: 0 auto 40px;
 }
-form.woocommerce-checkout .form-row label {
+.woocommerce-checkout .form-row {
+	display: block;
+}
+.woocommerce-checkout .form-row label {
 	line-height: 1;
+	display: block;
+}
+.woocommerce-checkout .form-row .input-wrapper {
+	display: block;
+}
+.woocommerce-checkout .form-row .input-text,
+.woocommerce-checkout .form-row textarea {
+	width: 100%;
 }
 form.woocommerce-checkout input, form.woocommerce-checkout textarea {
 	padding: 12px;

@@ -1415,6 +1415,10 @@ pre code {
 	padding-left: 15px;
 	padding-right: 15px;
 }
+.entry .woocommerce .container {
+	padding: 0;
+	max-width: 100% !important;
+}
 .container:before, .container:after {
 	content: " ";
 	display: table;
@@ -1427,9 +1431,15 @@ pre code {
 		width: 750px;
 	}
 }
+.main-menu {
+	flex-direction: column;
+}
 @media (min-width: 992px) {
 	.container {
 		width: 970px;
+	}
+	.main-menu {
+		flex-direction: row;
 	}
 }
 @media (min-width: 1200px) {
@@ -2971,6 +2981,7 @@ input[type="submit"].btn-block, input[type="reset"].btn-block, input[type="butto
 	-o-transition: opacity 0.15s linear;
 	transition: opacity 0.15s linear;
 }
+.fade.show,
 .fade.in {
 	opacity: 1;
 }
@@ -5999,9 +6010,6 @@ body {
 	padding-right: 0;
 	padding-left: 0;
 }
-.fadein {
-	visibility: hidden;
-}
 .wrap {
 	overflow: hidden;
 }
@@ -6872,6 +6880,9 @@ margin: 0 auto 5px;
 .content {
 	border-top: 1px solid;
 }
+.content > main {
+	margin: auto;
+}
 /* Tastings Page */
 .tastings .panel-group {
 	margin-bottom: 0;
@@ -7006,6 +7017,7 @@ margin-left: 15px;
 }
 /*Shop*/
 .filter-section {
+	display: none;
 	margin: 10px 0 45px;
 }
 .filter-section .sec-title {
@@ -8088,6 +8100,7 @@ p.not-found {
 .content div.single-product {
 	margin: 30px auto;
 	width: 100%;
+	max-width: none;
 }
 .entry-summary [itemprop="description"] a {
 	text-decoration: underline;
@@ -8101,8 +8114,32 @@ p.not-found {
 	margin: 0;
 	position: relative;
 }
+#content ul.products {
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-gap: 50px 0;
+	clear: both;
+	width: 100%;
+}
+#content ul.products::after, #content ul.products::before {
+	display: none;
+}
+@media (min-width: 577px) {
+	#content ul.products,.woocommerce-page ul.products {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+@media (min-width: 768px) {
+	#content ul.products,.woocommerce-page ul.products {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
 #content ul.products li {
 	overflow: hidden;
+	max-width: none;
+	width: auto;
+	margin: 0;
+	float: none;
 }
 #content .products li .product-meta {
 	min-height: 100%;
