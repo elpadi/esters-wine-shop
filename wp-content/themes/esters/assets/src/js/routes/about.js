@@ -19,8 +19,6 @@ class AboutRoute {
 			});
 		});
 
-		// AIzaSyDwthfpVNhd5zzCn5Q_nbMHTcIO9tXGdIY
-		// Google Maps API
 		function initialize() {
 			var latlng = new google.maps.LatLng(34.020736, -118.493686);
 			var settings = {
