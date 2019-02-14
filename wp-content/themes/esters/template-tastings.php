@@ -2,6 +2,7 @@
 /**
  * Template Name: Tastings Template
  */
+global $post;
 ?>
 
 
@@ -39,14 +40,11 @@
 				$class=" ";
 			}
 			?>
-			<div class="panel">
-				<a role="button" data-toggle="collapse" data-parent="#accordion" href="#<?php echo the_ID();?>" aria-expanded="true" aria-controls="<?php echo the_ID();?>">
+			<div class="panel" id="<?= $post->post_name; ?>">
+				<a role="button" class="event-info-toggler" data-toggle="collapse" data-parent="#accordion" href="#<?= $post->post_name; ?>">
 					<div class="row event-head event-link">
 						<div class="col-sm-1 col-xs-2"><br>
-							<h3>
-								<?php echo the_field('date');?>
-							</h3>
-							<!--<h3><?php echo the_field('display_date');?></h3>-->
+							<h3><?php echo the_field('date');?></h3>
 						</div>
 						<div class="col-sm-3 col-xs-10">
 							<div class="event-img" style="background:url(<?php echo the_field('image_one');?>) no-repeat center; background-size:contain;"></div>
@@ -58,7 +56,7 @@
 						</div>
 					</div>
 				</a>
-				<div id="<?php echo the_ID();?>" class="collapse <?php echo $class; ?> fade" role="tabpanel" aria-labelledby="EventInfo">
+				<div class="collapse event-info <?php echo $class; ?> fade" role="tabpanel" aria-labelledby="EventInfo">
 					<div class="panel-body">
 						<div class="text-center">
 							<h2 class="sec-title">

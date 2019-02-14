@@ -17,6 +17,7 @@ $ = jQuery;
 		common: new CommonRoute(),
 		home: new HomeRoute(),
 		events: new EventsRoute(),
+		calendar: new CalendarRoute(),
 		page_template_template_shop_landing: new ShopLandingRoute(),
 		woocommerce_page: new ShopPageRoute(),
 		checkout: new CheckoutRoute(),
