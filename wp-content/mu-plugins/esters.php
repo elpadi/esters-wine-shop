@@ -20,8 +20,10 @@ class GiftBoxShipping {
 	protected $hasOtherItems = false;
 
 	public function __construct() {
-		$this->checkForGiftBoxes();
-		add_action('woocommerce_before_cart', [$this, 'addNotice'], -10);
+		if (function_exists('WC')) {
+			$this->checkForGiftBoxes();
+			add_action('woocommerce_before_cart', [$this, 'addNotice'], -10);
+		}
 	}
 
 	public function addNotice() {
