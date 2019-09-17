@@ -8,6 +8,13 @@
 content="http://graphics.myfavnews.com/images/logo-100x100.jpg" />
 <meta name="Description" content="Cassia celebrates the fresh, vibrant flavors of Southeast Asia influenced by the brasseries of France, striking a unique balance of soulful, ancestral cuisine, utilizing the best quality ingredients from local farmers.">
     <?php wp_head(); ?>
+
+<?php if (isset($_SERVER['HTTP_USER_AGENT']) && strpos($_SERVER['HTTP_USER_AGENT'], 'Safari') && strpos($_SERVER['HTTP_USER_AGENT'], 'Mac OS X')): ?>
+<style>
+	.col-lg-6, .col-md-6 { flex-basis: calc(50% - 1px); }
+	.col-md-7 { flex-basis: calc(58.33% - 1px); }
+</style>
+<?php endif; ?>
     
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
