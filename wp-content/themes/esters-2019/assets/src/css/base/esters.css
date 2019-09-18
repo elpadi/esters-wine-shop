@@ -1,0 +1,12 @@
+/* remove twentynineteen header bars */
+h1::before,
+h2::before {
+	display: none !important;
+}
+
+svg {
+	width: 1em;
+	height: 1em;
+	line-height: 1;
+	display: inline-block;
+}

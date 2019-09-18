@@ -1,1 +1,71 @@
+#masthead {
+	display: flex;
+	position: relative;
+	padding: 0 10px;
+	max-width: 1000px;
+	margin: 0 auto;
+	align-items: flex-end;
+	overflow: hidden;
+}
+#theme-header__bird {
+	max-width: 100px;
+}
+#theme-header__logo {
+	font-size: 1em;
+	line-height: 1;
+	margin: 0.5em auto 0;
+}
 
+#theme-header__bird svg {
+	width: 100%;
+	height: auto;
+	display: block;
+	position: relative;
+	top: 4px;
+}
+
+#theme-header__logo a {
+	display: block;
+}
+#theme-header__logo svg {
+	height: 140px;
+	width: auto;
+}
+
+#theme-header__account {
+	margin-bottom: 30px;
+}
+
+#theme-header__partners {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	padding: 0 0.5em 0.2em;
+	margin-left: 200px;
+}
+#theme-header__partners::before,
+#theme-header__partners::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	border: 2px solid currentColor;
+	border-top-style: none;
+}
+#theme-header__partners::after {
+	right: 4px;
+	bottom: 4px;
+	left: 4px;
+}
+#theme-header__partners li {
+	border-left: 3px dotted currentColor;
+	padding-left: 0.2em;
+	margin-left: 0.2em;
+}
+#theme-header__partners li:first-child {
+	border-left-style: none;
+	padding-left: 0;
+	margin-left: 0;
+}

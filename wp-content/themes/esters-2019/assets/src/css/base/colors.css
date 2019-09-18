@@ -1,1 +1,7 @@
-
+body {
+	background-color: #f7f7ef;
+	color: #bf9d3e;
+}
+#masthead a {
+	color: inherit;
+}

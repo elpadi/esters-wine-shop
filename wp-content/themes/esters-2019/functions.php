@@ -5,8 +5,8 @@ use WordpressLib\Theme\Assets;
 
 require_once ABSPATH.'/vendor/autoload.php';
 
-function logo_svg() {
-	return file_get_contents(get_stylesheet_directory().'/assets/img/logo.svg');
+function theme_svg($name, $dir='img') {
+	return file_get_contents(get_stylesheet_directory()."/assets/$dir/$name.svg");
 }
 
 add_action('wp_enqueue_scripts', function() {
@@ -46,7 +46,7 @@ if (is_admin() == false) {
 
 	add_filter('get_custom_logo', function($html) {
 		$end = '</a>';
-		return str_replace($end, logo_svg().$end, $html);
+		return str_replace($end, theme_svg('logo').$end, $html);
 	});
 
 }
