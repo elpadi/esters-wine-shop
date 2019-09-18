@@ -36,3 +36,9 @@ node_modules
 *.tar.gz
 fonts
 images
+wp-*.php
+wp-content/index.php
+xmlrpc.php
+wp-includes/*
+wp-admin/*
+index.php
