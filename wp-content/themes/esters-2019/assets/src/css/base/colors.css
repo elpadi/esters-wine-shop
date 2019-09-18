@@ -2,6 +2,11 @@ body {
 	background-color: #f7f7ef;
 	color: #bf9d3e;
 }
+
+#theme-nav a,
 #masthead a {
 	color: inherit;
+}
+#theme-header__cart svg {
+	color: black;
 }

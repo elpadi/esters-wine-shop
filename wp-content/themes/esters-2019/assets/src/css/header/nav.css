@@ -1,5 +1,19 @@
 #theme-nav {
 	border-top: 1px solid currentColor;
 	border-bottom: 1px solid currentColor;
+	display: flex;
+	align-items: center;
+	text-transform: uppercase;
 }
 
+#theme-nav .menu-main-menu-container {
+	margin: 0 auto;
+}
+#theme-nav .main-menu-more {
+	display: none;
+}
+
+#theme-nav .search-field {
+	text-transform: none;
+	display: none;
+}
