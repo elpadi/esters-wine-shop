@@ -1,0 +1,57 @@
+@keyframes filltoggle {
+	from { fill-opacity: 0; }
+	to { fill-opacity: 1; }
+}
+
+@keyframes rotation {
+	from { transform: rotate(0deg); }
+	to { transform: rotate(359deg); }
+}
+
+.loading > .embed-loading-spinner,
+#tome2-admin-container.loading .embed-loading-spinner {
+	display: block;
+}
+
+.embed-loading-spinner {
+	display: none;
+	position: absolute;
+	z-index: 2;
+	top: 50%;
+	left: 50%;
+	font-size: 48px;
+	margin: -24px 0 0 -24px;
+	color: gray;
+	animation: rotation 5.6s linear infinite reverse;
+}
+.embed-loading-spinner circle {
+	fill-opacity: 0;
+	fill: currentColor !important;
+	stroke: currentColor !important;
+	animation: filltoggle 0.7s linear infinite alternate;
+}
+
+.gif-loading-spinner {
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 100;
+	width: 100px;
+	height: 100px;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+}
+body > .gif-loading-spinner {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	visibility: hidden;
+	background-color: #fff8;
+}
+body.unloading > .gif-loading-spinner {
+	visibility: visible;
+}

@@ -1,25 +1,19 @@
 {
-    "name": "elpadi/esters-wine-shop",
-    "description": "Wordpress website for Esters Wine Shop.",
-    "type": "project",
-    "require": {
-        "johnpbloch/wordpress-core-installer": "^1.0",
-        "johnpbloch/wordpress-core": "4.9.*",
-        "wpackagist-plugin/woocommerce": "*",
-        "wpackagist-plugin/woo-order-test": "1.5"
-    },
-    "license": "GPL-3.0",
-    "repositories":[
-        {
-            "type":"composer",
-            "url":"https://wpackagist.org"
-        }
-    ],
-    "authors": [
-        {
-            "name": "carlos (minimal)",
-            "email": "padi_05@yahoo.com"
-        }
-    ],
-    "minimum-stability": "stable"
+	"name": "elpadi/esters",
+	"description": "Base classes and support files for WordPress.",
+	"type": "project",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Carlos Padilla",
+			"email": "padi_05@yahoo.com"
+		}
+	],
+	"minimum-stability": "stable",
+	"autoload": {
+		"files": ["wplib/vendor/autoload.php"]
+	},
+	"require": {
+		"symfony/var-dumper": "^4.3"
+	}
 }

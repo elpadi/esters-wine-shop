@@ -1,0 +1,18 @@
+/*
+Theme Name: Esters 2019
+Theme URI: https://esterswineshop.com
+Author: Carlos Padilla
+Author URI: https://cpadilla.thejackmag.com/
+Description: One column theme including WooCommerce styles for wine shop.
+Requires at least: WordPress 5.0.0
+Version: 1.0
+License: GNU General Public License v2 or later
+Template: twentynineteen
+Text Domain: tome
+Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+*/
+
+body {
+	color: #444;
+	font-size: 16px;
+}

@@ -18,7 +18,7 @@ wp-content/plugins/*
 /sitemap.xml.gz
 
 wp-content/themes/*
-!wp-content/themes/esters
+!wp-content/themes/esters*
 wp-content/themes/esters/assets/fonts
 wp-content/themes/esters/fav
 
@@ -42,3 +42,4 @@ xmlrpc.php
 wp-includes/*
 wp-admin/*
 index.php
+wplib
