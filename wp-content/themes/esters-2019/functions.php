@@ -1,7 +1,11 @@
 <?php
-define('THEME_NAME', 'esters');
-
 use WordpressLib\Theme\Assets;
+use WordpressLib\Customizer\Section as CustomizerSection;
+
+global $themeData;
+
+define('THEME_NAME', 'esters');
+$themeData = [];
 
 require_once ABSPATH.'/vendor/autoload.php';
 
@@ -55,3 +59,18 @@ add_filter('body_class', function($classes) {
 	return $classes;
 });
 
+$themeData['homeSlides'] = (new CustomizerSection('home_slides','Home Slideshow'))->addRepeater([
+	['text','title'],
+	['image','image'],
+	['text','byline'],
+	['page','page'],
+], 5, 'Slide');
+
+add_filter('the_content', function($content) {
+	if (is_front_page()) {
+		ob_start();
+		get_template_part('template-parts/content/home-slideshow');
+		$content = ob_get_clean().$content;
+	}
+	return $content;
+});
