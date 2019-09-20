@@ -2,6 +2,9 @@ body {
 	background-color: #f7f7ef;
 	color: #bf9d3e;
 }
+.xdebug-error tr:first-child th {
+	color: #007af5;
+}
 
 #theme-nav a,
 #masthead a {
