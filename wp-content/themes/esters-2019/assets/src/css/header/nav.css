@@ -12,8 +12,39 @@
 #theme-nav .main-menu-more {
 	display: none;
 }
+#theme-nav li {
+	margin: 0 0.8em;
+}
 
+#theme-nav .search-form {
+	display: flex;
+	align-items: center;
+}
 #theme-nav .search-field {
 	text-transform: none;
-	display: none;
+	background-color: transparent;
+	border-style: none;
+	outline-style: none;
+	color: inherit;
+	font-size: 1.4em;
+	padding: 0;
+}
+#theme-nav .search-field::before,
+#theme-nav .search-field::after {
+	color: inherit;
+	background-color: inherit;
+}
+#theme-nav .search-form button {
+	font-size: 1.8em;
+}
+#theme-nav .search-form button[type="reset"] {
+	visibility: hidden;
+}
+#theme-nav .search-form:hover button[type="reset"],
+#theme-nav .search-form:focus button[type="reset"] {
+	visibility: visible;
+}
+#theme-nav .search-form button[type="reset"] svg {
+	position: relative;
+	top: 2px;
 }

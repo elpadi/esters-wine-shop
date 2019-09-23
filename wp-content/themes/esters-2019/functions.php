@@ -66,6 +66,11 @@ $themeData['homeSlides'] = (new CustomizerSection('home_slides','Home Slideshow'
 	['page','page'],
 ], 5, 'Slide');
 
+$themeData['onlineShops'] = (new CustomizerSection('online_shops','Online Shops'))->addRepeater([
+	['text','title'],
+	['text','url','URL'],
+], 3, 'Shop');
+
 add_filter('the_content', function($content) {
 	if (is_front_page()) {
 		ob_start();

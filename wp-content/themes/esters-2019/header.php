@@ -14,7 +14,7 @@ $h_tpl = function($s) { include(__DIR__."/template-parts/header/$s.php"); };
 			<div id="theme-header__bird"><?= theme_svg('bird'); ?></div>
 			<h1 id="theme-header__logo"><a href="<?= home_url(); ?>"><?= theme_svg('logo'); ?></a></h1>
 			<div id="theme-header__account" class="hlist"><?php $h_tpl('account'); ?></div>
-			<div id="theme-header__partners"><?php $h_tpl('partners'); ?></div>
+			<div id="theme-header__online-shops"><?php $h_tpl('online-shops'); ?></div>
 		</header><!-- #masthead -->
 		<nav id="theme-nav">
 			<?php wp_nav_menu(['theme_location' => 'menu-1', 'menu_class' => 'main-menu hlist']); ?>

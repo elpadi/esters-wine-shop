@@ -1,3 +1,7 @@
+body {
+	line-height: 1.2;
+}
+
 /* remove twentynineteen header bars */
 h1::before,
 h2::before {
@@ -9,4 +13,35 @@ svg {
 	height: 1em;
 	line-height: 1;
 	display: inline-block;
+}
+
+::-webkit-search-cancel-button {
+	-webkit-appearance: none;
+	appearance: none;
+	display: none;
+}
+
+.site button,
+.site .btn {
+	display: inline-block;
+	padding: 0.5em 1em;
+}
+.site .clean-btn {
+	background-color: transparent;
+	border-style: none;
+	outline-style: none;
+	color: inherit;
+	padding: 0.3em;
+}
+.site .clean-btn,
+.site .round {
+	display: inline-block;
+	box-sizing: content-box;
+	width: 1em;
+	bottom: 1em;
+	line-height: 1;
+}
+.site .round {
+	border-radius: 50%;
+	text-align: center;
 }

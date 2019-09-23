@@ -6,10 +6,38 @@ body {
 	color: #007af5;
 }
 
+::-webkit-search-cancel-button,
+::-webkit-input-placeholder {
+	color: #a08068;
+}
+
+#home-slideshow a,
 #theme-nav a,
 #masthead a {
 	color: inherit;
+	text-decoration: none;
+}
+#home-slideshow a:hover,
+#theme-nav a:hover,
+#masthead a:hover {
+	color: #a08068
+}
+#theme-header__online-shops::before,
+#theme-header__online-shops::after {
+	border: 2px solid #a08068;
+}
+#theme-header__online-shops li::before {
+	border-left: 3px dotted #a08068;
 }
 #theme-header__cart svg {
 	color: black;
+}
+#theme-header__cart__num {
+	background-color: #bf9d3e;
+	color: white;
+}
+
+#home-slideshow h2,
+#home-slideshow h3 {
+	color: white;
 }
