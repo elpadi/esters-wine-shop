@@ -1,3 +1,17 @@
+@font-face {
+	font-family: 'Generell TW-Regular';
+	font-weight: 100;
+	src: url('../../fonts/generell/Generell TW-RegularWeb.woff') format('woff'),
+		 url('../../fonts/generell/Generell TW-RegularWeb.eot') format('embedded-opentype');
+}
+@font-face {
+	font-family: 'Proxima N W15 Smbd';
+	font-weight: 400;
+	src: url('../../fonts/proxima/Proxima N W15 Smbd.woff2') format('woff2'),
+		 url('../../fonts/proxima/Proxima Nova W15 Semibold.woff') format('woff'),
+		 url('../../fonts/proxima/Proxima Nova W15 Semibold.ttf') format('truetype'),
+		 url('../../fonts/proxima/Proxima N W15 Smbd.svg') format('svg');
+}
 /*
 @font-face {
 	font-family: 'Lora';
@@ -43,8 +57,19 @@
 
 #theme-nav,
 #masthead,
-.sans-bold {
+.sans-semibold {
 	font-family: "Proxima N W15 Smbd", Proxima, Arial, sans-serif;
 	font-weight: bold;
 	letter-spacing: 1px;
+}
+
+#home-slideshow li > h2,
+#home-slideshow li > h3 {
+	font-family: "Generell TW-Regular", Garamond, serif;
+	text-shadow: #000 2px 1px 8px;
+}
+
+.site button,
+.site .btn {
+	font-family: "Generell TW-Regular", Garamond, serif;
 }

@@ -9,7 +9,7 @@ if (count($slides)): ?>
 		<h3><?= htmlspecialchars($slide_byline); ?></h3>
 
 		<?php if ($slide_page): ?>
-		<h4><a class="btn" href="<?= get_the_permalink($slide_page); ?>"><?= $slide_page->post_title; ?></a></h4>
+		<h4><a class="btn" href="<?= get_the_permalink($slide_page); ?>">View <span class="arrow">&gt;</span></a></h4>
 		<?php endif; ?>
 
 		<?= $slide_image; ?>

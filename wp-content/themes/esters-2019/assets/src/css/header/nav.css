@@ -1,9 +1,10 @@
 #theme-nav {
 	border-top: 1px solid currentColor;
-	border-bottom: 1px solid currentColor;
+	border-bottom: 2px solid currentColor;
 	display: flex;
 	align-items: center;
 	text-transform: uppercase;
+	margin-bottom: 4px;
 }
 
 #theme-nav .menu-main-menu-container {
@@ -28,6 +29,7 @@
 	color: inherit;
 	font-size: 1.4em;
 	padding: 0;
+	width: 100px;
 }
 #theme-nav .search-field::before,
 #theme-nav .search-field::after {
