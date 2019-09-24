@@ -11,6 +11,25 @@ body {
 	color: #a08068;
 }
 
+.site input[type="submit"],
+.site input[type="button"],
+.site button,
+.site .btn {
+	color: white;
+	background-color: #bf9d3e;
+}
+.site input[type="submit"]:hover,
+.site input[type="button"]:hover,
+.site button:hover,
+.site .btn:hover {
+	background-color: #a08068;
+}
+.site a {
+	color: #a08068
+}
+.site a:hover {
+	color: #a16f68;
+}
 #home-slideshow a,
 #theme-nav a,
 #masthead a {

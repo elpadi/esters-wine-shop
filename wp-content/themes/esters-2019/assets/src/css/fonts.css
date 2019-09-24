@@ -55,6 +55,13 @@
 }
 */
 
+.site h1,
+.site h2,
+.site h3,
+.site h4,
+.site h5,
+.site h6,
+.star-heading,
 #theme-nav,
 #masthead,
 .sans-semibold {
@@ -69,6 +76,7 @@
 	text-shadow: #000 2px 1px 8px;
 }
 
+body,
 .site button,
 .site .btn {
 	font-family: "Generell TW-Regular", Garamond, serif;

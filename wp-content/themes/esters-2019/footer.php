@@ -1,20 +1,22 @@
-		<?php /*if (!is_page()): ?>
-		<aside id="blog-sidebar"><?php dynamic_sidebar('sidebar-1'); ?></aside>
-		<?php endif;*/ ?>
-
+<?php
+global $themeData;
+$contact = current($themeData['contactInfo']->getValues());
+$f_tpl = function($s) use ($contact) { include(__DIR__."/template-parts/footer/$s.php"); };
+?>
 	</div><!-- #content -->
 
-	<!--nav id="tome-menu" class="menu--side fixed-page-sidebar">
-		<?php //include(__DIR__.'/template-parts/components/menu.php'); ?>
-		<button id="menu-burger"><?php //include(__DIR__.'/assets/icons/menu.svg'); ?></button>
-	</nav-->
-
-	<!--div id="tome-sidebar" class="fixed-page-sidebar"></div-->
+	<footer id="colophon" class="site-footer">
+		<h2 id="footer-title" class="star-heading">Contact</h2>
+		<div class="columns">
+			<div id="theme-footer__address" class="col"><?php $f_tpl('address'); ?></div>
+			<div id="theme-footer__hours" class="col"><?php $f_tpl('hours'); ?></div>
+			<div id="theme-footer__connect" class="col"><?php $f_tpl('connect'); ?></div>
+		</div>
+	</footer><!-- #colophon -->
 
 </div><!-- #page -->
-
-<?php wp_footer(); ?>
-
-<?php include(__DIR__.'/template-parts/components/spinner.php'); ?>
-</body>
+<?php
+wp_footer();
+include(__DIR__.'/template-parts/components/spinner.php');
+?></body>
 </html>

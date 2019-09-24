@@ -64,12 +64,24 @@ $themeData['homeSlides'] = (new CustomizerSection('home_slides','Home Slideshow'
 	['image','image'],
 	['text','byline'],
 	['page','page'],
-], 5, 'Slide');
+], 5, 'Slide', 'theme_mod');
 
 $themeData['onlineShops'] = (new CustomizerSection('online_shops','Online Shops'))->addRepeater([
 	['text','title'],
 	['text','url','URL'],
 ], 3, 'Shop');
+
+$themeData['contactInfo'] = (new CustomizerSection('contact_info','Contact Info'))->addFields([
+	['textarea','address'],
+	['text','map_url','Map URL'],
+	['text','phone'],
+	['textarea','hours'],
+	['text','email'],
+	['text','instagram'],
+	['text','twitter'],
+	['text','facebook'],
+	['textarea','newsletter'],
+]);
 
 add_filter('the_content', function($content) {
 	if (is_front_page()) {

@@ -3,9 +3,24 @@ body {
 }
 
 /* remove twentynineteen header bars */
-h1::before,
-h2::before {
+h1:not(.star-heading)::before,
+h2:not(.star-heading)::before {
 	display: none !important;
+}
+.site .star-heading {
+	text-transform: uppercase;
+	letter-spacing: 3px;
+}
+.site .star-heading::before,
+.site .star-heading::after {
+	content: '*';
+	display: inline;
+	background-color: transparent;
+	width: auto;
+	height: auto;
+	margin: 0 0.15em;
+	position: relative;
+	top: 0.15em;
 }
 
 svg {
@@ -21,6 +36,8 @@ svg {
 	display: none;
 }
 
+.site input[type="submit"],
+.site input[type="button"],
 .site button,
 .site .btn {
 	display: inline-block;
@@ -44,4 +61,10 @@ svg {
 .site .round {
 	border-radius: 50%;
 	text-align: center;
+}
+
+.columns {
+	display: grid;
+	grid-auto-flow: column;
+	justify-content: space-between;
 }

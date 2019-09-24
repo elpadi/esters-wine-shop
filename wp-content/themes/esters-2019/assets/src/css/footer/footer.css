@@ -1,0 +1,26 @@
+#colophon > h2 {
+	text-align: center;
+	font-size: 1.1rem;
+}
+#colophon > .columns {
+	font-size: 0.8rem;
+	line-height: 1.5;
+	max-width: 1160px;
+	padding: 0 10px;
+	margin: auto;
+}
+#colophon > .columns > .col {
+	border-left: 1px solid currentColor;
+	padding-left: 3em;
+}
+#colophon > .columns > .col:first-child {
+	border-left-style: none;
+	padding-left: 0;
+}
+#colophon > .columns p {
+	margin: 0;
+}
+#colophon > .columns h3 {
+	font-size: 1em;
+	margin: 0 0 0.6em;
+}

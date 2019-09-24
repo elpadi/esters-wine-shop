@@ -1,6 +1,6 @@
 .PHONY: none watch-css watch-js prod dev
 
-CSS_FILES := $(wildcard src/css/*.css) $(wildcard src/css/base/*.css) $(wildcard src/css/header/*.css) $(wildcard src/css/menu/*.css) $(wildcard src/css/block-editor/blocks/*.css) $(wildcard src/css/content/*.css)
+CSS_FILES := $(wildcard src/css/*.css) $(wildcard src/css/base/*.css) $(wildcard src/css/header/*.css) $(wildcard src/css/footer/*.css) $(wildcard src/css/menu/*.css) $(wildcard src/css/block-editor/blocks/*.css) $(wildcard src/css/content/*.css)
 
 JS_FILES := $(shell find src/js -type f -name '*.js')
 
