@@ -12,6 +12,7 @@ $f_tpl = function($s) use ($contact) { include(__DIR__."/template-parts/footer/$
 			<div id="theme-footer__hours" class="col"><?php $f_tpl('hours'); ?></div>
 			<div id="theme-footer__connect" class="col"><?php $f_tpl('connect'); ?></div>
 		</div>
+		<div id="theme-footer__legal"><?php $f_tpl('legal'); ?></div>
 	</footer><!-- #colophon -->
 
 </div><!-- #page -->

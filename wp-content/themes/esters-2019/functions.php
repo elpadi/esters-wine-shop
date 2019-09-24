@@ -83,6 +83,13 @@ $themeData['contactInfo'] = (new CustomizerSection('contact_info','Contact Info'
 	['textarea','newsletter'],
 ]);
 
+$themeData['legal'] = (new CustomizerSection('legalese_items','Legal Info'))->addFields([
+	['text','copyright'],
+	['page','tnc','Terms and Conditions'],
+	['page','privacy','Privacy Policy'],
+	['page','tou','Terms of Use'],
+]);
+
 add_filter('the_content', function($content) {
 	if (is_front_page()) {
 		ob_start();
