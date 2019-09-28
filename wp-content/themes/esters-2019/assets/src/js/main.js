@@ -1,6 +1,8 @@
 const App = require('./base/app');
 
 const app = new App();
+
+app.modules['pagecontent'] = require('./content/page');
 /*
 
 global.CITATION_GENERATORS = {

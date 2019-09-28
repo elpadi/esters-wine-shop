@@ -81,6 +81,10 @@ class App {
 		}
 	}
 
+	fetchIcon(name, dir='icons') {
+		return window.fetch(`${JS_VARS.URLS.AJAX}?action=icon_html&name=${name}&dir=${dir}`).then(r => r.text());
+	}
+
 	fetchPosts(ids='', type='pages', context='edit') {
 		if (!('api' in wp) || !('apiRequest' in wp)) return Promise.reject('WP API library is not loaded.');
 		return wp.apiRequest({

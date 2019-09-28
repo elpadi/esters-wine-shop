@@ -68,3 +68,12 @@ svg {
 	grid-auto-flow: column;
 	justify-content: space-between;
 }
+
+.entry .entry-content, .entry .entry-summary,
+.entry .entry-content > *, .entry .entry-summary > * {
+	max-width: none;
+}
+.entry .entry-content, .entry .entry-summary {
+	margin: 0 auto;
+	padding: 0 10px;
+}

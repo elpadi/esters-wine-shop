@@ -1,3 +1,52 @@
 .site .site-content {
 	margin-bottom: 2.5em;
 }
+.page #main .entry-content {
+	max-width: 1140px;
+}
+.page .entry-content > .text-columns {
+	column-count: 2;
+	column-gap: 2em;
+	font-size: 0.9em;
+}
+.entry-content .instagram__post {
+	background: #bf9d3e url(../../../icons/instagram.svg) center center no-repeat;
+	position: relative;
+}
+.entry-content .instagram-slider .slick-slide {
+	margin: 0 4px;
+}
+.entry-content .instagram__post > svg,
+.entry-content .instagram__post > img {
+	transition: opacity 0.2s linear;
+}
+.entry-content .instagram__post > img {
+	width: 100%;
+	height: 280px;
+	object-fit: cover;
+}
+.entry-content .instagram__post > svg {
+	position: absolute;
+	width: 50px;
+	height: 50px;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	margin: auto;
+	z-index: 2;
+	color: white;
+	opacity: 0;
+}
+.entry-content .instagram__post:hover > svg {
+	opacity: 0.8;
+}
+.entry-content .instagram__post:hover > img {
+	opacity: 0.3;
+}
+.entry-content > div > .instagram__post {
+	width: calc(25% - 5px);
+}
+.instagram__post > p {
+	display: none;
+}
