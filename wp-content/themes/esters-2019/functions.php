@@ -107,7 +107,7 @@ add_filter('body_class', function($classes) {
 $themeData['homeSlides'] = (new CustomizerSection('home_slides','Home Slideshow'))->addRepeater([
 	['text','title'],
 	['image','image'],
-	['text','byline'],
+	['textarea','byline'],
 	['page','page'],
 ], 5, 'Slide', 'theme_mod');
 

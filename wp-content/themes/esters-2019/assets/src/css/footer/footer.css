@@ -11,7 +11,7 @@
 }
 #colophon > .columns > .col {
 	border-left: 1px solid currentColor;
-	padding-left: 3em;
+	padding-left: 1.5em;
 }
 #colophon > .columns > .col:first-child {
 	border-left-style: none;

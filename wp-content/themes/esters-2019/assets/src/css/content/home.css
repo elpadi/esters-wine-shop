@@ -40,13 +40,15 @@
 #home-slideshow li > h3 {
 	font-size: 1.1rem;
 	margin-top: 0.5em;
+	max-width: 520px;
 }
 #home-slideshow li > h4 {
 	font-size: 0.7rem;
 	margin-top: 2.3em;
 }
 #home-slideshow li > h4 a {
-	padding: 0.9em 4em;
+	/* less padding on left because of arrow */
+	padding: 1em 4em 0.8em 3.2em;
 }
 #home-slideshow li > h4 .arrow {
 	position: absolute;
