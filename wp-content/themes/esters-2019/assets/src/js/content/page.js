@@ -5,12 +5,15 @@ const AboutPage = require('./about');
 class PageContent {
 
 	constructor() {
-		let bcl = document.body.classList;
-		if (bcl.contains('page-template')) {
+		this.bcl = document.body.classList;
+		if (this.bcl.contains('page-template')) {
 			this.columnizeText();
 		}
-		if (bcl.contains('page--about')) new AboutPage();
-		if (bcl.contains('home')) new HomePage();
+	}
+
+	load() {
+		if (this.bcl.contains('page--about')) new AboutPage();
+		if (this.bcl.contains('home')) new HomePage();
 	}
 
 	columnizeText() {

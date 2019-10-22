@@ -16,23 +16,32 @@ function theme_svg($name, $dir='img') {
 	return file_get_contents(get_stylesheet_directory()."/assets/$dir/$name.svg");
 }
 
-add_action('wp_enqueue_scripts', function() {
+call_user_func(function() {
+	$enqueue = function() {
+		$dist_dir = get_stylesheet_directory().'/assets/dist';
+		$dist_url = get_stylesheet_directory_uri().'/assets/dist';
 
-	//$assets->js('main', ['jquery-ui-dialog']);
-	
-	$dist_dir = get_stylesheet_directory().'/assets/dist';
-	$dist_url = get_stylesheet_directory_uri().'/assets/dist';
+		$env = IS_LOCAL ? 'dev' : 'prod';
+		if (is_admin()) {
+			$env = "admin.$env";
+			$css_deps = $js_deps = [];
+		}
+		else {
+			$css_deps = ['wp-jquery-ui-dialog'];
+			$js_deps = ['jquery-ui-dialog','wp-api'];
+			wp_deregister_script('twentynineteen-touch-navigation');
+		}
 
-	$env = IS_LOCAL ? 'dev' : 'prod';
-	wp_enqueue_style(THEME_NAME, "$dist_url/$env.css", ['wp-jquery-ui-dialog'], filemtime("$dist_dir/$env.css"));
-	wp_register_script(THEME_NAME, "$dist_url/$env.js", ['jquery-ui-dialog','wp-api'], filemtime("$dist_dir/$env.js"));
-	
-	wp_deregister_script('twentynineteen-touch-navigation');
+		wp_enqueue_style(THEME_NAME, "$dist_url/$env.css", $css_deps, filemtime("$dist_dir/$env.css"));
+		wp_register_script(THEME_NAME, "$dist_url/$env.js", $js_deps, filemtime("$dist_dir/$env.js"));
 
-	wp_localize_script(THEME_NAME, 'JS_VARS', apply_filters('js_vars', []));
-	wp_enqueue_script(THEME_NAME);
+		wp_localize_script(THEME_NAME, 'JS_VARS', apply_filters('js_vars', []));
+		wp_enqueue_script(THEME_NAME);
+	};
+	add_action('wp_enqueue_scripts', $enqueue, 100);
+	add_action('admin_enqueue_scripts', $enqueue, 100);
+});
 
-}, 100);
 
 add_filter('js_vars', function($vars) {
 	return array_merge_recursive($vars, [
@@ -104,12 +113,27 @@ add_filter('body_class', function($classes) {
 	return $classes;
 });
 
-$themeData['homeSlides'] = (new CustomizerSection('home_slides','Home Slideshow'))->addRepeater([
+$themeData['homeSlides'] = (new CustomizerSection('home_slides','Home Slideshow'))->addFields([
+	['button','rollover','Prepend Slide',['value' => 'Prepend']],
+], 'theme_mod')->addRepeater([
 	['text','title'],
 	['image','image'],
 	['textarea','byline'],
 	['page','page'],
 ], 5, 'Slide', 'theme_mod');
+/*
+$wp_customize->add_control( 'setting_id', array(
+  'type' => 'range',
+  'section' => 'title_tagline',
+  'label' => __( 'Range' ),
+  'description' => __( 'This is the range control description.' ),
+  'input_attrs' => array(
+    'min' => 0,
+    'max' => 10,
+    'step' => 2,
+  ),
+) );
+ */
 
 $themeData['onlineShops'] = (new CustomizerSection('online_shops','Online Shops'))->addRepeater([
 	['text','title'],
