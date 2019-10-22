@@ -1,13 +1,16 @@
 const $ = require('jquery');
+const HomePage = require('./home');
 const AboutPage = require('./about');
 
 class PageContent {
 
 	constructor() {
-		if (document.body.classList.contains('page-template')) {
+		let bcl = document.body.classList;
+		if (bcl.contains('page-template')) {
 			this.columnizeText();
 		}
-		if (document.body.classList.contains('page--about')) new AboutPage();
+		if (bcl.contains('page--about')) new AboutPage();
+		if (bcl.contains('home')) new HomePage();
 	}
 
 	columnizeText() {
