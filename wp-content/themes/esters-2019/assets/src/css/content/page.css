@@ -50,3 +50,19 @@
 .instagram__post > p {
 	display: none;
 }
+
+.entry-content > .full-width {
+	width: 100vw;
+	margin-left: -10px;
+}
+
+.embedded-map {
+	border-top: 1px solid currentColor;
+	border-bottom: 1px solid currentColor;
+}
+.embedded-map iframe {
+	display: block;
+	width: 100%;
+	height: calc(100vw * 9 / 16);
+	filter: grayscale(1);
+}

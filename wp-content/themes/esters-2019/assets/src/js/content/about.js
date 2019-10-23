@@ -5,7 +5,7 @@ const Instagram = require('../components/social/instagram');
 class AboutPage {
 
 	constructor() {
-		this.addInstagramFeed();
+		if (Number(JS_VARS.DEBUG) == 0) this.addInstagramFeed();
 	}
 
 	addInstagramFeed() {
