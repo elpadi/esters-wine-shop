@@ -27,7 +27,7 @@
   "devDependencies": {
   },
   "dependencies": {
-    "bootstrap": "^4.0.0",
+    "bootstrap": "^4.3.1",
     "bxslider": "^4.2.5",
     "jquery": "^3.3.1",
     "scrollreveal": "^4.0.5",
