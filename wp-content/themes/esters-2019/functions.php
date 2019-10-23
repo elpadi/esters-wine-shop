@@ -121,19 +121,6 @@ $themeData['homeSlides'] = (new CustomizerSection('home_slides','Home Slideshow'
 	['textarea','byline'],
 	['page','page'],
 ], 5, 'Slide', 'theme_mod');
-/*
-$wp_customize->add_control( 'setting_id', array(
-  'type' => 'range',
-  'section' => 'title_tagline',
-  'label' => __( 'Range' ),
-  'description' => __( 'This is the range control description.' ),
-  'input_attrs' => array(
-    'min' => 0,
-    'max' => 10,
-    'step' => 2,
-  ),
-) );
- */
 
 $themeData['onlineShops'] = (new CustomizerSection('online_shops','Online Shops'))->addRepeater([
 	['text','title'],
