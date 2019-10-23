@@ -19,5 +19,6 @@ $h_tpl = function($s) { include(__DIR__."/template-parts/header/$s.php"); };
 		<nav id="theme-nav">
 			<?php wp_nav_menu(['theme_location' => 'menu-1', 'menu_class' => 'main-menu hlist']); ?>
 			<?php get_search_form(); ?>
+			<hr>
 		</nav>
 		<div id="content" class="site-content">
