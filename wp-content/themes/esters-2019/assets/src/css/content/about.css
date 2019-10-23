@@ -1,0 +1,26 @@
+.page--about .entry-content > .text-columns:first-child {
+	margin-bottom: 6rem;
+}
+.page--about .entry-content figure {
+	margin-top: 0;
+	margin-bottom: 4px;
+}
+.page--about .entry-content > figure img {
+	width: 100%;
+	height: auto;
+}
+.page--about .entry .entry-content .wp-block-columns .wp-block-column:not(:first-child) {
+	margin-left: 4px;
+}
+.page--about .entry .entry-content .wp-block-columns {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+.page--about .entry .entry-content .wp-block-column {
+	flex-basis: calc(50% - 2px);
+	margin-bottom: 0;
+}
+.page--about .wp-block-gallery .blocks-gallery-image,
+.page--about .wp-block-gallery .blocks-gallery-item {
+	margin-bottom: 0 !important;
+}

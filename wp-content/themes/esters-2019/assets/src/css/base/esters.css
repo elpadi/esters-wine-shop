@@ -7,14 +7,20 @@ h1:not(.star-heading)::before,
 h2:not(.star-heading)::before {
 	display: none !important;
 }
+.page-template .entry-title,
 .site .star-heading {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	text-transform: uppercase;
 	letter-spacing: 3px;
 }
+.page-template .entry-title::before,
+.page-template .entry-title::after,
 .site .star-heading::before,
 .site .star-heading::after {
 	content: '*';
-	display: inline;
+	display: inline !important;
 	background-color: transparent;
 	width: auto;
 	height: auto;

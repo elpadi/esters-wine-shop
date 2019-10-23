@@ -8,6 +8,12 @@
 	column-count: 2;
 	column-gap: 2em;
 	font-size: 0.9em;
+	column-gap: 2.5em;
+	font-size: 0.85em;
+	max-width: 950px;
+	margin-left: auto;
+	margin-right: auto;
+	line-height: 1.4;
 }
 .entry-content .instagram__post {
 	background: #bf9d3e url(../../../icons/instagram.svg) center center no-repeat;
@@ -65,4 +71,20 @@
 	width: 100%;
 	height: calc(100vw * 9 / 16);
 	filter: grayscale(1);
+}
+
+.page-template .entry-header {
+	margin-bottom: 0;
+}
+.page-template .entry-title {
+	font-size: 1.1rem;
+}
+.page-template .entry-content > .text-columns > *:first-child {
+	margin-top: 1em;
+}
+.page-template .entry-content a {
+	text-decoration: none;
+}
+.page-template .entry-content a:hover {
+	text-decoration: underline;
 }
