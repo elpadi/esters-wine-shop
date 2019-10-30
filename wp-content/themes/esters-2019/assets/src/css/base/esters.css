@@ -7,6 +7,7 @@ h1:not(.star-heading)::before,
 h2:not(.star-heading)::before {
 	display: none !important;
 }
+.page .entry-content h2,
 .page-template .entry-title,
 .site .star-heading {
 	display: flex;
@@ -15,6 +16,8 @@ h2:not(.star-heading)::before {
 	text-transform: uppercase;
 	letter-spacing: 3px;
 }
+.page .entry-content h2::before,
+.page .entry-content h2::after,
 .page-template .entry-title::before,
 .page-template .entry-title::after,
 .site .star-heading::before,

@@ -3,6 +3,7 @@ class App {
 	constructor() {
 		this.modules = {};
 		this.instances = {};
+		if (!('$$' in global)) global.$$ = function(q, n=null) { return Array.from((n ? n : document).querySelectorAll(q)) }; 
 	}
 
 	init() {

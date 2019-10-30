@@ -24,3 +24,38 @@
 .page--about .wp-block-gallery .blocks-gallery-item {
 	margin-bottom: 0 !important;
 }
+
+/* hide press images until js makes the columns */
+.page--about:not(.content-mods-finished) .entry-content > h2 ~ figure {
+	display: none;
+}
+
+.page--about .press-heading {
+	margin-top: 4rem;
+}
+.page--about .press-columns {
+	grid-gap: 1.5rem;
+}
+.press-columns .wp-block-image a,
+.press-columns .wp-block-image img {
+	display: block;
+}
+.press-columns .wp-block-image figcaption a,
+.press-columns .wp-block-image figcaption {
+	color: inherit;
+}
+.press-columns .wp-block-image > a {
+	position: relative;
+}
+.press-columns .wp-block-image > a:hover {
+	opacity: 0.2;
+}
+/* add "read more" text on hover */
+.press-columns .wp-block-image figcaption {
+	margin: 0;
+	font-size: 1em;
+}
+.press-columns .wp-block-image img {
+	height: 19vw;
+	object-fit: contain;
+}
