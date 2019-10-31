@@ -2,7 +2,7 @@
 .home .entry-header {
 	display: none;
 }
-.home .entry-content {
+.home.page #main .entry-content {
 	max-width: none;
 	margin: 0;
 	padding: 0;

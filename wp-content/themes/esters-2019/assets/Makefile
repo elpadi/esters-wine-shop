@@ -7,8 +7,9 @@ CSS_BUILD_TARGETS := main admin login #blocks
 
 JS_FRONT_PAGE_DEPS := src/js/main/frontend/page.js src/js/modules/page.js
 JS_FRONT_PAGE_ABOUT_DEPS := $(JS_FRONT_PAGE_DEPS) src/js/main/frontend/pages/about.js src/js/modules/pages/about.js src/js/modules/components/media/grid.js src/js/modules/components/media/instagram-slider.js src/js/modules/components/social/instagram.js
+JS_FRONT_PAGE_HOME_DEPS := src/js/main/frontend/pages/home.js src/js/modules/pages/home.js src/js/modules/components/slider.js
 
-JS_BUILD_TARGETS := dist/frontend/page dist/frontend/pages/about
+JS_FRONTEND_BUILD_TARGETS := page pages/home pages/about
 
 none:
 	echo "Please select a target."
@@ -27,6 +28,8 @@ dist/%.prod.css: dist/%.dev.css
 	cleancss -O2 -o $@ $^
 	postcss -o $@ $@
 
+dist/frontend/pages/home.dev.js: $(JS_FRONT_PAGE_HOME_DEPS)
+
 dist/frontend/pages/about.dev.js: $(JS_FRONT_PAGE_ABOUT_DEPS)
 
 dist/frontend/page.dev.js: $(JS_FRONT_PAGE_DEPS)
@@ -39,7 +42,7 @@ dist/blocks.dev.css: $(wildcard src/css/block-editor/blocks/*.css)
 
 dist/login.dev.css: $(wildcard src/css/login/*.css)
 
-dev: $(addsuffix .dev.js, $(JS_BUILD_TARGETS)) $(addprefix dist/, $(addsuffix .dev.css, $(CSS_BUILD_TARGETS)))
+dev: $(addprefix dist/frontend/, $(addsuffix .dev.js, $(JS_FRONTEND_BUILD_TARGETS))) $(addprefix dist/, $(addsuffix .dev.css, $(CSS_BUILD_TARGETS)))
 
-prod: $(addsuffix .prod.js, $(JS_BUILD_TARGETS)) $(addprefix dist/, $(addsuffix .prod.css, $(CSS_BUILD_TARGETS)))
+prod: $(addprefix dist/frontend/, $(addsuffix .prod.js, $(JS_FRONTEND_BUILD_TARGETS))) $(addprefix dist/, $(addsuffix .prod.css, $(CSS_BUILD_TARGETS)))
 
