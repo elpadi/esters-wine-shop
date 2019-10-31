@@ -64,6 +64,7 @@
 .star-heading,
 #theme-nav,
 #masthead,
+.press-columns .wp-block-image > a::after,
 .sans-semibold {
 	font-family: "Proxima N W15 Smbd", Proxima, Arial, sans-serif;
 	font-weight: normal;

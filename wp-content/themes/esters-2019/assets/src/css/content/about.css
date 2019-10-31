@@ -47,15 +47,55 @@
 .press-columns .wp-block-image > a {
 	position: relative;
 }
-.press-columns .wp-block-image > a:hover {
-	opacity: 0.2;
+.press-columns .wp-block-image > a::before,
+.press-columns .wp-block-image > a::after {
+	position: absolute;
+	left: 0;
+	width: 100%;
+	opacity: 0;
+	transition: opacity 0.4s linear;
 }
-/* add "read more" text on hover */
+.press-columns .wp-block-image > a::before {
+	content: ' ';
+	top: 0;
+	height: 100%;
+}
+.press-columns .wp-block-image > a::after {
+	z-index: 2;
+	top: 50%;
+	text-transform: uppercase;
+	content: 'Read more';
+	color: white;
+	text-align: center;
+	font-size: 1.1em;
+	margin-top: -0.2em;
+	letter-spacing: 2px;
+}
+
 .press-columns .wp-block-image figcaption {
 	margin: 0;
 	font-size: 1em;
 }
 .press-columns .wp-block-image img {
+	position: relative;
+	z-index: 3;
 	height: 19vw;
 	object-fit: contain;
+	transition: opacity 0.4s linear;
+}
+
+#colophon .wp-block-button {
+	margin-top: 2em;
+	font-size: 1.5em;
+}
+
+.press-columns .wp-block-image > a:hover::before,
+.press-columns .wp-block-image > a:hover::after {
+	opacity: 1;
+}
+.press-columns .wp-block-image > a:hover::after {
+	transition: opacity 0.2s 0.2s linear;
+}
+.press-columns .wp-block-image > a:hover img {
+	opacity: 0;
 }

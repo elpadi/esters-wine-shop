@@ -12,6 +12,16 @@ body {
 	color: #a08068;
 }
 
+#colophon .wp-block-button__link,
+#content .entry-content .wp-block-button__link,
+#content .entry-content .btn {
+	color: #bf9d3e;
+	background-color: white;
+}
+#colophon .wp-block-button__link:hover,
+#content .entry-content .wp-block-button__link:hover,
+#content .entry-content .btn:hover,
+.press-columns .wp-block-image > a::before,
 .site input[type="submit"],
 .site input[type="button"],
 .site button,

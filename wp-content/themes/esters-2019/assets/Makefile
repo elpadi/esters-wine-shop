@@ -1,63 +1,45 @@
 .PHONY: none watch-css watch-js prod dev
 
 FRONT_CSS_FILES := $(wildcard src/css/*.css) $(wildcard src/css/base/*.css) $(wildcard src/css/header/*.css) $(wildcard src/css/footer/*.css) $(wildcard src/css/menu/*.css) $(wildcard src/css/block-editor/blocks/*.css) $(shell find src/css/content -type f -name '*.css')
-FRONT_JS_FILES := $(shell find src/js -type f -name '*.js')
-
 ADMIN_CSS_FILES := $(wildcard src/css/base/*.css) $(shell find src/css/admin -type f -name '*.css')
-ADMIN_JS_FILES := src/js/admin.js $(wildcard src/js/base/*.js) $(shell find src/js/admin -type f -name '*.js')
+
+CSS_BUILD_TARGETS := main admin login #blocks
+
+JS_FRONT_PAGE_DEPS := src/js/main/frontend/page.js src/js/modules/page.js
+JS_FRONT_PAGE_ABOUT_DEPS := $(JS_FRONT_PAGE_DEPS) src/js/main/frontend/pages/about.js src/js/modules/pages/about.js src/js/modules/components/media/grid.js src/js/modules/components/media/instagram-slider.js src/js/modules/components/social/instagram.js
+
+JS_BUILD_TARGETS := dist/frontend/page dist/frontend/pages/about
 
 none:
 	echo "Please select a target."
 
-prod: dist/prod.js dist/prod.css dist/admin.prod.js dist/admin.prod.css dist/blocks.css dist/login.css dist/login.js
+dist/%.dev.js: src/js/main/%.js
+	browserify $^ -o $@ --debug 
 
-dev: dist/dev.js dist/dev.css dist/admin.dev.js dist/admin.dev.css dist/blocks.css dist/login.css dist/login.js
+dist/%.prod.js: dist/%.dev.js
+	babel --compact true --minified -o $@ $^
 
-watch-js:
-	find src/js -type f | entr sh -c 'make dist/dev.js dist/admin.dev.js'
-
-watch-css:
-	find src/css -type f | entr sh -c 'make dist/dev.css dist/admin.dev.js dist/blocks.css dist/login.dev.css'
-
-dist/dev.css: $(FRONT_CSS_FILES)
+dist/%.dev.css:
 	cleancss --source-map --source-map-inline-sources -O0 $^ -o $@
 	postcss -o $@ $@
+
+dist/%.prod.css: dist/%.dev.css
+	cleancss -O2 -o $@ $^
+	postcss -o $@ $@
+
+dist/frontend/pages/about.dev.js: $(JS_FRONT_PAGE_ABOUT_DEPS)
+
+dist/frontend/page.dev.js: $(JS_FRONT_PAGE_DEPS)
+
+dist/main.dev.css: $(FRONT_CSS_FILES)
 
 dist/admin.dev.css: $(ADMIN_CSS_FILES)
-	cleancss --source-map --source-map-inline-sources -O0 $^ -o $@
-	postcss -o $@ $@
 
-dist/dev.js: package.json $(FRONT_JS_FILES)
-	browserify src/js/main.js -o $@ --debug 
+dist/blocks.dev.css: $(wildcard src/css/block-editor/blocks/*.css)
 
-dist/admin.dev.js: package.json $(ADMIN_JS_FILES)
-	browserify src/js/admin.js -o $@ --debug 
+dist/login.dev.css: $(wildcard src/css/login/*.css)
 
-dist/prod.css: $(FRONT_CSS_FILES)
-	cleancss -O2 -o $@ $^
-	postcss -o $@ $@
+dev: $(addsuffix .dev.js, $(JS_BUILD_TARGETS)) $(addprefix dist/, $(addsuffix .dev.css, $(CSS_BUILD_TARGETS)))
 
-dist/admin.prod.css: $(ADMIN_CSS_FILES)
-	cleancss -O2 -o $@ $^
-	postcss -o $@ $@
-
-dist/login.prod.css: $(wildcard src/css/login/*.css)
-	cleancss -O2 -o $@ $^
-	postcss -o $@ $@
-
-dist/prod.js: package.json $(FRONT_JS_FILES)
-	browserify src/js/main.js -o $@
-
-dist/admin.prod.js: package.json $(ADMIN_JS_FILES)
-	browserify src/js/admin.js -o $@ 
-
-dist/blocks.css: $(wildcard src/css/block-editor/blocks/*.css)
-	cleancss --source-map --source-map-inline-sources -O0 -o $@ $^
-
-dist/login.css: $(wildcard src/css/login/*.css)
-	cleancss --source-map --source-map-inline-sources -O0 $^ -o $@
-	postcss -o $@ $@
-
-dist/login.js: $(wildcard src/js/login/*.js)
-	babel -o $@ $^
+prod: $(addsuffix .prod.js, $(JS_BUILD_TARGETS)) $(addprefix dist/, $(addsuffix .prod.css, $(CSS_BUILD_TARGETS)))
 

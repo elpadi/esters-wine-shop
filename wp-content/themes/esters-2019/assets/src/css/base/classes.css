@@ -4,3 +4,25 @@
 	margin: 0;
 	padding: 0;
 }
+
+.wp-block-button {
+	text-align: center;
+}
+
+.wp-block-button__link,
+.btn {
+	display: inline-block;
+	margin-bottom: 0;
+	font-weight: normal;
+	text-align: center;
+	vertical-align: middle;
+	cursor: pointer;
+	background-image: none;
+	border: 1px solid transparent;
+	white-space: nowrap;
+	padding: 0.8em 1.6em;
+	line-height: 1.42857;
+	border-radius: 4px;
+	user-select: none;
+	touch-action: manipulation;
+}

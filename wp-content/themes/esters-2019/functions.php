@@ -18,6 +18,7 @@ function theme_svg($name, $dir='img') {
 
 call_user_func(function() {
 	$enqueue = function() {
+		global $post;
 		$dist_dir = get_stylesheet_directory().'/assets/dist';
 		$dist_url = get_stylesheet_directory_uri().'/assets/dist';
 
@@ -32,11 +33,21 @@ call_user_func(function() {
 			wp_deregister_script('twentynineteen-touch-navigation');
 		}
 
-		wp_enqueue_style(THEME_NAME, "$dist_url/$env.css", $css_deps, filemtime("$dist_dir/$env.css"));
-		wp_register_script(THEME_NAME, "$dist_url/$env.js", $js_deps, filemtime("$dist_dir/$env.js"));
+		wp_enqueue_style(THEME_NAME, "$dist_url/main.$env.css", $css_deps, filemtime("$dist_dir/main.$env.css"));
 
-		wp_localize_script(THEME_NAME, 'JS_VARS', apply_filters('js_vars', []));
-		wp_enqueue_script(THEME_NAME);
+		$js_paths = [];
+		if (is_page()) {
+			$js_paths[] = 'frontend/page';
+			$js_paths[] = "frontend/pages/$post->post_name";
+		}
+		foreach($js_paths as $i => $path) {
+			$name = THEME_NAME.'-'.str_replace('/', '-', $path);
+			wp_register_script($name, "$dist_url/$path.$env.js", $js_deps, filemtime("$dist_dir/$path.$env.js"));
+			if ($i == 0) {
+				wp_localize_script($name, 'JS_VARS', apply_filters('js_vars', []));
+			}
+			wp_enqueue_script($name);
+		}
 	};
 	add_action('wp_enqueue_scripts', $enqueue, 100);
 	add_action('admin_enqueue_scripts', $enqueue, 100);
