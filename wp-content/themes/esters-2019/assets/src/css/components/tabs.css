@@ -1,0 +1,10 @@
+.tabs__titles {
+	display: grid;
+	grid-auto-flow: column;
+}
+.tabs__title {
+	cursor: pointer;
+}
+.tabs__content:not(.selected) {
+	display: none;
+}

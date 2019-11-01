@@ -19,38 +19,42 @@ function theme_svg($name, $dir='img') {
 call_user_func(function() {
 	$enqueue = function() {
 		global $post;
-		$dist_dir = get_stylesheet_directory().'/assets/dist';
-		$dist_url = get_stylesheet_directory_uri().'/assets/dist';
+		$dist_dir = get_stylesheet_directory().'/assets/dist/frontend';
+		$dist_url = get_stylesheet_directory_uri().'/assets/dist/frontend';
 
 		$env = IS_LOCAL ? 'dev' : 'prod';
-		if (is_admin()) {
-			$env = "admin.$env";
-			$css_deps = $js_deps = [];
-		}
-		else {
-			$css_deps = ['wp-jquery-ui-dialog'];
-			$js_deps = ['jquery-ui-dialog','wp-api'];
-			wp_deregister_script('twentynineteen-touch-navigation');
-		}
 
-		wp_enqueue_style(THEME_NAME, "$dist_url/main.$env.css", $css_deps, filemtime("$dist_dir/main.$env.css"));
+		$css_deps = ['wp-jquery-ui-dialog'];
+		$js_deps = ['jquery-ui-dialog','wp-api'];
+		wp_deregister_script('twentynineteen-touch-navigation');
+
+		$css_paths = ['template'];
+		if (is_page()) {
+			$css_paths[] = "pages/$post->post_name";
+		}
+		foreach($css_paths as $i => $path) {
+			$name = THEME_NAME.'-frontend-'.str_replace('/', '-', $path);
+			wp_enqueue_style($name, "$dist_url/$path.$env.css", $css_deps, filemtime("$dist_dir/$path.$env.css"));
+		}
 
 		$js_paths = [];
 		if (is_page()) {
-			$js_paths[] = 'frontend/page';
-			$js_paths[] = "frontend/pages/$post->post_name";
+			if (!in_array($post->post_name, ['our-menu'])) {
+				$js_paths[] = 'page';
+			}
+			$js_paths[] = "pages/$post->post_name";
 		}
 		foreach($js_paths as $i => $path) {
 			$name = THEME_NAME.'-'.str_replace('/', '-', $path);
 			wp_register_script($name, "$dist_url/$path.$env.js", $js_deps, filemtime("$dist_dir/$path.$env.js"));
 			if ($i == 0) {
-				wp_localize_script($name, 'JS_VARS', apply_filters('js_vars', []));
+				wp_localize_script($name, 'JS_ENV', apply_filters('js_vars', []));
 			}
 			wp_enqueue_script($name);
 		}
 	};
 	add_action('wp_enqueue_scripts', $enqueue, 100);
-	add_action('admin_enqueue_scripts', $enqueue, 100);
+	//add_action('admin_enqueue_scripts', $enqueue, 100);
 });
 
 
@@ -61,6 +65,7 @@ add_filter('js_vars', function($vars) {
 			'THEME' => get_stylesheet_directory_uri(),
 		],
 		'DEBUG' => WP_DEBUG ? 1 : 0,
+		'IS_ADMIN' => is_admin(),
 	]);
 });
 

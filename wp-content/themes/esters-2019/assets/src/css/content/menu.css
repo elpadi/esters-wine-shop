@@ -1,0 +1,73 @@
+.page--our-menu #theme-nav {
+	margin-bottom: 0;
+}
+.page--our-menu #content {
+	padding-top: 60px;
+	padding-bottom: 60px;
+	background-size: 60px auto;
+	background-repeat: repeat;
+	border-bottom: 1px solid currentColor;
+}
+.page--our-menu #content .entry-header {
+	display: none;
+}
+.page--our-menu #content .entry-content > .wp-block-separator {
+	display: none;
+}
+.page--our-menu #content .entry-content > p {
+	font-size: 0.775em;
+	margin-bottom: 0;
+	padding: 0.7em 0 0.5em;
+	text-transform: uppercase;
+	text-align: center;
+}
+.menu-tabs .tabs__titles {
+	justify-content: center;
+	grid-gap: 0.7em;
+	font-size: 1.7em;
+}
+.page--our-menu #content .entry-content .tabs__titles h2 {
+	font-size: 1em;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+.page--our-menu #content .entry-content h2::before,
+.page--our-menu #content .entry-content h2::after {
+	display: none !important;
+}
+.page--our-menu #content .menu-tabs {
+	margin-top: 0;
+	background-color: white;
+	padding: 30px;
+}
+.page--our-menu #content .tabs__contents {
+	font-size: 0.825em;
+}
+.page--our-menu #content .menu-tabs h3 {
+	text-transform: uppercase;
+	font-size: 0.9em;
+	letter-spacing: 2px;
+	margin-bottom: 0;
+	border-top: 1px solid currentColor;
+	padding-top: 1em;
+}
+.page--our-menu #content .menu-tabs h3:first-child {
+	border-style: none;
+	padding-top: 0;
+}
+.page--our-menu #content .menu-tabs h4 {
+	font-weight: 100;
+	font-style: italic;
+	margin-bottom: 0;
+}
+.page--our-menu #content .tabs__contents p {
+	margin-top: 0.6em;
+	margin-bottom: 0.6em;
+}
+.page--our-menu #content .tabs__content > p {
+	text-align: center;
+	border-bottom: 1px solid currentColor;
+	font-size: 0.9em;
+	padding-bottom: 0.7em;
+	margin-bottom: 1.5em;
+}

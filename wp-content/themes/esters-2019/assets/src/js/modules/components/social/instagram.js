@@ -9,7 +9,7 @@ class Instagram {
 	fetch() {
 		console.log('Instagram.fetch');
 		return Promise.all([
-			$.getJSON(JS_VARS.URLS.AJAX, { action: 'instagram_feed' }),
+			$.getJSON(app.ENV.URLS.AJAX, { action: 'instagram_feed' }),
 			app.fetchIcon('instagram')
 		]).then(values => {
 			let resp = values[0], icon = values[1];

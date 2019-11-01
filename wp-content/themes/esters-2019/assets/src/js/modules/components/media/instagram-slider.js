@@ -5,7 +5,7 @@ const Instagram = require('../social/instagram');
 class InstagramSlider {
 
 	constructor() {
-		if (Number(JS_VARS.DEBUG) == 0) this.addSlider();
+		if (Number(app.ENV.DEBUG) == 0) this.addSlider();
 	}
 
 	addSlider() {
