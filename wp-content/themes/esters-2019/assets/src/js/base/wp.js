@@ -2,15 +2,19 @@ const $ = require('jquery');
 
 class WP {
 
-	static fetchPosts(ids='', type='pages', context='edit') {
+	static apiRequest(endpoint, data) {
 		if (!('api' in wp) || !('apiRequest' in wp)) return Promise.reject('WP API library is not loaded.');
 		return wp.apiRequest({
 			namespace: wp.api.versionString,
-			endpoint: type,
-			data: {
-				context: context,
-				include: ids
-			}
+			endpoint: endpoint,
+			data: data
+		});
+	}
+
+	static fetchPosts(type='pages', ids='', context='edit') {
+		return WP.apiRequest(type, {
+			context: context,
+			include: ids
 		});
 	}
 

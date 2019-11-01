@@ -1,0 +1,65 @@
+.page--calendar #main .type-page.entry {
+	border-bottom: 1px solid currentColor;
+}
+.page--calendar #main .type-page .entry-content h2:last-child {
+	margin-bottom: 0.8em;
+	margin-top: 4em;
+}
+
+.page--calendar #main .type-events.entry {
+	max-width: 960px;
+	margin: 1.5em auto;
+	background-color: white;
+	border: 1px solid currentColor;
+	font-size: 0.8em;
+	padding: 1em;
+}
+.page--calendar #main .type-events.entry:nth-child(2) {
+	margin-top: 2.5em;
+}
+.page--calendar #main .type-events .entry-header {
+	display: grid;
+	grid-gap: 2em;
+	grid-template-columns: auto 150px 1fr;
+	margin: 0;
+	padding-top: 0;
+	padding-bottom: 1.5em;
+	border-bottom: 2px solid #f6f4eb;
+}
+.page--calendar #main .type-events .event__date {
+	text-transform: uppercase;
+	align-self: center;
+	text-align: center;
+}
+.page--calendar #main .type-events .event__date > span {
+	display: block;
+}
+.page--calendar #main .type-events .event__date > span:nth-child(2) {
+	font-weight: bold;
+	font-size: 2em;
+}
+.page--calendar #main .type-events .event__image {
+	max-width: 150px;
+	height: 150px;
+	object-fit: contain;
+}
+.page--calendar #main .type-events .event__info p {
+	margin: 0.4em 0;
+}
+.page--calendar #main .type-events .event__info .event__title {
+	margin-top: 0;
+}
+.page--calendar #main .type-events .entry-content .event__time {
+	text-align: center;
+}
+.page--calendar #main .type-events .entry-content .event__title {
+	margin-bottom: 0.7em;
+}
+.page--calendar #main .type-events .entry-content .event__time {
+	margin: 0;
+}
+.page--calendar #main .type-events .event__desc {
+	margin: 0;
+	padding: 0.5em 1em;
+	line-height: 1.5;
+}

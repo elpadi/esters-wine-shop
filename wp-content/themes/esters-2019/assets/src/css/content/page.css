@@ -78,6 +78,8 @@
 
 .page-template .entry-header {
 	margin-bottom: 0;
+	margin-top: 0;
+	padding-top: 3rem;
 }
 .page .star-heading,
 .page .entry-content h2,
@@ -86,6 +88,9 @@
 }
 .page-template .entry-content > .text-columns > *:first-child {
 	margin-top: 1em;
+}
+.page-template .entry-content > .text-columns > *:first-child:last-child {
+	margin-top: 0;
 }
 .page-template .entry-content a {
 	text-decoration: none;

@@ -1,5 +1,6 @@
 <?php
 use WordpressLib\Theme\Assets;
+use WordpressLib\Posts\CustomType;
 use WordpressLib\Customizer\Section as CustomizerSection;
 
 global $themeData;
@@ -32,7 +33,7 @@ call_user_func(function() {
 		if (is_page()) {
 			$css_paths[] = "pages/$post->post_name";
 		}
-		foreach($css_paths as $i => $path) {
+		foreach(array_filter($css_paths, function($p) use ($dist_dir, $env) { return is_readable("$dist_dir/$p.$env.css"); }) as $i => $path) {
 			$name = THEME_NAME.'-frontend-'.str_replace('/', '-', $path);
 			wp_enqueue_style($name, "$dist_url/$path.$env.css", $css_deps, filemtime("$dist_dir/$path.$env.css"));
 		}
@@ -44,7 +45,7 @@ call_user_func(function() {
 			}
 			$js_paths[] = "pages/$post->post_name";
 		}
-		foreach($js_paths as $i => $path) {
+		foreach(array_filter($js_paths, function($p) use ($dist_dir, $env) { return is_readable("$dist_dir/$p.$env.js"); }) as $i => $path) {
 			$name = THEME_NAME.'-'.str_replace('/', '-', $path);
 			wp_register_script($name, "$dist_url/$path.$env.js", $js_deps, filemtime("$dist_dir/$path.$env.js"));
 			if ($i == 0) {
@@ -167,6 +168,16 @@ $themeData['apiTokens'] = (new CustomizerSection('api_tokens','API Tokens'))->ad
 	['text','instagram','Instagram API Access Token'],
 ]);
 
+$themeData['eventsPostType'] = new CustomType('events', 'Event');
+
+add_action('init', function() use ($themeData) {
+	$themeData['eventsPostType']->register();
+});
+
+add_filter('comments_open', function($open, $post_id) {
+	return FALSE;
+}, 10, 2);
+
 add_filter('the_content', function($content) {
 	if (is_front_page()) {
 		ob_start();
@@ -178,3 +189,9 @@ add_filter('the_content', function($content) {
 	}
 	return $content;
 });
+
+add_filter('the_title', function($title, $id) {
+	global $post;
+	if ($id == $post->ID && $title == 'Calendar') return 'Tastings At Esters';
+	return $title;
+}, 10, 2);

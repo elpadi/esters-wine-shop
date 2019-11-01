@@ -60,8 +60,12 @@ class App {
 		return WP.ajax(data, method);
 	}
 
-	fetchPosts(ids='', type='pages', context='edit') {
-		return WP.fetchPosts(ids, type, context);
+	apiRequest(endpoint, data) {
+		return WP.apiRequest(endpoint, data);
+	}
+
+	fetchPosts(type='pages', ids='', context='edit') {
+		return WP.fetchPosts(type, ids, context);
 	}
 
 	resize() {
