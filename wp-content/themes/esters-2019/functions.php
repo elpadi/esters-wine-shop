@@ -127,6 +127,10 @@ add_filter('body_class', function($classes) {
 	global $post;
 	if (is_page()) {
 		$classes[] = "page--$post->post_name";
+		if (!is_front_page() && !in_array($post->post_name, [
+			'our-menu',
+			'private-events',
+		])) $classes[] = "page-template";
 	}
 	return $classes;
 });

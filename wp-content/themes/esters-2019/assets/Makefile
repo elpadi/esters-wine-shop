@@ -8,7 +8,7 @@ ADMIN_CSS_FILES := $(wildcard src/css/base/*.css) $(shell find src/css/admin -ty
 CSS_SLICK_DEPS := node_modules/slick-carousel/slick/slick.css node_modules/slick-carousel/slick/slick-theme.css
 PAGE_TARGETS := $(addprefix pages/, home about our-menu calendar private-events)
 
-CSS_FRONT_TEMPLATE_DEPS := ../../twentynineteen/style.css $(wildcard src/css/*.css) $(wildcard src/css/base/*.css) $(wildcard src/css/header/*.css) $(wildcard src/css/footer/*.css) src/css/content/page.css
+CSS_FRONT_TEMPLATE_DEPS := ../../twentynineteen/style.css $(wildcard src/css/*.css) $(wildcard src/css/base/*.css) $(wildcard src/css/header/*.css) $(wildcard src/css/footer/*.css) src/css/content/template.css src/css/content/page.css
 CSS_FRONT_PAGE_HOME_DEPS := $(CSS_SLICK_DEPS) src/css/content/home.css
 CSS_FRONT_PAGE_ABOUT_DEPS := src/css/content/about.css
 CSS_FRONT_PAGE_MENU_DEPS := src/css/components/tabs.css src/css/content/menu.css

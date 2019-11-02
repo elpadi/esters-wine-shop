@@ -33,6 +33,7 @@ body {
 	color: #bf9d3e;
 	background-color: white;
 }
+#theme-header__cart__num,
 #colophon .wp-block-button__link:hover,
 #content .entry-content .wp-block-button__link:hover,
 #content .entry-content .btn:hover,
@@ -67,9 +68,8 @@ body {
 #theme-header__cart svg {
 	color: black;
 }
-#theme-header__cart__num {
-	background-color: #bf9d3e;
-	color: white;
+.page-template #main {
+	border-bottom: 1px solid #bf9d3e;
 }
 
 #home-slideshow h2,
