@@ -40,7 +40,7 @@ call_user_func(function() {
 
 		$js_paths = [];
 		if (is_page()) {
-			if (!in_array($post->post_name, ['our-menu'])) {
+			if (!in_array($post->post_name, ['our-menu','private-events'])) {
 				$js_paths[] = 'page';
 			}
 			$js_paths[] = "pages/$post->post_name";
@@ -190,7 +190,7 @@ add_filter('the_content', function($content) {
 	return $content;
 });
 
-add_filter('the_title', function($title, $id) {
+if (!is_admin()) add_filter('the_title', function($title, $id) {
 	global $post;
 	if ($id == $post->ID && $title == 'Calendar') return 'Tastings At Esters';
 	return $title;

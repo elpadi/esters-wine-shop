@@ -91,3 +91,24 @@ svg {
 #comments.comments-closed {
 	display: none;
 }
+
+#content .slick-arrow {
+	z-index: 2;
+	font-size: 2rem;
+	color: white;
+	width: auto;
+	height: auto;
+	background-color: transparent;
+}
+#content .slick-arrow:hover {
+	color: #bf9d3e;
+}
+#content .slick-arrow::before {
+	display: none;
+}
+#content .slick-arrow.slick-prev {
+	left: 0;
+}
+#content .slick-arrow.slick-next {
+	right: 0;
+}

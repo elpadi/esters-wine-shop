@@ -76,23 +76,3 @@
 	background-color: white;
 	border: 1px solid currentColor;
 }
-#home-slideshow .slick-arrow {
-	z-index: 2;
-	font-size: 2rem;
-	color: white;
-	width: auto;
-	height: auto;
-	background-color: transparent;
-}
-#home-slideshow .slick-arrow:hover {
-	color: #bf9d3e;
-}
-#home-slideshow .slick-arrow::before {
-	display: none;
-}
-#home-slideshow .slick-arrow.slick-prev {
-	left: 0;
-}
-#home-slideshow .slick-arrow.slick-next {
-	right: 0;
-}

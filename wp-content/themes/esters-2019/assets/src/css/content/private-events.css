@@ -1,0 +1,103 @@
+.page.page--private-events #main {
+	border-bottom: 2px solid #f6f4eb;
+}
+.page.page--private-events #main:not(.visible) {
+	visibility: hidden;
+}
+.page.page--private-events #theme-nav {
+	margin-bottom: 0;
+}
+.page.page--private-events #main article.entry {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	max-width: none;
+}
+.page.page--private-events #main .entry-header {
+	display: none;
+}
+.page.page--private-events #main .entry-content {
+	width: calc(100% - 4rem);
+}
+.page--private-events .entry-content > .wp-block-separator {
+	display: none;
+}
+.page.page--private-events #main .entry-content > h2::before,
+.page.page--private-events #main .entry-content > h2::after {
+	display: none !important;
+}
+.page.page--private-events #main .entry-content > h2 {
+	display: block;
+	text-align: left;
+	margin-bottom: 0.9em;
+	padding-bottom: 0.3em;
+	border-bottom: 1px solid currentColor;
+}
+.page.page--private-events #main .entry-content > p {
+	margin: 0.5em 0;
+	font-size: 0.8em;
+	cursor: pointer;
+}
+.page.page--private-events #main .entry-content > p.current-slide {
+	display: inline;
+	border-bottom: 1px solid currentColor;
+	position: relative;
+	bottom: 0.2em;
+	margin-bottom: 0.3em;
+}
+.page.page--private-events #main .entry-content > p.current-slide + p {
+	margin-top: 0.3em;
+}
+
+.private-events__slider {
+	width: 50vw;
+	font-size: 0.9em;
+	order: -1;
+}
+.private-events__slide {
+	position: relative;
+	display: flex !important;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	text-shadow: 0px 0px 5px black;
+}
+.private-events__slide[data-has-image="true"] {
+	color: white;
+	background-color: black;
+}
+.private-events__slide,
+.private-events__slide .wp-block-image,
+.private-events__slide img {
+	width: 100%;
+	height: calc(100vh - 205px);
+	margin: 0;
+}
+.private-events__slide .wp-block-image {
+	position: absolute;
+	opacity: 0.9;
+}
+.private-events__slide img {
+	object-fit: cover;
+}
+.private-events__slide h3,
+.private-events__slide p {
+	position: relative;
+	z-index: 2;
+}
+.private-events__slide h3 {
+	text-align: center;
+	text-transform: uppercase;
+	letter-spacing: 3px;
+	margin: 0;
+	padding-bottom: 0.4em;
+	border-bottom: 1px solid currentColor;
+}
+.private-events__slide p {
+	max-width: 540px;
+	padding: 10px;
+}
+
+#content .private-events__slider .slick-arrow {
+	font-size: 1.2rem;
+	top: 44%;
+}
