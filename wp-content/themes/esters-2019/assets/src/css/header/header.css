@@ -68,18 +68,10 @@
 }
 #theme-header__online-shops::before,
 #theme-header__online-shops::after {
-	content: '';
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
 	border-top-style: none;
 }
 #theme-header__online-shops::after {
-	right: 4px;
-	bottom: 4px;
-	left: 4px;
+	top: 0;
 }
 #theme-header__online-shops nav {
 	position: relative;

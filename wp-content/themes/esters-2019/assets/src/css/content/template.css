@@ -81,3 +81,11 @@
 .page-template .entry-title {
 	font-size: 1.1rem;
 }
+
+.content-bg-pattern #content {
+	padding-top: 60px;
+	padding-bottom: 60px;
+	background-size: 60px auto;
+	background-repeat: repeat;
+	border-bottom: 1px solid currentColor;
+}

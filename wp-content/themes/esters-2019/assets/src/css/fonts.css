@@ -82,6 +82,13 @@
 .menu-tabs .tabs__title,
 body,
 .site button,
+.site .wp-block-button__link,
+#content .wp-block-button .wp-block-button__link,
 .site .btn {
 	font-family: "Generell TW-Regular", Garamond, serif;
+}
+.site button,
+#content .wp-block-button .wp-block-button__link,
+.site .btn {
+	font-weight: 100;
 }

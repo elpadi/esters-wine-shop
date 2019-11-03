@@ -1,13 +1,6 @@
 .page--our-menu #theme-nav {
 	margin-bottom: 0;
 }
-.page--our-menu #content {
-	padding-top: 60px;
-	padding-bottom: 60px;
-	background-size: 60px auto;
-	background-repeat: repeat;
-	border-bottom: 1px solid currentColor;
-}
 .page--our-menu #content .entry-header {
 	display: none;
 }

@@ -18,7 +18,7 @@
 .page-template .entry-content a {
 	text-decoration: none;
 }
-.page-template .entry-content a:hover {
+.page-template .entry-content a:not(.btn):hover {
 	text-decoration: underline;
 }
 .page-template .entry-content > .wp-block-image img {

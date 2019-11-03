@@ -131,6 +131,7 @@ add_filter('body_class', function($classes) {
 			'our-menu',
 			'private-events',
 		])) $classes[] = "page-template";
+		if (in_array($post->post_name, ['our-menu','shop-landing'])) $classes[] = 'content-bg-pattern';
 	}
 	return $classes;
 });

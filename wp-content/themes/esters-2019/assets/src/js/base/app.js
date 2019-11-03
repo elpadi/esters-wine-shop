@@ -4,11 +4,12 @@ const Str = require('./str');
 const DOM = require('./dom');
 const Media = require('./media');
 const WP = require('./wp');
+const GlobalModule = require('../modules/global');
 
 class App {
 
 	constructor() {
-		this.modules = {};
+		this.modules = { global: GlobalModule };
 		this.instances = {};
 		this.ENV = global.JS_ENV;
 	}

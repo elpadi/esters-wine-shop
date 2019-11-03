@@ -5,7 +5,7 @@ const TabItem = require('../components/tabs/item');
 class MenuPage {
 
 	constructor() {
-		document.querySelector('.page--our-menu #content').style.backgroundImage = `url(${app.ENV.URLS.THEME}/assets/img/bg-patterns/menu.jpg)`;
+		document.querySelector('#content').style.backgroundImage = `url(${app.ENV.URLS.THEME}/assets/img/bg-patterns/menu.jpg)`;
 	}
 
 	load() {

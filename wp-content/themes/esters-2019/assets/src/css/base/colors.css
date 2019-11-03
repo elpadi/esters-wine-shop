@@ -39,6 +39,8 @@ body {
 #content .entry-content .btn:hover,
 .press-columns .wp-block-image > a::before,
 .page--our-menu #content .entry-content > p,
+.page--shop-landing #content .entry-content .btn,
+.page--shop-landing #content .entry-content .wp-block-button__link,
 .site input[type="submit"],
 .site input[type="button"],
 .site button,
@@ -46,6 +48,8 @@ body {
 	color: white;
 	background-color: #bf9d3e;
 }
+.page--shop-landing #content .entry-content .btn:hover,
+.page--shop-landing #content .entry-content .wp-block-button__link:hover,
 .site input[type="submit"]:hover,
 .site input[type="button"]:hover,
 .site button:hover,
@@ -60,7 +64,7 @@ body {
 }
 #theme-header__online-shops::before,
 #theme-header__online-shops::after {
-	border: 2px solid #a08068;
+	border-color: #a08068;
 }
 #theme-header__online-shops li::before {
 	border-left: 3px dotted #a08068;
@@ -77,3 +81,6 @@ body {
 	color: white;
 }
 
+.page--shop-landing .wp-block-column {
+	background-color: #f6f4eb;
+}
