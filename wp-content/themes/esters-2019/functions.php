@@ -30,33 +30,34 @@ call_user_func(function() {
 		wp_deregister_script('twentynineteen-touch-navigation');
 
 		$css_paths = ['template'];
+		$js_paths = [];
+
 		if (is_page()) {
 			$css_paths[] = "pages/$post->post_name";
-		}
-		if (function_exists('is_woocommerce') && is_woocommerce()) {
-			//$css_paths[] = 'shop';
-		}
-		if (function_exists('is_woocommerce') && (is_shop() || is_product_category() || is_product_tag())) {
-			$css_paths[] = 'shop/product-listing';
-		}
-		foreach(array_filter($css_paths, function($p) use ($dist_dir, $env) { return is_readable("$dist_dir/$p.$env.css"); }) as $i => $path) {
-			$name = THEME_NAME.'-frontend-'.str_replace('/', '-', $path);
-			wp_enqueue_style($name, "$dist_url/$path.$env.css", $css_deps, filemtime("$dist_dir/$path.$env.css"));
-		}
-
-		$js_paths = [];
-		if (is_page()) {
 			if (!in_array($post->post_name, ['our-menu','private-events','shop-landing'])) {
 				$js_paths[] = 'page';
 			}
 			$js_paths[] = "pages/$post->post_name";
 		}
+
 		if (function_exists('is_woocommerce') && is_woocommerce()) {
 			//$js_paths[] = 'shop';
+			if (is_product()) {
+				$css_paths[] = 'shop/product';
+				$js_paths[] = 'shop/product';
+			}
+			if (is_shop() || is_product_category() || is_product_tag()) {
+				$css_paths[] = 'shop/product-listing';
+				$js_paths[] = 'shop/product-listing';
+			}
 		}
-		if (function_exists('is_woocommerce') && (is_shop() || is_product_category() || is_product_tag())) {
-			$js_paths[] = 'shop/product-listing';
+
+		foreach(array_filter($css_paths, function($p) use ($dist_dir, $env) { return is_readable("$dist_dir/$p.$env.css"); }) as $i => $path) {
+			$name = THEME_NAME.'-frontend-'.str_replace('/', '-', $path);
+			wp_enqueue_style($name, "$dist_url/$path.$env.css", $css_deps, filemtime("$dist_dir/$path.$env.css"));
 		}
+
+		if (empty($js_paths)) $js_paths[] = 'page';
 		foreach(array_filter($js_paths, function($p) use ($dist_dir, $env) { return is_readable("$dist_dir/$p.$env.js"); }) as $i => $path) {
 			$name = THEME_NAME.'-'.str_replace('/', '-', $path);
 			wp_register_script($name, "$dist_url/$path.$env.js", $js_deps, filemtime("$dist_dir/$path.$env.js"));
@@ -137,6 +138,8 @@ if (is_admin() == false) {
 
 add_filter('body_class', function($classes) {
 	global $post;
+
+	$classes[] = 'theme--'.THEME_NAME;
 
 	if (is_page()) {
 		$classes[] = "page--$post->post_name";

@@ -19,9 +19,13 @@ body {
 .site a {
 	color: #a08068;
 }
-.site a:hover {
+.site a:not(.btn):hover {
 	color: #a16f68;
 }
+.theme--esters #main .products a:not(.btn) {
+	color: inherit;
+}
+
 .menu-tabs .tabs__title:hover,
 .menu-tabs .tabs__title.selected {
 	color: #179F9A;
@@ -83,4 +87,8 @@ body {
 
 .page--shop-landing .wp-block-column {
 	background-color: #f6f4eb;
+}
+
+.single-product #main > .product .single_variation_wrap .woocommerce-Price-amount {
+	color: #77a464;
 }

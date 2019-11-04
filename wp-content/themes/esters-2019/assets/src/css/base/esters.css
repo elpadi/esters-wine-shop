@@ -45,6 +45,17 @@ svg {
 	display: none;
 }
 
+button, input, select, optgroup, textarea, table {
+	font-family: inherit;
+	color: inherit;
+}
+
+select {
+	background-color: white;
+	border: 1px solid currentColor;
+	padding: 0.3em;
+}
+
 .site input[type="submit"],
 .site input[type="button"],
 .site button,

@@ -1,0 +1,32 @@
+.single-product .product_meta,
+.single-product .woocommerce-tabs,
+.products .add_to_cart_button,
+.woocommerce-ordering,
+.woocommerce-result-count,
+.woocommerce-products-header,
+.woocommerce-breadcrumb {
+	display: none;
+}
+
+.single-product #main > .product .summary,
+.product-listing .woocommerce-pagination,
+body.theme--esters .price {
+	font-family: inherit;
+}
+
+.woocommerce-loop-product__title,
+.products .price {
+	color: inherit !important;
+}
+
+.single-product form.cart input {
+	border-color: currentColor;
+}
+
+.woocommerce #primary {
+	margin: 0 calc(5% + 20px);
+	max-width: 1160px;
+}
+.woocommerce #main {
+	max-width: none;
+}
