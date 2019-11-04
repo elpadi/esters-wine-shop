@@ -33,6 +33,12 @@ call_user_func(function() {
 		if (is_page()) {
 			$css_paths[] = "pages/$post->post_name";
 		}
+		if (function_exists('is_woocommerce') && is_woocommerce()) {
+			//$css_paths[] = 'shop';
+		}
+		if (function_exists('is_woocommerce') && (is_shop() || is_product_category() || is_product_tag())) {
+			$css_paths[] = 'shop/product-listing';
+		}
 		foreach(array_filter($css_paths, function($p) use ($dist_dir, $env) { return is_readable("$dist_dir/$p.$env.css"); }) as $i => $path) {
 			$name = THEME_NAME.'-frontend-'.str_replace('/', '-', $path);
 			wp_enqueue_style($name, "$dist_url/$path.$env.css", $css_deps, filemtime("$dist_dir/$path.$env.css"));
@@ -40,10 +46,16 @@ call_user_func(function() {
 
 		$js_paths = [];
 		if (is_page()) {
-			if (!in_array($post->post_name, ['our-menu','private-events'])) {
+			if (!in_array($post->post_name, ['our-menu','private-events','shop-landing'])) {
 				$js_paths[] = 'page';
 			}
 			$js_paths[] = "pages/$post->post_name";
+		}
+		if (function_exists('is_woocommerce') && is_woocommerce()) {
+			//$js_paths[] = 'shop';
+		}
+		if (function_exists('is_woocommerce') && (is_shop() || is_product_category() || is_product_tag())) {
+			$js_paths[] = 'shop/product-listing';
 		}
 		foreach(array_filter($js_paths, function($p) use ($dist_dir, $env) { return is_readable("$dist_dir/$p.$env.js"); }) as $i => $path) {
 			$name = THEME_NAME.'-'.str_replace('/', '-', $path);
@@ -125,6 +137,7 @@ if (is_admin() == false) {
 
 add_filter('body_class', function($classes) {
 	global $post;
+
 	if (is_page()) {
 		$classes[] = "page--$post->post_name";
 		if (!is_front_page() && !in_array($post->post_name, [
@@ -133,6 +146,12 @@ add_filter('body_class', function($classes) {
 		])) $classes[] = "page-template";
 		if (in_array($post->post_name, ['our-menu','shop-landing'])) $classes[] = 'content-bg-pattern';
 	}
+
+	if (function_exists('is_woocommerce') && (is_shop() || is_product_category() || is_product_tag())) {
+		$classes[] = 'content-bg-pattern';
+		$classes[] = 'product-listing';
+	}
+
 	return $classes;
 });
 
@@ -197,6 +216,6 @@ add_filter('the_content', function($content) {
 
 if (!is_admin()) add_filter('the_title', function($title, $id) {
 	global $post;
-	if ($id == $post->ID && $title == 'Calendar') return 'Tastings At Esters';
+	if ($post && $id == $post->ID && $title == 'Calendar') return 'Tastings At Esters';
 	return $title;
 }, 10, 2);
