@@ -1,3 +1,4 @@
+.woocommerce-cart-form .coupon,
 .single-product .product_meta,
 .single-product .woocommerce-tabs,
 .products .add_to_cart_button,
@@ -8,12 +9,16 @@
 	display: none;
 }
 
+body.theme--esters .woocommerce-error,
+body.theme--esters .woocommerce-info,
+body.theme--esters .woocommerce-message,
 .single-product #main > .product .summary,
 .product-listing .woocommerce-pagination,
 body.theme--esters .price {
 	font-family: inherit;
 }
 
+body.theme--esters .woocommerce-message,
 .woocommerce-loop-product__title,
 .products .price {
 	color: inherit !important;

@@ -1,0 +1,18 @@
+body.theme--esters .woocommerce-message {
+	font-size: 0.75rem;
+	background-color: white;
+	text-align: center;
+	display: flex;
+	align-items: center;
+}
+body.theme--esters .woocommerce-message .button,
+body.theme--esters .woocommerce-message .btn {
+	order: 2;
+	margin-left: auto;
+}
+body.theme--esters .woocommerce-message .button {
+	font-size: 0.7em;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+}
+

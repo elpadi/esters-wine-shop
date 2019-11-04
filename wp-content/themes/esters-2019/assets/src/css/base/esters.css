@@ -56,6 +56,7 @@ select {
 	padding: 0.3em;
 }
 
+body.theme--esters .woocommerce-message .button,
 .site input[type="submit"],
 .site input[type="button"],
 .site button,

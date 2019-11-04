@@ -9,6 +9,7 @@
 	text-align: center;
 }
 
+body.theme--esters .woocommerce-message .button,
 #content .wp-block-button .wp-block-button__link,
 .btn {
 	display: inline-block;

@@ -40,7 +40,7 @@ call_user_func(function() {
 			$js_paths[] = "pages/$post->post_name";
 		}
 
-		if (function_exists('is_woocommerce') && is_woocommerce()) {
+		if (function_exists('is_woocommerce')) {
 			//$js_paths[] = 'shop';
 			if (is_product()) {
 				$css_paths[] = 'shop/product';
@@ -49,6 +49,9 @@ call_user_func(function() {
 			if (is_shop() || is_product_category() || is_product_tag()) {
 				$css_paths[] = 'shop/product-listing';
 				$js_paths[] = 'shop/product-listing';
+			}
+			if (is_cart()) {
+				$css_paths[] = 'shop/cart';
 			}
 		}
 

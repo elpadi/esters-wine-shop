@@ -7,17 +7,18 @@ ADMIN_CSS_FILES := $(wildcard src/css/base/*.css) $(shell find src/css/admin -ty
 
 CSS_SLICK_DEPS := node_modules/slick-carousel/slick/slick.css node_modules/slick-carousel/slick/slick-theme.css
 PAGE_TARGETS := $(addprefix pages/, home about our-menu calendar private-events shop-landing)
-SHOP_TARGETS := $(addprefix shop/, product-listing product)
+SHOP_TARGETS := $(addprefix shop/, product-listing product cart)
 
-CSS_FRONT_TEMPLATE_DEPS := src/css/fonts.css ../../twentynineteen/style.css $(wildcard src/css/base/*.css) $(wildcard src/css/header/*.css) $(wildcard src/css/footer/*.css) src/css/content/template.css src/css/content/page.css src/css/content/shop.css
+CSS_FRONT_TEMPLATE_DEPS := src/css/fonts.css ../../twentynineteen/style.css $(wildcard src/css/base/*.css) $(wildcard src/css/header/*.css) $(wildcard src/css/footer/*.css) src/css/content/template.css src/css/content/page.css src/css/content/shop.css src/css/content/notices.css
 CSS_FRONT_PAGE_HOME_DEPS := $(CSS_SLICK_DEPS) src/css/content/home.css
 CSS_FRONT_PAGE_ABOUT_DEPS := src/css/content/about.css
 CSS_FRONT_PAGE_MENU_DEPS := src/css/components/tabs.css src/css/content/menu.css
 CSS_FRONT_PAGE_CALENDAR_DEPS := src/css/content/calendar.css
 CSS_FRONT_PAGE_PRIVATE_EVENTS_DEPS := $(CSS_SLICK_DEPS) src/css/content/private-events.css
-CSS_FRONT_PAGE_SHOP_LANDING_DEPS := src/css/content/shop-landing.css
-CSS_FRONT_PAGE_SHOP_LISTING_DEPS := src/css/content/product-listing.css
-CSS_FRONT_PAGE_SHOP_PRODUCT_DEPS := src/css/content/product-listing.css src/css/content/product.css
+CSS_FRONT_SHOP_LANDING_DEPS := src/css/content/shop-landing.css
+CSS_FRONT_SHOP_LISTING_DEPS := src/css/content/product-listing.css
+CSS_FRONT_SHOP_PRODUCT_DEPS := src/css/content/product-listing.css src/css/content/product.css
+CSS_FRONT_SHOP_CART_DEPS := src/css/content/cart.css
 
 CSS_FRONTEND_BUILD_TARGETS := template $(PAGE_TARGETS) $(SHOP_TARGETS)
 
@@ -78,6 +79,9 @@ src/js/main/frontend/shop/product-listing.js: $(JS_FRONT_PAGE_SHOP_LISTING_DEPS)
 src/js/main/frontend/shop/product.js: $(JS_FRONT_PAGE_SHOP_PRODUCT_DEPS)
 	touch $@
 
+src/js/main/frontend/shop/cart.js:
+	touch $@
+
 dist/frontend/template.dev.css: $(CSS_FRONT_TEMPLATE_DEPS)
 
 dist/frontend/pages/home.dev.css: $(CSS_FRONT_PAGE_HOME_DEPS)
@@ -90,11 +94,13 @@ dist/frontend/pages/calendar.dev.css: $(CSS_FRONT_PAGE_CALENDAR_DEPS)
 
 dist/frontend/pages/private-events.dev.css: $(CSS_FRONT_PAGE_PRIVATE_EVENTS_DEPS)
 
-dist/frontend/pages/shop-landing.dev.css: $(CSS_FRONT_PAGE_SHOP_LANDING_DEPS)
+dist/frontend/pages/shop-landing.dev.css: $(CSS_FRONT_SHOP_LANDING_DEPS)
 
-dist/frontend/shop/product-listing.dev.css: $(CSS_FRONT_PAGE_SHOP_LISTING_DEPS)
+dist/frontend/shop/product-listing.dev.css: $(CSS_FRONT_SHOP_LISTING_DEPS)
 
-dist/frontend/shop/product.dev.css: $(CSS_FRONT_PAGE_SHOP_PRODUCT_DEPS)
+dist/frontend/shop/product.dev.css: $(CSS_FRONT_SHOP_PRODUCT_DEPS)
+
+dist/frontend/shop/cart.dev.css: $(CSS_FRONT_SHOP_CART_DEPS)
 
 dev: $(addprefix dist/frontend/, $(addsuffix .dev.js, $(JS_FRONTEND_BUILD_TARGETS))) $(addprefix dist/frontend/, $(addsuffix .dev.css, $(CSS_FRONTEND_BUILD_TARGETS)))
 

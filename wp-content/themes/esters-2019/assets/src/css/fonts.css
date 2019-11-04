@@ -64,6 +64,8 @@
 .star-heading,
 #theme-nav,
 #masthead,
+body.theme--esters th,
+#content .entry-content .woocommerce .btn,
 .page--our-menu #content .entry-content > p,
 .press-columns .wp-block-image > a::after,
 .sans-semibold {

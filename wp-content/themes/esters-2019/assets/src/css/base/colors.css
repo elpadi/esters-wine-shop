@@ -48,6 +48,8 @@ body {
 .site input[type="submit"],
 .site input[type="button"],
 .site button,
+body.theme--esters .woocommerce-message .button,
+#content .entry-content .woocommerce .btn,
 .site .btn {
 	color: white;
 	background-color: #bf9d3e;

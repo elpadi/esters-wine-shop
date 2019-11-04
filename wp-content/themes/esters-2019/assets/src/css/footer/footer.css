@@ -3,6 +3,7 @@
 	font-size: 1.1rem;
 }
 #colophon > .columns {
+	grid-template-columns: auto auto minmax(min-content, 380px);
 	font-size: 0.8rem;
 	line-height: 1.5;
 	max-width: 1160px;
