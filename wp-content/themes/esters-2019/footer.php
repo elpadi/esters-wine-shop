@@ -18,6 +18,6 @@ $f_tpl = function($s) use ($contact) { include(__DIR__."/template-parts/footer/$
 </div><!-- #page -->
 <?php
 wp_footer();
-include(__DIR__.'/template-parts/components/spinner.php');
+//include(__DIR__.'/template-parts/components/spinner.php');
 ?></body>
 </html>

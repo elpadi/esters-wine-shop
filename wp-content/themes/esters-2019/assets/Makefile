@@ -24,15 +24,16 @@ CSS_FRONT_SHOP_CHECKOUT_DEPS := src/css/content/checkout.css
 CSS_FRONTEND_BUILD_TARGETS := template $(PAGE_TARGETS) $(SHOP_TARGETS)
 
 JS_FRONT_APP_DEPS := $(wildcard src/js/base/*.js) src/js/modules/global.js
-JS_FRONT_PAGE_DEPS := $(JS_FRONT_APP_DEPS) src/js/modules/page.js
+JS_FRONT_PAGE_DEPS := $(JS_FRONT_APP_DEPS) src/js/modules/page.js src/js/modules/pages/columnize-text.js
 JS_FRONT_PAGE_HOME_DEPS := $(JS_FRONT_APP_DEPS) src/js/modules/pages/home.js src/js/modules/components/slider.js
 JS_FRONT_PAGE_ABOUT_DEPS := $(JS_FRONT_PAGE_DEPS) src/js/modules/pages/about.js src/js/modules/components/media/grid.js src/js/modules/components/media/instagram-slider.js src/js/modules/components/social/instagram.js
 JS_FRONT_PAGE_MENU_DEPS := $(JS_FRONT_APP_DEPS) src/js/modules/pages/menu.js $(wildcard src/js/modules/components/tabs/*.js)
 JS_FRONT_PAGE_CALENDAR_DEPS := $(JS_FRONT_APP_DEPS) src/js/modules/pages/calendar.js src/js/modules/components/posts/listing.js src/js/modules/components/posts/events-listing.js
 JS_FRONT_PAGE_PRIVATE_EVENTS_DEPS := $(JS_FRONT_APP_DEPS) src/js/modules/pages/private-events.js src/js/modules/components/slider.js
-JS_FRONT_PAGE_SHOP_LANDING_DEPS := $(JS_FRONT_APP_DEPS) src/js/modules/pages/shop-landing.js
-JS_FRONT_PAGE_SHOP_LISTING_DEPS := $(JS_FRONT_APP_DEPS) src/js/modules/shop/product-listing.js
-JS_FRONT_PAGE_SHOP_PRODUCT_DEPS := $(JS_FRONT_APP_DEPS) src/js/modules/shop/product.js
+JS_FRONT_SHOP_LANDING_DEPS := $(JS_FRONT_APP_DEPS) src/js/modules/pages/shop-landing.js
+JS_FRONT_SHOP_LISTING_DEPS := $(JS_FRONT_APP_DEPS) src/js/modules/shop/product-listing.js
+JS_FRONT_SHOP_PRODUCT_DEPS := $(JS_FRONT_APP_DEPS) src/js/modules/shop/product.js
+JS_FRONT_SHOP_CART_DEPS := $(JS_FRONT_APP_DEPS) src/js/modules/shop/cart.js
 
 JS_FRONTEND_BUILD_TARGETS := page $(PAGE_TARGETS) $(SHOP_TARGETS)
 
@@ -74,13 +75,13 @@ src/js/main/frontend/pages/private-events.js: $(JS_FRONT_PAGE_PRIVATE_EVENTS_DEP
 src/js/main/frontend/pages/shop-landing.js: $(JS_FRONT_PAGE_SHOP_LANDING_DEPS)
 	touch $@
 
-src/js/main/frontend/shop/product-listing.js: $(JS_FRONT_PAGE_SHOP_LISTING_DEPS)
+src/js/main/frontend/shop/product-listing.js: $(JS_FRONT_SHOP_LISTING_DEPS)
 	touch $@
 
-src/js/main/frontend/shop/product.js: $(JS_FRONT_PAGE_SHOP_PRODUCT_DEPS)
+src/js/main/frontend/shop/product.js: $(JS_FRONT_SHOP_PRODUCT_DEPS)
 	touch $@
 
-src/js/main/frontend/shop/cart.js:
+src/js/main/frontend/shop/cart.js: $(JS_FRONT_SHOP_CART_DEPS)
 	touch $@
 
 src/js/main/frontend/shop/checkout.js:

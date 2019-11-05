@@ -1,4 +1,5 @@
 <?php
+use Functional as F;
 use WordpressLib\Theme\Assets;
 use WordpressLib\Posts\CustomType;
 use WordpressLib\Customizer\Section as CustomizerSection;
@@ -32,14 +33,6 @@ call_user_func(function() {
 		$css_paths = ['template'];
 		$js_paths = [];
 
-		if (is_page()) {
-			$css_paths[] = "pages/$post->post_name";
-			if (!in_array($post->post_name, ['our-menu','private-events','shop-landing'])) {
-				$js_paths[] = 'page';
-			}
-			$js_paths[] = "pages/$post->post_name";
-		}
-
 		if (function_exists('is_woocommerce')) {
 			//$js_paths[] = 'shop';
 			if (is_product()) {
@@ -58,15 +51,29 @@ call_user_func(function() {
 			}
 		}
 
-		foreach(array_filter($css_paths, function($p) use ($dist_dir, $env) { return is_readable("$dist_dir/$p.$env.css"); }) as $i => $path) {
-			$name = THEME_NAME.'-frontend-'.str_replace('/', '-', $path);
-			wp_enqueue_style($name, "$dist_url/$path.$env.css", $css_deps, filemtime("$dist_dir/$path.$env.css"));
+		if (is_page()) {
+			$css_paths[] = "pages/$post->post_name";
+			if (!in_array($post->post_name, ['our-menu','private-events','shop-landing'])) {
+				$js_paths[] = 'page';
+			}
+			$js_paths[] = "pages/$post->post_name";
 		}
 
-		if (empty($js_paths)) $js_paths[] = 'page';
-		foreach(array_filter($js_paths, function($p) use ($dist_dir, $env) { return is_readable("$dist_dir/$p.$env.js"); }) as $i => $path) {
-			$name = THEME_NAME.'-'.str_replace('/', '-', $path);
-			wp_register_script($name, "$dist_url/$path.$env.js", $js_deps, filemtime("$dist_dir/$path.$env.js"));
+		$assetFilename = function($ext, $p) use ($env) { return "$p.$env.$ext"; };
+		$isValidAsset = function($filename) use ($dist_dir) { return is_readable("$dist_dir/$filename") && filesize("$dist_dir/$filename"); };
+
+		foreach(F\filter(F\map($css_paths, F\partial_left($assetFilename, 'css')), $isValidAsset) as $i => $filename) {
+			$name = THEME_NAME.'-frontend-'.str_replace('/', '-', basename($filename));
+			wp_enqueue_style($name, "$dist_url/$filename", $css_deps, filemtime("$dist_dir/$filename"));
+		}
+
+		// add at least the default page JS file, ensuring the global.js code (imported by base/app) is always enqueued.
+		$js_names = F\filter(F\map($js_paths, F\partial_left($assetFilename, 'js')), $isValidAsset);
+		if (empty($js_names)) $js_names[] = $assetFilename('js', 'page');
+
+		foreach($js_names as $i => $filename) {
+			$name = THEME_NAME.'-'.str_replace('/', '-', $filename);
+			wp_register_script($name, "$dist_url/$filename", $js_deps, filemtime("$dist_dir/$filename"));
 			if ($i == 0) {
 				wp_localize_script($name, 'JS_ENV', apply_filters('js_vars', []));
 			}
@@ -154,6 +161,7 @@ add_filter('body_class', function($classes) {
 			'private-events',
 		])) $classes[] = "page-template";
 		if (in_array($post->post_name, ['our-menu','shop-landing'])) $classes[] = 'content-bg-pattern';
+		if (in_array($post->post_name, ['terms-and-conditions','privacy-policy','terms-of-use'])) $classes[] = 'legal-page';
 	}
 
 	if (function_exists('is_woocommerce') && (is_shop() || is_product_category() || is_product_tag())) {

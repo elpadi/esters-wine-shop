@@ -15,6 +15,9 @@
 	margin-top: 0;
 	padding-top: 3rem;
 }
+.legal-page .entry-header {
+	margin-bottom: 7%;
+}
 .page-template .entry-content a {
 	text-decoration: none;
 	box-shadow: none;

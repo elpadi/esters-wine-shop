@@ -7,6 +7,9 @@
 .page #main .entry-content {
 	max-width: 1140px;
 }
+.legal-page #main .entry-content {
+	max-width: 960px;
+}
 .page .entry-content > .text-columns {
 	column-count: 2;
 	column-gap: 2em;

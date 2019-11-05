@@ -3,7 +3,7 @@ const $ = require('jquery');
 class ColumnizeText {
 
 	constructor() {
-		this.columnize();
+		if (!document.body.classList.contains('legal-page')) this.columnize();
 	}
 
 	columnize() {
