@@ -53,6 +53,9 @@ call_user_func(function() {
 			if (is_cart()) {
 				$css_paths[] = 'shop/cart';
 			}
+			if (is_checkout()) {
+				$css_paths[] = 'shop/checkout';
+			}
 		}
 
 		foreach(array_filter($css_paths, function($p) use ($dist_dir, $env) { return is_readable("$dist_dir/$p.$env.css"); }) as $i => $path) {

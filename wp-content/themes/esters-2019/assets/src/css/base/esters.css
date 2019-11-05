@@ -1,5 +1,8 @@
-body {
+body.theme--esters {
 	line-height: 1.2;
+	max-width: none;
+	margin: 0 !important;
+	padding: 0 !important;
 }
 
 /* remove twentynineteen header bars */
@@ -54,6 +57,19 @@ select {
 	background-color: white;
 	border: 1px solid currentColor;
 	padding: 0.3em;
+}
+
+input[type="text"], input[type="email"], input[type="url"], input[type="password"], input[type="search"], input[type="number"], input[type="tel"], input[type="range"], input[type="date"], input[type="month"], input[type="week"], input[type="time"], input[type="datetime"], input[type="datetime-local"], input[type="color"], textarea {
+	background: white;
+	border: solid 1px currentColor !important;
+	box-sizing: border-box;
+	outline: none !important;
+	padding: 0.36em 0.66em;
+	outline-offset: 0;
+	box-shadow: none;
+	border-radius: 0;
+	-webkit-backface-visibility: hidden;
+	-webkit-appearance: none;
 }
 
 body.theme--esters .woocommerce-message .button,
@@ -123,4 +139,12 @@ body.theme--esters .woocommerce-message .button,
 }
 #content .slick-arrow.slick-next {
 	right: 0;
+}
+
+.select2-selection--single,
+.select2-selection {
+	border-color: currentColor !important;
+}
+.select2-selection__rendered {
+	color: inherit !important;
 }

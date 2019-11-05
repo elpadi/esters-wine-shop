@@ -18,10 +18,15 @@ body.theme--esters .price {
 	font-family: inherit;
 }
 
+body.theme--esters .woocommerce-info,
 body.theme--esters .woocommerce-message,
 .woocommerce-loop-product__title,
 .products .price {
 	color: inherit !important;
+}
+
+#content .entry-content .woocommerce p {
+	font-size: 1em;
 }
 
 .single-product form.cart input {
@@ -34,4 +39,8 @@ body.theme--esters .woocommerce-message,
 }
 .woocommerce #main {
 	max-width: none;
+}
+
+body.theme--esters .woocommerce-info {
+	background-color: white;
 }

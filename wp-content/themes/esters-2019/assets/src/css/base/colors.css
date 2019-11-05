@@ -1,6 +1,6 @@
 .page--calendar #main .type-page.entry,
 #theme-nav,
-body {
+body.theme--esters {
 	background-color: #f7f7ef;
 	color: #bf9d3e;
 }
@@ -48,18 +48,20 @@ body {
 .site input[type="submit"],
 .site input[type="button"],
 .site button,
-body.theme--esters .woocommerce-message .button,
+#content .woocommerce .button,
 #content .entry-content .woocommerce .btn,
 .site .btn {
 	color: white;
 	background-color: #bf9d3e;
 }
+#content .woocommerce .button:hover,
 .page--shop-landing #content .entry-content .btn:hover,
 .page--shop-landing #content .entry-content .wp-block-button__link:hover,
 .site input[type="submit"]:hover,
 .site input[type="button"]:hover,
 .site button:hover,
 .site .btn:hover {
+	color: white;
 	background-color: #a08068;
 }
 #home-slideshow a,

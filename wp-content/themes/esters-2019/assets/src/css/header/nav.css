@@ -41,8 +41,7 @@
 #theme-nav .search-field {
 	text-transform: none;
 	background-color: transparent;
-	border-style: none;
-	outline-style: none;
+	border-style: none !important;
 	color: inherit;
 	font-size: 1.4em;
 	padding: 0;

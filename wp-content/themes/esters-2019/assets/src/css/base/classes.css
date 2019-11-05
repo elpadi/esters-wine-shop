@@ -9,7 +9,7 @@
 	text-align: center;
 }
 
-body.theme--esters .woocommerce-message .button,
+#content .woocommerce .button,
 #content .wp-block-button .wp-block-button__link,
 .btn {
 	display: inline-block;
@@ -26,6 +26,9 @@ body.theme--esters .woocommerce-message .button,
 	border-radius: 4px;
 	user-select: none;
 	text-decoration: none !important;
+	font-size: 1em;
+	height: auto;
+	text-transform: uppercase;
 	touch-action: manipulation;
 }
 

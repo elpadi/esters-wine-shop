@@ -17,6 +17,7 @@
 }
 .page-template .entry-content a {
 	text-decoration: none;
+	box-shadow: none;
 }
 .page-template .entry-content a:not(.btn):hover {
 	text-decoration: underline;
