@@ -8,8 +8,6 @@
 
 form.woocommerce-checkout {
 	font-size: 0.8em;
-	background-color: white;
-	padding: 1rem;
 }
 
 #customer_details h3 {
@@ -24,10 +22,6 @@ form.woocommerce-checkout label {
 }
 #order_review th,
 #order_review td {
-	border-left-style: none;
-	border-right-style: none;
-	border-color: #eee;
-	text-align: left;
 }
 #order_review td label {
 }
@@ -48,8 +42,6 @@ form.woocommerce-checkout label {
 }
 
 .woocommerce-form-coupon {
-	background-color: white;
-	padding: 1rem;
 	margin-bottom: 2rem;
 	font-size: 0.9em;
 }
@@ -65,3 +57,27 @@ form.woocommerce-checkout label {
 #content .entry-content .woocommerce .woocommerce-form-coupon .form-row-last {
 }
 
+.woocommerce-order-overview {
+	font-size: 0.9em;
+	list-style-position: inside;
+	line-height: 1.8;
+}
+.woocommerce-order-details,
+.woocommerce-customer-details {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 48%;
+}
+.woocommerce-order-details {
+	float: left;
+}
+.woocommerce-table--order-details {
+	font-size: 0.8em;
+}
+.woocommerce-customer-details {
+	float: right;
+}
+.woocommerce-customer-details address {
+	font-size: 0.9em;
+}

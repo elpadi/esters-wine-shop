@@ -7,9 +7,6 @@
 .cart_totals td,
 .woocommerce-cart-form th,
 .woocommerce-cart-form td {
-	border-left-style: none;
-	border-right-style: none;
-	border-color: #eee;
 }
 .cart_totals th,
 .woocommerce-cart-form th {

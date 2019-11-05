@@ -25,12 +25,32 @@ body.theme--esters .woocommerce-message,
 	color: inherit !important;
 }
 
-#content .entry-content .woocommerce p {
+.woocommerce-page #page li,
+.woocommerce #page li,
+.woocommerce-page #page p,
+.woocommerce #page p {
 	font-size: 1em;
+	line-height: inherit;
+}
+.woocommerce-page #page p,
+.woocommerce #page p {
+	margin: 1em 0;
+}
+.woocommerce-page #page li,
+.woocommerce #page li {
+	margin-bottom: 0;
 }
 
 .single-product form.cart input {
 	border-color: currentColor;
+}
+
+.woocommerce-order-overview,
+.woocommerce-notice,
+form.woocommerce-checkout,
+.woocommerce-form-coupon {
+	background-color: white;
+	padding: 1rem;
 }
 
 .woocommerce #primary {
@@ -43,4 +63,19 @@ body.theme--esters .woocommerce-message,
 
 body.theme--esters .woocommerce-info {
 	background-color: white;
+}
+
+#content .woocommerce-table {
+	width: auto;
+}
+#content .woocommerce-table th,
+#content .woocommerce-table td {
+	border-left-style: none;
+	border-right-style: none;
+	border-color: #eee;
+	text-align: left;
+}
+
+.woocommerce address {
+	font-style: normal;
 }
