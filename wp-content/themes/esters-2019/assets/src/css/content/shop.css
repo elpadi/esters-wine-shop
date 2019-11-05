@@ -40,11 +40,17 @@ body.theme--esters .woocommerce-message,
 .woocommerce #page li {
 	margin-bottom: 0;
 }
+.woocommerce-page #page .entry-header,
+.woocommerce #page .entry-header {
+	margin-bottom: 7%;
+}
 
 .single-product form.cart input {
 	border-color: currentColor;
 }
 
+.cart_totals,
+.woocommerce-cart-form,
 .woocommerce-order-overview,
 .woocommerce-notice,
 form.woocommerce-checkout,
@@ -68,8 +74,8 @@ body.theme--esters .woocommerce-info {
 #content .woocommerce-table {
 	width: auto;
 }
-#content .woocommerce-table th,
-#content .woocommerce-table td {
+#content .woocommerce th,
+#content .woocommerce td {
 	border-left-style: none;
 	border-right-style: none;
 	border-color: #eee;

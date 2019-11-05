@@ -1,5 +1,6 @@
-<div id="theme-header__cart">
-	<span id="theme-header__cart__num" class="round">0</span>
+<?php global $themeData;
+?><div id="theme-header__cart">
+	<?= call_user_func($themeData['generateCartCountHTML']); ?>
 	<a href="<?= get_permalink(get_option('woocommerce_cart_page_id')); ?>"><?= theme_svg('cart','icons'); ?></a>
 </div>
 <div id="theme-header__user">

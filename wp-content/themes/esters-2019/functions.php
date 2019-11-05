@@ -228,3 +228,10 @@ if (!is_admin()) add_filter('the_title', function($title, $id) {
 	if ($post && $id == $post->ID && $title == 'Calendar') return 'Tastings At Esters';
 	return $title;
 }, 10, 2);
+
+$themeData['generateCartCountHTML'] = function() { return sprintf('<span id="theme-header__cart__num" class="round">%d</span>', WC()->cart->get_cart_contents_count()); };
+
+add_filter('woocommerce_add_to_cart_fragments', function ($fragments) use ($themeData) {
+    $fragments['#theme-header__cart__num'] = call_user_func($themeData['generateCartCountHTML']);
+    return $fragments;
+});
