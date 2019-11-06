@@ -1,3 +1,5 @@
+.woocommerce-notices-wrapper:empty,
+.woocommerce-account #page .woocommerce-MyAccount-navigation li.woocommerce-MyAccount-navigation-link--downloads,
 .woocommerce-cart-form .coupon,
 .single-product .product_meta,
 .single-product .woocommerce-tabs,
@@ -9,6 +11,7 @@
 	display: none;
 }
 
+body.theme--esters.woocommerce-account .woocommerce-MyAccount-navigation,
 body.theme--esters .woocommerce-error,
 body.theme--esters .woocommerce-info,
 body.theme--esters .woocommerce-message,
@@ -49,6 +52,12 @@ body.theme--esters .woocommerce-message,
 	border-color: currentColor;
 }
 
+.woocommerce-account .woocommerce-MyAccount-content .shop_table.subscription_details,
+.woocommerce-account .woocommerce-MyAccount-content .shop_table.order_details,
+.woocommerce-account .woocommerce-MyAccount-content .woocommerce-table--order-details,
+.woocommerce-account .woocommerce-MyAccount-content .my_account_orders,
+.woocommerce-account .woocommerce-MyAccount-content .woocommerce-customer-details address,
+.woocommerce-account .woocommerce-MyAccount-content .woocommerce-Addresses address,
 .cart_totals,
 .woocommerce-cart-form,
 .woocommerce-order-overview,
@@ -57,6 +66,17 @@ form.woocommerce-checkout,
 .woocommerce-form-coupon {
 	background-color: white;
 	padding: 1rem;
+}
+
+.woocommerce-account.user--0 .entry-content .woocommerce,
+.woocommerce-account .woocommerce-MyAccount-content .woocommerce-Addresses .woocommerce-Address,
+.woocommerce-order-details,
+.woocommerce-customer-details,
+.woocommerce-account .woocommerce-MyAccount-content .woocommerce-customer-details,
+.woocommerce-account .woocommerce-MyAccount-content .woocommerce-order-details {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .woocommerce #primary {
@@ -84,4 +104,14 @@ body.theme--esters .woocommerce-info {
 
 .woocommerce address {
 	font-style: normal;
+}
+
+.woocommerce-page .entry-content mark,
+.woocommerce-page .entry-content ins {
+	background-color: transparent;
+	font-weight: bold;
+}
+
+.woocommerce form .form-row label, .woocommerce-page form .form-row label {
+	font-size: 0.9em;
 }

@@ -7,7 +7,7 @@ ADMIN_CSS_FILES := $(wildcard src/css/base/*.css) $(shell find src/css/admin -ty
 
 CSS_SLICK_DEPS := node_modules/slick-carousel/slick/slick.css node_modules/slick-carousel/slick/slick-theme.css
 PAGE_TARGETS := $(addprefix pages/, home about our-menu calendar private-events shop-landing)
-SHOP_TARGETS := $(addprefix shop/, product-listing product cart checkout)
+SHOP_TARGETS := $(addprefix shop/, product-listing product cart checkout account)
 
 CSS_FRONT_TEMPLATE_DEPS := src/css/fonts.css ../../twentynineteen/style.css $(wildcard src/css/base/*.css) $(wildcard src/css/header/*.css) $(wildcard src/css/footer/*.css) src/css/content/template.css src/css/content/page.css src/css/content/shop.css src/css/content/notices.css
 CSS_FRONT_PAGE_HOME_DEPS := $(CSS_SLICK_DEPS) src/css/content/home.css
@@ -20,6 +20,7 @@ CSS_FRONT_SHOP_LISTING_DEPS := src/css/content/product-listing.css
 CSS_FRONT_SHOP_PRODUCT_DEPS := src/css/content/product-listing.css src/css/content/product.css
 CSS_FRONT_SHOP_CART_DEPS := src/css/content/cart.css
 CSS_FRONT_SHOP_CHECKOUT_DEPS := src/css/content/checkout.css
+CSS_FRONT_SHOP_ACCOUNT_DEPS := src/css/content/account.css
 
 CSS_FRONTEND_BUILD_TARGETS := template $(PAGE_TARGETS) $(SHOP_TARGETS)
 
@@ -87,6 +88,9 @@ src/js/main/frontend/shop/cart.js: $(JS_FRONT_SHOP_CART_DEPS)
 src/js/main/frontend/shop/checkout.js:
 	touch $@
 
+src/js/main/frontend/shop/account.js:
+	touch $@
+
 dist/frontend/template.dev.css: $(CSS_FRONT_TEMPLATE_DEPS)
 
 dist/frontend/pages/home.dev.css: $(CSS_FRONT_PAGE_HOME_DEPS)
@@ -108,6 +112,8 @@ dist/frontend/shop/product.dev.css: $(CSS_FRONT_SHOP_PRODUCT_DEPS)
 dist/frontend/shop/cart.dev.css: $(CSS_FRONT_SHOP_CART_DEPS)
 
 dist/frontend/shop/checkout.dev.css: $(CSS_FRONT_SHOP_CHECKOUT_DEPS)
+
+dist/frontend/shop/account.dev.css: $(CSS_FRONT_SHOP_ACCOUNT_DEPS)
 
 dev: $(addprefix dist/frontend/, $(addsuffix .dev.js, $(JS_FRONTEND_BUILD_TARGETS))) $(addprefix dist/frontend/, $(addsuffix .dev.css, $(CSS_FRONTEND_BUILD_TARGETS)))
 

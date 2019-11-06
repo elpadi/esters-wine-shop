@@ -49,6 +49,9 @@ call_user_func(function() {
 			if (is_checkout()) {
 				$css_paths[] = 'shop/checkout';
 			}
+			if (is_account_page()) {
+				$css_paths[] = 'shop/account';
+			}
 		}
 
 		if (is_page()) {
@@ -92,6 +95,7 @@ add_filter('js_vars', function($vars) {
 			'THEME' => get_stylesheet_directory_uri(),
 		],
 		'DEBUG' => WP_DEBUG ? 1 : 0,
+		'USER' => ['ID' => get_current_user_id()],
 		'IS_ADMIN' => is_admin(),
 	]);
 });
@@ -153,6 +157,7 @@ add_filter('body_class', function($classes) {
 	global $post;
 
 	$classes[] = 'theme--'.THEME_NAME;
+	$classes[] = 'user--'.get_current_user_id();
 
 	if (is_page()) {
 		$classes[] = "page--$post->post_name";

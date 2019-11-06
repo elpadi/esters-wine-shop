@@ -10,12 +10,15 @@ body.theme--esters {
 
 ::-webkit-search-cancel-button,
 ::-webkit-input-placeholder,
+.woocommerce-page .entry-content mark,
+.woocommerce-page .entry-content ins,
 .menu-tabs .tabs__title,
 .page--our-menu #content .menu-tabs h3,
 .page--our-menu #content .menu-tabs h4,
 #home-slideshow a:hover,
 #theme-nav a:hover,
 #masthead a:hover,
+.woocommerce-account #page .woocommerce-MyAccount-navigation a:hover,
 .site a {
 	color: #a08068;
 }

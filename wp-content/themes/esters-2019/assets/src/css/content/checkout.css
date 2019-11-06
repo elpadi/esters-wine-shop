@@ -61,9 +61,6 @@ form.woocommerce-checkout label {
 }
 .woocommerce-order-details,
 .woocommerce-customer-details {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
 	width: 48%;
 }
 .woocommerce-order-details {

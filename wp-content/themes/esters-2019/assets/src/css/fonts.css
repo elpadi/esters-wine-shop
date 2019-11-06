@@ -65,7 +65,7 @@
 #theme-nav,
 #masthead,
 body.theme--esters th,
-form.woocommerce-checkout label,
+.woocommerce form .form-row label, .woocommerce-page form .form-row label,
 #content .entry-content .woocommerce .btn,
 .page--our-menu #content .entry-content > p,
 .press-columns .wp-block-image > a::after,
