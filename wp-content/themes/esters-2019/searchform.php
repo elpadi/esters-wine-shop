@@ -1,4 +1,5 @@
 <form role="search" method="get" class="search-form" action="<?= esc_url(home_url('/')); ?>">
+	<input type="hidden" name="post_type" value="product">
 	<label>
 		<span class="screen-reader-text">Search for</span>
 		<input type="search"
