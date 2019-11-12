@@ -8,6 +8,7 @@ ADMIN_CSS_FILES := $(wildcard src/css/base/*.css) $(shell find src/css/admin -ty
 CSS_SLICK_DEPS := node_modules/slick-carousel/slick/slick.css node_modules/slick-carousel/slick/slick-theme.css
 PAGE_TARGETS := $(addprefix pages/, home about our-menu calendar private-events shop-landing)
 SHOP_TARGETS := $(addprefix shop/, product-listing product cart checkout account)
+ADMIN_TARGETS := customizer
 
 CSS_FRONT_TEMPLATE_DEPS := src/css/fonts.css ../../twentynineteen/style.css $(wildcard src/css/base/*.css) src/css/components/modal.css $(wildcard src/css/header/*.css) $(wildcard src/css/footer/*.css) src/css/content/template.css src/css/content/page.css src/css/content/shop.css src/css/content/notices.css src/css/content/order-online.css
 CSS_FRONT_PAGE_HOME_DEPS := $(CSS_SLICK_DEPS) src/css/content/home.css
@@ -37,6 +38,11 @@ JS_FRONT_SHOP_PRODUCT_DEPS := $(JS_FRONT_APP_DEPS) src/js/modules/shop/product.j
 JS_FRONT_SHOP_CART_DEPS := $(JS_FRONT_APP_DEPS) src/js/modules/shop/cart.js
 
 JS_FRONTEND_BUILD_TARGETS := page $(PAGE_TARGETS) $(SHOP_TARGETS)
+
+JS_ADMIN_CUSTOMIZER_DEPS := $(wildcard src/js/admin/customizer/*.js)
+
+DEV_TARGETS := $(addprefix dist/frontend/, $(addsuffix .dev.js, $(JS_FRONTEND_BUILD_TARGETS))) $(addprefix dist/frontend/, $(addsuffix .dev.css, $(CSS_FRONTEND_BUILD_TARGETS))) $(addprefix dist/admin/, $(addsuffix .dev.js, $(ADMIN_TARGETS)))
+PROD_TARGETS := $(subst .dev.,.prod.,$(DEV_TARGETS))
 
 none:
 	echo "Please select a target."
@@ -91,6 +97,9 @@ src/js/main/frontend/shop/checkout.js:
 src/js/main/frontend/shop/account.js:
 	touch $@
 
+src/js/main/admin/customizer.js: $(JS_ADMIN_CUSTOMIZER_DEPS)
+	touch $@
+
 dist/frontend/template.dev.css: $(CSS_FRONT_TEMPLATE_DEPS)
 
 dist/frontend/pages/home.dev.css: $(CSS_FRONT_PAGE_HOME_DEPS)
@@ -115,7 +124,7 @@ dist/frontend/shop/checkout.dev.css: $(CSS_FRONT_SHOP_CHECKOUT_DEPS)
 
 dist/frontend/shop/account.dev.css: $(CSS_FRONT_SHOP_ACCOUNT_DEPS)
 
-dev: $(addprefix dist/frontend/, $(addsuffix .dev.js, $(JS_FRONTEND_BUILD_TARGETS))) $(addprefix dist/frontend/, $(addsuffix .dev.css, $(CSS_FRONTEND_BUILD_TARGETS)))
+dev: $(DEV_TARGETS)
 
-prod: $(addprefix dist/frontend/, $(addsuffix .prod.js, $(JS_FRONTEND_BUILD_TARGETS))) $(addprefix dist/frontend/, $(addsuffix .prod.css, $(CSS_FRONTEND_BUILD_TARGETS)))
+prod: $(PROD_TARGETS)
 

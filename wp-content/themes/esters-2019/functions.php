@@ -19,19 +19,25 @@ function theme_svg($name, $dir='img') {
 }
 
 call_user_func(function() {
-	$enqueue = function() {
+	$dist_dir = get_stylesheet_directory().'/assets/dist';
+	$dist_url = get_stylesheet_directory_uri().'/assets/dist';
+
+	$env = IS_LOCAL ? 'dev' : 'prod';
+
+	$assetFilename = function($ext, $p) use ($env) { return "$p.$env.$ext"; };
+	$isValidAsset = function($dist_dir, $filename) { return is_readable("$dist_dir/$filename") && filesize("$dist_dir/$filename"); };
+
+	add_action('wp_enqueue_scripts', function() use ($dist_dir, $dist_url, $env, $assetFilename, $isValidAsset) {
 		global $post;
-		$dist_dir = get_stylesheet_directory().'/assets/dist/frontend';
-		$dist_url = get_stylesheet_directory_uri().'/assets/dist/frontend';
-
-		$env = IS_LOCAL ? 'dev' : 'prod';
-
 		$css_deps = ['wp-jquery-ui-dialog'];
 		$js_deps = ['jquery-ui-dialog','wp-api'];
 		wp_deregister_script('twentynineteen-touch-navigation');
 
 		$css_paths = ['template'];
 		$js_paths = [];
+
+		$dist_url .= '/frontend';
+		$dist_dir .= '/frontend';
 
 		if (function_exists('is_woocommerce')) {
 			//$js_paths[] = 'shop';
@@ -62,16 +68,13 @@ call_user_func(function() {
 			$js_paths[] = "pages/$post->post_name";
 		}
 
-		$assetFilename = function($ext, $p) use ($env) { return "$p.$env.$ext"; };
-		$isValidAsset = function($filename) use ($dist_dir) { return is_readable("$dist_dir/$filename") && filesize("$dist_dir/$filename"); };
-
-		foreach(F\filter(F\map($css_paths, F\partial_left($assetFilename, 'css')), $isValidAsset) as $i => $filename) {
+		foreach(F\filter(F\map($css_paths, F\partial_left($assetFilename, 'css')), F\partial_left($isValidAsset, $dist_dir)) as $i => $filename) {
 			$name = THEME_NAME.'-frontend-'.str_replace('/', '-', basename($filename));
 			wp_enqueue_style($name, "$dist_url/$filename", $css_deps, filemtime("$dist_dir/$filename"));
 		}
 
 		// add at least the default page JS file, ensuring the global.js code (imported by base/app) is always enqueued.
-		$js_names = F\filter(F\map($js_paths, F\partial_left($assetFilename, 'js')), $isValidAsset);
+		$js_names = F\filter(F\map($js_paths, F\partial_left($assetFilename, 'js')), F\partial_left($isValidAsset, $dist_dir));
 		if (empty($js_names)) $js_names[] = $assetFilename('js', 'page');
 
 		foreach($js_names as $i => $filename) {
@@ -82,9 +85,32 @@ call_user_func(function() {
 			}
 			wp_enqueue_script($name);
 		}
-	};
-	add_action('wp_enqueue_scripts', $enqueue, 100);
-	//add_action('admin_enqueue_scripts', $enqueue, 100);
+	}, 100);
+
+	add_action('admin_enqueue_scripts', function() use ($dist_dir, $dist_url, $env, $assetFilename, $isValidAsset) {
+		$css_deps = [];
+		$css_paths = [];
+
+		$js_deps = [];
+		$js_paths = [];
+
+		$dist_url .= '/admin';
+		$dist_dir .= '/admin';
+
+		if (strpos($_SERVER['REQUEST_URI'], 'customize.php') !== FALSE) {
+			$js_paths[] = 'customizer';
+		}
+
+		$js_names = F\filter(F\map($js_paths, F\partial_left($assetFilename, 'js')), F\partial_left($isValidAsset, $dist_dir));
+		foreach($js_names as $i => $filename) {
+			$name = THEME_NAME.'-'.str_replace('/', '-', $filename);
+			wp_register_script($name, "$dist_url/$filename", $js_deps, filemtime("$dist_dir/$filename"));
+			if ($i == 0) {
+				wp_localize_script($name, 'JS_ENV', apply_filters('js_vars', []));
+			}
+			wp_enqueue_script($name);
+		}
+	}, 100);
 });
 
 
@@ -202,16 +228,17 @@ add_filter('body_class', function($classes) {
 	return $classes;
 });
 
+define('ESTERS_HOME_SLIDES_COUNT_DEFAULT', 6);
 $themeData['homeSlides'] = (new CustomizerSection('home_slides','Home Slideshow'))->addFields([
-	['number','count','Slide Count'],
+	['number', 'count', 'Slide Count', [], ESTERS_HOME_SLIDES_COUNT_DEFAULT],
 ], 'theme_mod')->addFields([
-	['button','rollover','Prepend Slide',['value' => 'Prepend']],
+	['button', 'rollover', 'Prepend Slide', ['value' => 'Prepend']],
 ], 'theme_mod')->addRepeater([
 	['text','title'],
 	['image','image'],
 	['textarea','byline'],
 	['page','page'],
-], get_option('home_slides_count', 6), 'Slide', 'theme_mod');
+], get_option('home_slides_count', ESTERS_HOME_SLIDES_COUNT_DEFAULT), 'Slide', 'theme_mod');
 
 $themeData['onlineShops'] = (new CustomizerSection('online_shops','Online Shops'))->addRepeater([
 	['text','title'],
