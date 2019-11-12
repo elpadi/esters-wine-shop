@@ -219,6 +219,8 @@ $themeData['onlineShops'] = (new CustomizerSection('online_shops','Online Shops'
 ], 4, 'Shop');
 
 $themeData['contactInfo'] = (new CustomizerSection('contact_info','Contact Info'))->addFields([
+	['text','family_heading_text'],
+	['text','family_heading_url'],
 	['textarea','address'],
 	['text','map_url','Map URL'],
 	['text','phone'],

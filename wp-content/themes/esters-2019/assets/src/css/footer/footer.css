@@ -1,6 +1,11 @@
 #colophon > h2 {
 	text-align: center;
-	font-size: 1.1rem;
+}
+#footer__family-heading {
+	text-transform: uppercase;
+	font-size: 1.3rem;
+	margin-top: 0.9em;
+	margin-bottom: 0;
 }
 #colophon > .columns {
 	grid-template-columns: auto auto minmax(min-content, 380px);
@@ -13,6 +18,7 @@
 #colophon > .columns > .col {
 	border-left: 1px solid currentColor;
 	padding-left: 1.5em;
+	padding-top: 0.6em;
 }
 #colophon > .columns > .col:first-child {
 	border-left-style: none;

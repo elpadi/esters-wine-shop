@@ -6,12 +6,14 @@ $f_tpl = function($s) use ($contact) { include(__DIR__."/template-parts/footer/$
 	</div><!-- #content -->
 
 	<footer id="colophon" class="site-footer">
-		<h2 id="footer-title" class="star-heading">Contact</h2>
 		<div class="columns">
 			<div id="theme-footer__address" class="col"><?php $f_tpl('address'); ?></div>
 			<div id="theme-footer__hours" class="col"><?php $f_tpl('hours'); ?></div>
 			<div id="theme-footer__connect" class="col"><?php $f_tpl('connect'); ?></div>
 		</div>
+		<?php if ($contact['family_heading_text']): ?>
+		<h2 id="footer__family-heading" class=""><a target="_blank" rel="nofollow" href="<?= $contact['family_heading_url'] ? $contact['family_heading_url'] : '#'; ?>"><?= $contact['family_heading_text']; ?></a></h2>
+		<?php endif; ?>
 		<div id="theme-footer__legal"><?php $f_tpl('legal'); ?></div>
 	</footer><!-- #colophon -->
 
