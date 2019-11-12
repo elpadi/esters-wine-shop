@@ -73,6 +73,10 @@
 #theme-header__online-shops::after {
 	top: 0;
 }
+#theme-header__online-shops button {
+    margin: 0.9em 0.8em 0.8em;
+}
+/*
 #theme-header__online-shops nav {
 	position: relative;
 	z-index: 2;
@@ -95,3 +99,4 @@
 	display: block;
 	padding: 0.5em 0.7em;
 }
+*/

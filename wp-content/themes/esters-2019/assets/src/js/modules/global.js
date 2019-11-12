@@ -1,12 +1,12 @@
 const $ = require('jquery');
+const Esters = require('./esters');
+const Modal = require('./modal');
 
 class GlobalModule {
 
 	constructor() {
-		$('#theme-header__online-shops').addClass('double-border');
-		$('.button').addClass('btn').removeClass('button');
-		$('.woocommerce-Addresses h3').addClass('star-heading');
-		if (app.ENV.USER.ID && /\/my-account\/?/.test(location.pathname)) document.body.classList.add('my-account-dashboard');
+		app.addModule('esters', new Esters());
+		app.addModule('modal', new Modal());
 	}
 
 }

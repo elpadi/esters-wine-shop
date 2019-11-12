@@ -33,8 +33,11 @@
 .page--about .press-heading {
 	margin-top: 4rem;
 }
-.page--about .press-columns {
+.page--about #page .press-columns {
+	grid-template-columns: repeat(3, 1fr);
 	grid-gap: 1.5rem;
+	grid-auto-flow: unset;
+	text-align: center;
 }
 .press-columns .wp-block-image a,
 .press-columns .wp-block-image img {
@@ -79,6 +82,7 @@
 .press-columns .wp-block-image img {
 	position: relative;
 	z-index: 3;
+	width: 100%;
 	height: 19vw;
 	object-fit: contain;
 	transition: opacity 0.4s linear;

@@ -43,3 +43,9 @@ wp-includes/*
 wp-admin/*
 index.php
 wplib
+
+/*.png
+/*.svg
+browserconfig.xml
+site.webmanifest
+/favicon.*

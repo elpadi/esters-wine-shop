@@ -3,7 +3,8 @@ const Listing = require('./listing');
 class EventsListing extends Listing {
 
 	constructor() {
-		super('events');
+		super();
+		this.ajaxAction = 'esters_get_calendar_events';
 	}
 
 	getPostHTML(p) {

@@ -56,7 +56,7 @@ call_user_func(function() {
 
 		if (is_page()) {
 			$css_paths[] = "pages/$post->post_name";
-			if (!in_array($post->post_name, ['our-menu','private-events','shop-landing'])) {
+			if (!in_array($post->post_name, ['home','our-menu','private-events','shop-landing'])) {
 				$js_paths[] = 'page';
 			}
 			$js_paths[] = "pages/$post->post_name";
@@ -105,18 +105,43 @@ function ajax_action($tag, $fn) {
 	add_action("wp_ajax_$tag", $fn);
 }
 
+ajax_action('esters_get_calendar_events', function() {
+	header('Content-type: application/json');
+	$events = get_posts([
+		'post_status' => 'any',
+		'post_type' => 'calendar-event',
+		'nopaging' => TRUE,
+		'order' => 'ASC',
+		'date_query' => [
+			['after' => date('c', time() - (60 * 60 * 24))],
+		],
+	]);
+	echo json_encode(F\map($events, function($e) {
+		return [
+			'id' => $e->ID,
+			'type' => $e->post_type,
+			'slug' => $e->post_name,
+			'title' => ['rendered' => $e->post_title],
+			'content' => ['rendered' => apply_filters('the_content', $e->post_content)],
+		];
+	}));
+	wp_die();
+});
+
 ajax_action('icon_html', function() {
 	echo theme_svg($_GET['name'], $_GET['dir']);
 	wp_die();
 });
 
 ajax_action('instagram_feed', function() {
-	$token = get_option('api_tokens_instagram');
+	$cacheKey = 'esters_instagram_feed';
+	if ($resp = get_transient($cacheKey)) return $resp;
 	if ($token) {
 		$resp = file_get_contents(sprintf('https://api.instagram.com/v1/users/self/media/recent/?access_token=%s',
 			$token
 		));
 		if ($resp) {
+			set_transient($cacheKey, $resp, 60*60);
 			echo $resp;
 			wp_die();
 		}
@@ -178,18 +203,20 @@ add_filter('body_class', function($classes) {
 });
 
 $themeData['homeSlides'] = (new CustomizerSection('home_slides','Home Slideshow'))->addFields([
+	['number','count','Slide Count'],
+], 'theme_mod')->addFields([
 	['button','rollover','Prepend Slide',['value' => 'Prepend']],
 ], 'theme_mod')->addRepeater([
 	['text','title'],
 	['image','image'],
 	['textarea','byline'],
 	['page','page'],
-], 5, 'Slide', 'theme_mod');
+], get_option('home_slides_count', 6), 'Slide', 'theme_mod');
 
 $themeData['onlineShops'] = (new CustomizerSection('online_shops','Online Shops'))->addRepeater([
 	['text','title'],
 	['text','url','URL'],
-], 3, 'Shop');
+], 4, 'Shop');
 
 $themeData['contactInfo'] = (new CustomizerSection('contact_info','Contact Info'))->addFields([
 	['textarea','address'],
@@ -214,7 +241,7 @@ $themeData['apiTokens'] = (new CustomizerSection('api_tokens','API Tokens'))->ad
 	['text','instagram','Instagram API Access Token'],
 ]);
 
-$themeData['eventsPostType'] = new CustomType('events', 'Event');
+$themeData['eventsPostType'] = new CustomType('calendar-event', 'Event');
 
 add_action('init', function() use ($themeData) {
 	$themeData['eventsPostType']->register();
@@ -242,7 +269,7 @@ if (!is_admin()) add_filter('the_title', function($title, $id) {
 	return $title;
 }, 10, 2);
 
-$themeData['generateCartCountHTML'] = function() { return sprintf('<span id="theme-header__cart__num" class="round">%d</span>', WC()->cart->get_cart_contents_count()); };
+$themeData['generateCartCountHTML'] = function() { return sprintf('<span id="theme-header__cart__num" class="round">%d</span>', function_exists('WC') ? WC()->cart->get_cart_contents_count() : 0); };
 
 add_filter('woocommerce_add_to_cart_fragments', function ($fragments) use ($themeData) {
     $fragments['#theme-header__cart__num'] = call_user_func($themeData['generateCartCountHTML']);

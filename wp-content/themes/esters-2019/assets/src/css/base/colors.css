@@ -87,6 +87,9 @@ body.theme--esters {
 	border-bottom: 1px solid #bf9d3e;
 }
 
+#order-online-modal h1,
+#order-online-modal nav a,
+.modal .modal__close-btn,
 #home-slideshow h2,
 #home-slideshow h3 {
 	color: white;

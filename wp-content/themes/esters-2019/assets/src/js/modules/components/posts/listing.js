@@ -1,11 +1,13 @@
 class Listing {
 
-	constructor(apiEndpoint='post') {
-		this.apiEndpoint = apiEndpoint;
+	constructor() {
 	}
 
 	fetch() {
-		return app.fetchPosts(this.apiEndpoint).then(posts => {
+		return (('apiEndpoint' in this)
+			? app.fetchPosts(this.apiEndpoint, this.apiParams)
+			: app.ajax({ action: this.ajaxAction })
+		).then(posts => {
 			console.log('Listing.fetch', posts);
 			this.posts = posts;
 		});

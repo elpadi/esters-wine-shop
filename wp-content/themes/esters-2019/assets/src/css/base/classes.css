@@ -1,14 +1,18 @@
-.hlist {
+.vlist, .hlist {
 	display: flex;
 	list-style-type: none;
 	margin: 0;
 	padding: 0;
+}
+.vlist {
+	flex-direction: column;
 }
 
 .wp-block-button {
 	text-align: center;
 }
 
+body button,
 #content .woocommerce .button,
 #content .wp-block-button .wp-block-button__link,
 .btn {
@@ -31,6 +35,11 @@
 	text-transform: uppercase;
 	touch-action: manipulation;
 }
+body .btn.clean-btn,
+body .btn.clean-btn:hover {
+	color: inherit;
+	background-color: transparent;
+}
 
 .double-border {
 	position: relative;
@@ -51,4 +60,16 @@
 	right: 4px;
 	bottom: 4px;
 	left: 4px;
+}
+
+.background,
+.foreground,
+.modal {
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
 }

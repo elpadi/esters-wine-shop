@@ -1,6 +1,10 @@
 .page-template #main {
 	padding-bottom: 2rem;
 }
+.page-template.content-bg-pattern #main {
+	padding-bottom: 0;
+	border-bottom-style: none;
+}
 .page-template #main .entry-content {
 	margin-top: 1rem;
 }

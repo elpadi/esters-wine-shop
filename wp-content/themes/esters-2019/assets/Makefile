@@ -9,7 +9,7 @@ CSS_SLICK_DEPS := node_modules/slick-carousel/slick/slick.css node_modules/slick
 PAGE_TARGETS := $(addprefix pages/, home about our-menu calendar private-events shop-landing)
 SHOP_TARGETS := $(addprefix shop/, product-listing product cart checkout account)
 
-CSS_FRONT_TEMPLATE_DEPS := src/css/fonts.css ../../twentynineteen/style.css $(wildcard src/css/base/*.css) $(wildcard src/css/header/*.css) $(wildcard src/css/footer/*.css) src/css/content/template.css src/css/content/page.css src/css/content/shop.css src/css/content/notices.css
+CSS_FRONT_TEMPLATE_DEPS := src/css/fonts.css ../../twentynineteen/style.css $(wildcard src/css/base/*.css) src/css/components/modal.css $(wildcard src/css/header/*.css) $(wildcard src/css/footer/*.css) src/css/content/template.css src/css/content/page.css src/css/content/shop.css src/css/content/notices.css src/css/content/order-online.css
 CSS_FRONT_PAGE_HOME_DEPS := $(CSS_SLICK_DEPS) src/css/content/home.css
 CSS_FRONT_PAGE_ABOUT_DEPS := src/css/content/about.css
 CSS_FRONT_PAGE_MENU_DEPS := src/css/components/tabs.css src/css/content/menu.css
@@ -24,7 +24,7 @@ CSS_FRONT_SHOP_ACCOUNT_DEPS := src/css/content/account.css
 
 CSS_FRONTEND_BUILD_TARGETS := template $(PAGE_TARGETS) $(SHOP_TARGETS)
 
-JS_FRONT_APP_DEPS := $(wildcard src/js/base/*.js) src/js/modules/global.js
+JS_FRONT_APP_DEPS := $(wildcard src/js/base/*.js) src/js/modules/global.js src/js/modules/esters.js src/js/modules/modal.js
 JS_FRONT_PAGE_DEPS := $(JS_FRONT_APP_DEPS) src/js/modules/page.js src/js/modules/pages/columnize-text.js
 JS_FRONT_PAGE_HOME_DEPS := $(JS_FRONT_APP_DEPS) src/js/modules/pages/home.js src/js/modules/components/slider.js
 JS_FRONT_PAGE_ABOUT_DEPS := $(JS_FRONT_PAGE_DEPS) src/js/modules/pages/about.js src/js/modules/components/media/grid.js src/js/modules/components/media/instagram-slider.js src/js/modules/components/social/instagram.js

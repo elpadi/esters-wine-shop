@@ -11,11 +11,8 @@ class WP {
 		});
 	}
 
-	static fetchPosts(type='pages', ids='', context='edit') {
-		return WP.apiRequest(type, {
-			context: context,
-			include: ids
-		});
+	static fetchPosts(type='pages', params={}) {
+		return WP.apiRequest(type, params);
 	}
 
 	static ajax(data, method='GET') {
@@ -23,7 +20,7 @@ class WP {
 			throw 'Invalid argument for ajax data. Missing the action property.';
 		}
 		console.log('AdminApp.ajax', data, method);
-		return $[method.toLowerCase()](TOME.URLS.ADMIN + 'admin-ajax.php', data, resp => {
+		return $[method.toLowerCase()](app.ENV.URLS.AJAX, data, resp => {
 			if (typeof(resp) == 'object') {
 				if (('success' in resp) && ('data' in resp)) {
 					if (typeof(resp.data) == 'object') {

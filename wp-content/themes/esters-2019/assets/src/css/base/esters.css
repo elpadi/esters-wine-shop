@@ -89,10 +89,18 @@ body.theme--esters .woocommerce-message .button,
 	color: inherit;
 	padding: 0.3em;
 }
+.site .clean-btn {
+	padding: 0;
+}
+.site .slick-arrow {
+	padding: 0.3em;
+}
 .site .clean-btn,
 .site .round {
 	display: inline-block;
 	box-sizing: content-box;
+}
+.site .round {
 	width: 1em;
 	bottom: 1em;
 	line-height: 1;

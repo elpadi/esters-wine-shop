@@ -65,6 +65,9 @@
 #theme-nav,
 #masthead,
 body.theme--esters th,
+#order-online-modal nav,
+#theme-header__online-shops button,
+.modal .modal__close-btn,
 .woocommerce form .form-row label, .woocommerce-page form .form-row label,
 #content .entry-content .woocommerce .btn,
 .page--our-menu #content .entry-content > p,
@@ -81,6 +84,7 @@ body.theme--esters th,
 	text-shadow: #000 2px 1px 8px;
 }
 
+#order-online-modal h1,
 #order_review td label,
 .page--our-menu #content .menu-tabs h4,
 .menu-tabs .tabs__title,
@@ -91,6 +95,7 @@ body.theme--esters,
 .site .btn {
 	font-family: "Generell TW-Regular", Garamond, serif;
 }
+#order-online-modal h1,
 .site button,
 #content .wp-block-button .wp-block-button__link,
 .site .btn {

@@ -16,6 +16,7 @@ $f_tpl = function($s) use ($contact) { include(__DIR__."/template-parts/footer/$
 	</footer><!-- #colophon -->
 
 </div><!-- #page -->
+<div id="order-online-modal" class="modal"><?php include(__DIR__."/template-parts/modal/order-online.php"); ?></div>
 <?php
 wp_footer();
 //include(__DIR__.'/template-parts/components/spinner.php');

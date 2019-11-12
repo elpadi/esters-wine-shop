@@ -1,0 +1,21 @@
+body[data-has-modal="true"] {
+	overflow: hidden;
+}
+body .modal {
+	color: white;
+	position: fixed;
+	z-index: 100;
+	transform: translateY(-100%);
+	transition: transform 0.2s ease-out 0s;
+}
+body .modal.visible {
+	transform: translateY(0);
+	transition: transform 0.2s ease-out 0.1s;
+}
+.modal .modal__close-btn {
+	text-transform: uppercase;
+	position: absolute;
+	top: 1em;
+	right: 1em;
+	font-size: 1.1em;
+}

@@ -65,14 +65,20 @@ class App {
 		return WP.apiRequest(endpoint, data);
 	}
 
-	fetchPosts(type='pages', ids='', context='edit') {
-		return WP.fetchPosts(type, ids, context);
+	fetchPosts(type='pages', params={}) {
+		return WP.fetchPosts(type, params);
 	}
 
 	resize() {
 		this.vw = window.innerWidth;
 		this.vh = window.innerHeight;
 		this.dispatch('resize', this.vw, this.vh);
+	}
+
+	addModule(name, instance) {
+		if (name in this.instances) throw `Module name "${name}" is already in use.`;
+		this.instances[name] = instance;
+		return this;
 	}
 
 	dispatch(evtName, ...vars) {
