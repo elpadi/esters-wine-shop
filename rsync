@@ -1,7 +1,7 @@
 #!/bin/bash
 
 URL="kathrynesterswine@esterswineshop.com"
-REMOTE_DIR="/home/kathrynesterswine/esterswineshop.com"
+REMOTE_DIR="/home/kathrynesterswine/theme2019.esterswineshop.com"
 
 while [[ $# > 0 ]]; do
 	printf "\n\nSynching %s\n" "$1"

@@ -1,41 +1,35 @@
 #!/bin/bash
 
-SSH_ACCOUNT="kathrynesterswine@esterswineshop.com"
-SERVER_PATH="/home/kathrynesterswine/esterswineshop.com"
+URL="kathrynesterswine@esterswineshop.com"
+REMOTE_DIR="/home/kathrynesterswine/theme2019.esterswineshop.com"
 
 upload() {
 	echo "Uploading $1"
-	_stgPath=$(echo $1 | sed 's,themes/esters/,themes/esters-staging/,')
-	scp -r "$1" "$SSH_ACCOUNT:$SERVER_PATH/$_stgPath"
+	scp -r "$1" "$URL:$REMOTE_DIR/$1"
 }
 
 download() {
 	echo "Downloading $1"
-	_stgPath=$(echo $1 | sed 's,themes/esters/,themes/esters-staging/,')
-	scp -r "$SSH_ACCOUNT:$SERVER_PATH/$_stgPath" "$_stgPath"
+	scp -r "$URL:$REMOTE_DIR/$1" "$1"
 }
 
-if [[ -z "$1" ]]; then
-	echo "First argument must be the path to transfer"
-	exit 1;
+if [[ $# == 0 ]]; then
+	echo "No path or action specified."
+	exit 1
 fi
 
-if [[ -n "$3" ]]; then
-	echo "Second argument must be d or u"
-	exit 1;
-fi
-
-if [[ "$1" == 'all' ]]; then
-	for f in $(git status -s | grep '^ \(M\|A\)' | awk '{ print $2; }'); do
-		upload "$f"
-	done
-else
-	if [[ "$2" == 'u' ]]; then
-		upload "$1"
+while [[ $# > 0 ]]; do
+	if [[ -z $ACTION ]]; then
+		if [[ "$1" != "u" ]] && [[ "$1" != "d" ]]; then
+			echo "First param must be 'u' or 'd'"
+			exit 1
+		fi
+		ACTION="$1"
+	else
+		if [[ "$ACTION" == "u" ]]; then upload "$1"; fi
+		if [[ "$ACTION" == "d" ]]; then download "$1"; fi
 	fi
-	if [[ "$2" == 'd' ]]; then
-		download "$1"
-	fi
-fi
+	shift
+done
 
 exit 0
