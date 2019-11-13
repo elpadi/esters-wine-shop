@@ -8,6 +8,13 @@ class Esters {
 		$('.woocommerce-Addresses h3').addClass('star-heading');
 
 		if (app.ENV.USER.ID && /\/my-account\/?/.test(location.pathname)) document.body.classList.add('my-account-dashboard');
+
+		$('.search-form').on('submit', e => {
+			if (e.target.s.value == '') {
+				e.preventDefault();
+				e.target.classList.add('active');
+			}
+		});
 	}
 
 }

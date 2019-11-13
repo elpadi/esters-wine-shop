@@ -37,6 +37,7 @@
 #theme-nav .search-form {
 	display: flex;
 	align-items: center;
+	margin-right: 0.8em;
 }
 #theme-nav .search-field {
 	text-transform: none;
@@ -52,11 +53,30 @@
 	color: inherit;
 	background-color: inherit;
 }
+#theme-nav .search-form button[type="reset"],
+#theme-nav .search-form label {
+	overflow: hidden;
+	opacity: 0;
+	width: 0;
+	transition: opacity 0.2s linear 0s, width 0.1s linear 0.2s;
+}
+#theme-nav .search-form.active button[type="reset"],
+#theme-nav .search-form.active label {
+	opacity: 1;
+	width: 100px;
+	transition: opacity 0.2s linear 0.1s, width 0.1s linear 0s;
+}
 #theme-nav .search-form button {
 	font-size: 1.8em;
+	display: inline-flex;
+	height: 1.2em;
+	padding-bottom: 0.1em;
 }
 #theme-nav .search-form button[type="reset"] {
 	visibility: hidden;
+}
+#theme-nav .search-form.active button[type="reset"] {
+	width: 28px;
 }
 #theme-nav .search-form:hover button[type="reset"],
 #theme-nav .search-form:focus button[type="reset"] {
