@@ -24,6 +24,8 @@ $h_tpl = function($s) { include(__DIR__."/template-parts/header/$s.php"); };
 			<h1 id="theme-header__logo"><a href="<?= home_url(); ?>"><?= theme_svg('logo'); ?></a></h1>
 			<div id="theme-header__account" class="hlist"><?php $h_tpl('account'); ?></div>
 			<div id="theme-header__online-shops"><?php $h_tpl('online-shops'); ?></div>
+			<button class="burger-btn burger-expand-btn clean-btn icon-btn btn"><?= theme_svg('burger','icons'); ?></button>
+			<button class="burger-btn burger-collapse-btn clean-btn icon-btn btn"><?= theme_svg('no-alt','icons'); ?></button>
 		</header><!-- #masthead -->
 		<nav id="theme-nav">
 			<?php wp_nav_menu(['theme_location' => 'menu-1', 'menu_class' => 'main-menu hlist']); ?>

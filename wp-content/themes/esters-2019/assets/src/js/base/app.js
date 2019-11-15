@@ -12,6 +12,7 @@ class App {
 		this.modules = { global: GlobalModule };
 		this.instances = {};
 		this.ENV = global.JS_ENV;
+		this.hasCreatedInstances = false;
 	}
 
 	init() {
@@ -75,9 +76,15 @@ class App {
 		this.dispatch('resize', this.vw, this.vh);
 	}
 
-	addModule(name, instance) {
-		if (name in this.instances) throw `Module name "${name}" is already in use.`;
-		this.instances[name] = instance;
+	addModule(name, module) {
+		if (this.hasCreatedInstances) {
+			if (name in this.instances) throw `Module name "${name}" is already in use.`;
+			this.createModuleInstance(module, name);
+		}
+		else {
+			if (name in this.modules) throw `Module name "${name}" is already in use.`;
+			this.modules[name] = module;
+		}
 		return this;
 	}
 
@@ -95,13 +102,15 @@ class App {
 		}
 	}
 
+	createModuleInstance(module, name) {
+		this.instances[name] = new module(this);
+		this.instances[name].app = this;
+	}
+
 	onDocReady() {
+		this.hasCreatedInstances = true;
 		console.log('App.onDocReady', this.modules, document.body.className);
-		for (let name in this.modules) {
-			let m = this.modules[name];
-			this.instances[name] = new m(this);
-			this.instances[name].app = this;
-		}
+		for (let name of Object.keys(this.modules)) this.createModuleInstance(this.modules[name], name);
 	}
 
 }

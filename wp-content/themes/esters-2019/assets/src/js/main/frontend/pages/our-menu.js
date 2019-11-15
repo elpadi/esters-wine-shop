@@ -1,7 +1,6 @@
-const App = require('../../../base/app');
-const app = new App();
+const MenuPage = require('../../../modules/pages/menu');
 
-app.modules['menu'] = require('../../../modules/pages/menu');
-
-app.init();
-window.app = app;
+if ('app' in window) {
+	window.app.addModule('menupage', MenuPage);
+}
+else console.error('App is not loaded');

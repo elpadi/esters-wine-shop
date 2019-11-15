@@ -10,7 +10,7 @@ PAGE_TARGETS := $(addprefix pages/, home about our-menu calendar private-events 
 SHOP_TARGETS := $(addprefix shop/, product-listing product cart checkout account)
 ADMIN_TARGETS := customizer
 
-CSS_FRONT_TEMPLATE_DEPS := src/css/fonts.css ../../twentynineteen/style.css $(wildcard src/css/base/*.css) src/css/components/modal.css $(wildcard src/css/header/*.css) $(wildcard src/css/footer/*.css) src/css/content/template.css src/css/content/page.css src/css/content/shop.css src/css/content/notices.css src/css/content/order-online.css
+CSS_FRONT_TEMPLATE_DEPS := src/css/fonts.css ../../twentynineteen/style.css $(wildcard src/css/base/*.css) src/css/components/modal.css $(wildcard src/css/header/*.css) $(wildcard src/css/footer/*.css) src/css/content/template.css src/css/content/page.css src/css/content/shop.css src/css/content/notices.css src/css/content/order-online.css src/css/responsive/header.css src/css/responsive/footer.css
 CSS_FRONT_PAGE_HOME_DEPS := $(CSS_SLICK_DEPS) src/css/content/home.css
 CSS_FRONT_PAGE_ABOUT_DEPS := src/css/content/about.css
 CSS_FRONT_PAGE_MENU_DEPS := src/css/components/tabs.css src/css/content/menu.css
@@ -25,23 +25,24 @@ CSS_FRONT_SHOP_ACCOUNT_DEPS := src/css/content/account.css
 
 CSS_FRONTEND_BUILD_TARGETS := template $(PAGE_TARGETS) $(SHOP_TARGETS)
 
-JS_FRONT_APP_DEPS := $(wildcard src/js/base/*.js) src/js/modules/global.js src/js/modules/esters.js src/js/modules/modal.js
-JS_FRONT_PAGE_DEPS := $(JS_FRONT_APP_DEPS) src/js/modules/page.js src/js/modules/pages/columnize-text.js
-JS_FRONT_PAGE_HOME_DEPS := $(JS_FRONT_APP_DEPS) src/js/modules/pages/home.js src/js/modules/components/slider.js
-JS_FRONT_PAGE_ABOUT_DEPS := $(JS_FRONT_PAGE_DEPS) src/js/modules/pages/about.js src/js/modules/components/media/grid.js src/js/modules/components/media/instagram-slider.js src/js/modules/components/social/instagram.js
-JS_FRONT_PAGE_MENU_DEPS := $(JS_FRONT_APP_DEPS) src/js/modules/pages/menu.js $(wildcard src/js/modules/components/tabs/*.js)
-JS_FRONT_PAGE_CALENDAR_DEPS := $(JS_FRONT_APP_DEPS) src/js/modules/pages/calendar.js src/js/modules/components/posts/listing.js src/js/modules/components/posts/events-listing.js
-JS_FRONT_PAGE_PRIVATE_EVENTS_DEPS := $(JS_FRONT_APP_DEPS) src/js/modules/pages/private-events.js src/js/modules/components/slider.js
-JS_FRONT_SHOP_LANDING_DEPS := $(JS_FRONT_APP_DEPS) src/js/modules/pages/shop-landing.js
-JS_FRONT_SHOP_LISTING_DEPS := $(JS_FRONT_APP_DEPS) src/js/modules/shop/product-listing.js
-JS_FRONT_SHOP_PRODUCT_DEPS := $(JS_FRONT_APP_DEPS) src/js/modules/shop/product.js
-JS_FRONT_SHOP_CART_DEPS := $(JS_FRONT_APP_DEPS) src/js/modules/shop/cart.js
+JS_APP_DEPS := $(wildcard src/js/base/*.js) src/js/modules/global.js src/js/modules/esters.js src/js/modules/modal.js
+
+JS_FRONT_PAGE_DEPS := src/js/modules/page.js src/js/modules/pages/columnize-text.js
+JS_FRONT_PAGE_HOME_DEPS := src/js/modules/pages/home.js src/js/modules/components/slider.js
+JS_FRONT_PAGE_ABOUT_DEPS := src/js/modules/pages/about.js src/js/modules/components/media/grid.js src/js/modules/components/media/instagram-slider.js src/js/modules/components/social/instagram.js
+JS_FRONT_PAGE_MENU_DEPS := src/js/modules/pages/menu.js $(wildcard src/js/modules/components/tabs/*.js)
+JS_FRONT_PAGE_CALENDAR_DEPS := src/js/modules/pages/calendar.js src/js/modules/components/posts/listing.js src/js/modules/components/posts/events-listing.js
+JS_FRONT_PAGE_PRIVATE_EVENTS_DEPS := src/js/modules/pages/private-events.js src/js/modules/components/slider.js
+JS_FRONT_SHOP_LANDING_DEPS := src/js/modules/pages/shop-landing.js
+JS_FRONT_SHOP_LISTING_DEPS := src/js/modules/shop/product-listing.js
+JS_FRONT_SHOP_PRODUCT_DEPS := src/js/modules/shop/product.js
+JS_FRONT_SHOP_CART_DEPS := src/js/modules/shop/cart.js
 
 JS_FRONTEND_BUILD_TARGETS := page $(PAGE_TARGETS) $(SHOP_TARGETS)
 
 JS_ADMIN_CUSTOMIZER_DEPS := $(wildcard src/js/admin/customizer/*.js)
 
-DEV_TARGETS := $(addprefix dist/frontend/, $(addsuffix .dev.js, $(JS_FRONTEND_BUILD_TARGETS))) $(addprefix dist/frontend/, $(addsuffix .dev.css, $(CSS_FRONTEND_BUILD_TARGETS))) $(addprefix dist/admin/, $(addsuffix .dev.js, $(ADMIN_TARGETS)))
+DEV_TARGETS := dist/app.dev.js $(addprefix dist/frontend/, $(addsuffix .dev.js, $(JS_FRONTEND_BUILD_TARGETS))) $(addprefix dist/frontend/, $(addsuffix .dev.css, $(CSS_FRONTEND_BUILD_TARGETS))) $(addprefix dist/admin/, $(addsuffix .dev.js, $(ADMIN_TARGETS)))
 PROD_TARGETS := $(subst .dev.,.prod.,$(DEV_TARGETS))
 
 none:
@@ -60,6 +61,9 @@ dist/%.dev.css:
 dist/%.prod.css: dist/%.dev.css
 	cleancss -O2 -o $@ $^
 	postcss -o $@ $@
+
+src/js/main/app.js: $(JS_APP_DEPS)
+	touch $@
 
 src/js/main/frontend/page.js: $(JS_FRONT_PAGE_DEPS)
 	touch $@

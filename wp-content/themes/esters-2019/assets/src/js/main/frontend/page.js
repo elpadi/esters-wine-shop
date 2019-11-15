@@ -1,7 +1,6 @@
-const App = require('../../base/app');
-const app = new App();
+const ColumnizeText = require('../../modules/pages/columnize-text');
 
-app.modules['textcolumns'] = require('../../modules/pages/columnize-text');
-
-app.init();
-window.app = app;
+if ('app' in window) {
+	window.app.addModule('textcolumns', ColumnizeText);
+}
+else console.error('App is not loaded');

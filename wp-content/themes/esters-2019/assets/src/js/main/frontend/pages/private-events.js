@@ -1,7 +1,6 @@
-const App = require('../../../base/app');
-const app = new App();
+const PrivateEventsPage = require('../../../modules/pages/private-events');
 
-app.modules['private_events'] = require('../../../modules/pages/private-events');
-
-app.init();
-window.app = app;
+if ('app' in window) {
+	window.app.addModule('eventspage', PrivateEventsPage);
+}
+else console.error('App is not loaded');

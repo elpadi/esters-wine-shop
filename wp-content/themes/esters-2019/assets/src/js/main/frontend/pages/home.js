@@ -1,7 +1,6 @@
-const App = require('../../../base/app');
-const app = new App();
+const HomePage = require('../../../modules/pages/home');
 
-app.modules['home'] = require('../../../modules/pages/home');
-
-app.init();
-window.app = app;
+if ('app' in window) {
+	window.app.addModule('homepage', HomePage);
+}
+else console.error('App is not loaded');

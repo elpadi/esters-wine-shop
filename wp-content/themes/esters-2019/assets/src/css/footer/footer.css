@@ -3,26 +3,15 @@
 }
 #footer__family-heading {
 	text-transform: uppercase;
-	font-size: 1.3rem;
 	margin-top: 0.9em;
 	margin-bottom: 0;
 }
 #colophon > .columns {
-	grid-template-columns: auto auto minmax(min-content, 380px);
 	font-size: 0.8rem;
 	line-height: 1.5;
 	max-width: 1160px;
 	padding: 0 10px;
 	margin: auto;
-}
-#colophon > .columns > .col {
-	border-left: 1px solid currentColor;
-	padding-left: 1.5em;
-	padding-top: 0.6em;
-}
-#colophon > .columns > .col:first-child {
-	border-left-style: none;
-	padding-left: 0;
 }
 #colophon > .columns p {
 	margin: 0;

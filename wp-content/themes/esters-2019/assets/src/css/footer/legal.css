@@ -5,12 +5,11 @@
 	font-size: 0.82rem;
 	border-top: 1px solid currentColor;
 	margin-top: 0.6em;
+	padding: 0 10px;
 }
 #legal__copyright {
 }
 #legal__pages {
-	list-style-type: disc;
-	margin-left: 6px;
 }
 #legal__pages > li {
 	margin-left: 24px;

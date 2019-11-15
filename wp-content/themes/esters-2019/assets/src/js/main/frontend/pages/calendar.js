@@ -1,7 +1,6 @@
-const App = require('../../../base/app');
-const app = new App();
+const CalendarPage = require('../../../modules/pages/calendar');
 
-app.modules['calendar'] = require('../../../modules/pages/calendar');
-
-app.init();
-window.app = app;
+if ('app' in window) {
+	window.app.addModule('calendarpage', CalendarPage);
+}
+else console.error('App is not loaded');

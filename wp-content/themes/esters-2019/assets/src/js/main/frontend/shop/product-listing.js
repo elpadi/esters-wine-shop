@@ -1,7 +1,6 @@
-const App = require('../../../base/app');
-const app = new App();
+const ProductListingPage = require('../../../modules/shop/product-listing');
 
-app.modules['listing'] = require('../../../modules/shop/product-listing');
-
-app.init();
-window.app = app;
+if ('app' in window) {
+	window.app.addModule('listingpage', ProductListingPage);
+}
+else console.error('App is not loaded');

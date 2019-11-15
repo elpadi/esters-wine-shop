@@ -5,8 +5,8 @@ const Modal = require('./modal');
 class GlobalModule {
 
 	constructor() {
-		app.addModule('esters', new Esters());
-		app.addModule('modal', new Modal());
+		app.addModule('esters', Esters);
+		app.addModule('modal', Modal);
 	}
 
 }

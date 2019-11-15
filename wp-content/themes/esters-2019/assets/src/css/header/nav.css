@@ -6,12 +6,6 @@
 	align-items: center;
 	text-transform: uppercase;
 	margin-bottom: 4px;
-	position: sticky;
-	top: 0;
-	z-index: 30;
-}
-.admin-bar #theme-nav {
-	top: 32px;
 }
 #theme-nav > hr {
 	position: absolute;
@@ -37,7 +31,7 @@
 #theme-nav .search-form {
 	display: flex;
 	align-items: center;
-	margin-right: 0.8em;
+	font-size: 0.8em;
 }
 #theme-nav .search-field {
 	text-transform: none;
@@ -63,8 +57,10 @@
 #theme-nav .search-form.active button[type="reset"],
 #theme-nav .search-form.active label {
 	opacity: 1;
-	width: 100px;
 	transition: opacity 0.2s linear 0.1s, width 0.1s linear 0s;
+}
+#theme-nav .search-form.active label {
+	width: 7em;
 }
 #theme-nav .search-form button {
 	font-size: 1.8em;

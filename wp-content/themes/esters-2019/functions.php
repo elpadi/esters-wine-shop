@@ -27,10 +27,23 @@ call_user_func(function() {
 	$assetFilename = function($ext, $p) use ($env) { return "$p.$env.$ext"; };
 	$isValidAsset = function($dist_dir, $filename) { return is_readable("$dist_dir/$filename") && filesize("$dist_dir/$filename"); };
 
-	add_action('wp_enqueue_scripts', function() use ($dist_dir, $dist_url, $env, $assetFilename, $isValidAsset) {
+	$registerApp = function($js_deps=[]) use ($env, $dist_dir, $dist_url) {
+		$name = THEME_NAME.'-app';
+		$filename = "app.$env.js";
+		wp_register_script($name, "$dist_url/$filename", $js_deps, filemtime("$dist_dir/$filename"));
+		wp_localize_script($name, 'JS_ENV', apply_filters('js_vars', []));
+		return $name;
+	};
+
+	$vars = get_defined_vars();
+
+	add_action('wp_enqueue_scripts', function() use ($vars) {
 		global $post;
+
+		extract($vars);
+
 		$css_deps = ['wp-jquery-ui-dialog'];
-		$js_deps = ['jquery-ui-dialog','wp-api'];
+		$js_deps = [$registerApp(['jquery-ui-dialog','wp-api'])];
 		wp_deregister_script('twentynineteen-touch-navigation');
 
 		$css_paths = ['template'];
@@ -79,19 +92,17 @@ call_user_func(function() {
 
 		foreach($js_names as $i => $filename) {
 			$name = THEME_NAME.'-'.str_replace('/', '-', $filename);
-			wp_register_script($name, "$dist_url/$filename", $js_deps, filemtime("$dist_dir/$filename"));
-			if ($i == 0) {
-				wp_localize_script($name, 'JS_ENV', apply_filters('js_vars', []));
-			}
-			wp_enqueue_script($name);
+			wp_enqueue_script($name, "$dist_url/$filename", $js_deps, filemtime("$dist_dir/$filename"));
 		}
 	}, 100);
 
-	add_action('admin_enqueue_scripts', function() use ($dist_dir, $dist_url, $env, $assetFilename, $isValidAsset) {
+	add_action('admin_enqueue_scripts', function() use ($vars) {
+		extract($vars);
+
 		$css_deps = [];
 		$css_paths = [];
 
-		$js_deps = [];
+		$js_deps = [$registerApp()];
 		$js_paths = [];
 
 		$dist_url .= '/admin';
@@ -104,11 +115,7 @@ call_user_func(function() {
 		$js_names = F\filter(F\map($js_paths, F\partial_left($assetFilename, 'js')), F\partial_left($isValidAsset, $dist_dir));
 		foreach($js_names as $i => $filename) {
 			$name = THEME_NAME.'-'.str_replace('/', '-', $filename);
-			wp_register_script($name, "$dist_url/$filename", $js_deps, filemtime("$dist_dir/$filename"));
-			if ($i == 0) {
-				wp_localize_script($name, 'JS_ENV', apply_filters('js_vars', []));
-			}
-			wp_enqueue_script($name);
+			wp_enqueue_script($name, "$dist_url/$filename", $js_deps, filemtime("$dist_dir/$filename"));
 		}
 	}, 100);
 });
