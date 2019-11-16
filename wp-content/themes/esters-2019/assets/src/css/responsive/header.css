@@ -171,3 +171,8 @@ body[data-is-burger-expanded="true"] .burger-expand-btn {
 	}
 }
 
+@media (min-width: 768px) {
+	#theme-nav {
+		font-size: 0.7em;
+	}
+}

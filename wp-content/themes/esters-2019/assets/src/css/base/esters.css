@@ -109,6 +109,9 @@ body.theme--esters .woocommerce-message .button,
 	border-radius: 50%;
 	text-align: center;
 }
+.wp-block-button__link {
+	max-width: 80vw;
+}
 
 .columns {
 	display: grid;

@@ -34,3 +34,9 @@
 	width: 100%;
 	height: auto;
 }
+
+.entry.type-page > .entry-content > p {
+	max-width: 720px;
+	margin-left: auto;
+	margin-right: auto;
+}

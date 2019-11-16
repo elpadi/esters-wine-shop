@@ -48,7 +48,6 @@
 		flex-direction: row;
 	}
 	#legal__pages {
-		list-style-type: disc;
 		margin-bottom: 0;
 		margin-left: 6px;
 	}
@@ -57,5 +56,15 @@
 	}
 	#theme-footer__newsletter {
 		margin: 0;
+	}
+}
+@media (min-width: 951px) {
+	#colophon {
+		margin-bottom: 0;
+	}
+}
+@media (min-width: 960px) {
+	#legal__pages {
+		list-style-type: disc;
 	}
 }
