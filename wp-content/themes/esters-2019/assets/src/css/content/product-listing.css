@@ -15,14 +15,40 @@
 .product-listing .woocommerce-pagination {
 	text-align: center;
 }
+
 .product-listing #primary {
 	background-color: white;
 	border: 1px solid currentColor;
-	padding: 1.5rem;
+	padding: 3.5%;
+	margin: 0 auto;
+	max-width: 940px;
 }
+.product-listing #main {
+	margin: 0;
+}
+@media (min-width: 940px) {
+	.product-listing #primary {
+		padding: 1.5rem;
+		margin-top: calc((100vw - 940px) * 0.5);
+		margin-bottom: calc((100vw - 940px) * 0.5);
+	}
+}
+@media (min-width: 1060px) {
+	.product-listing #primary {
+		margin-top: 60px;
+		margin-bottom: 60px;
+	}
+}
+
 .product-listing #main .products {
-	font-size: 0.85em;
+	font-size: 5vw;
 }
+@media (min-width: 380px) {
+	.product-listing #main .products {
+		font-size: 0.85em;
+	}
+}
+
 .product-listing #main .products img {
 	width: 100%;
 }
