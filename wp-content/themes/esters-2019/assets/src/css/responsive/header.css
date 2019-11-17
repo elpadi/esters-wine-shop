@@ -117,6 +117,7 @@ body[data-is-burger-expanded="true"] .burger-expand-btn {
 	}
 	#masthead {
 		align-items: flex-end;
+		border-bottom-style: none;
 	}
 	#theme-header__bird {
 		position: static;
@@ -171,7 +172,7 @@ body[data-is-burger-expanded="true"] .burger-expand-btn {
 	}
 }
 
-@media (min-width: 768px) {
+@media (min-width: 940px) {
 	#theme-nav {
 		font-size: 0.7em;
 	}

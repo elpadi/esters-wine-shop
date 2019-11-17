@@ -145,9 +145,11 @@ ajax_action('esters_get_calendar_events', function() {
 		'post_type' => 'calendar-event',
 		'nopaging' => TRUE,
 		'order' => 'ASC',
+		/*
 		'date_query' => [
 			['after' => date('c', time() - (60 * 60 * 24))],
 		],
+		 */
 	]);
 	echo json_encode(F\map($events, function($e) {
 		return [

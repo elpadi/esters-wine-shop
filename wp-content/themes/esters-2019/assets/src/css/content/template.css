@@ -90,18 +90,18 @@
 	background-repeat: repeat;
 	border-bottom: 1px solid currentColor;
 }
-.content-bg-pattern #content #main .entry-content {
+.content-bg-pattern.page-template #content .entry-content {
 	margin-top: 0;
 	padding: 0;
 }
 @media (min-width: 1140px) {
-	.content-bg-pattern #content #main .entry-content {
+	.content-bg-pattern.page-template #content .entry-content {
 		padding-top: calc((100vw - 1140px) * 0.5);
 		padding-bottom: calc((100vw - 1140px) * 0.5);
 	}
 }
 @media (min-width: 1260px) {
-	.content-bg-pattern #content #main .entry-content {
+	.content-bg-pattern.page-template #content .entry-content {
 		padding-top: 60px;
 		padding-bottom: 60px;
 	}

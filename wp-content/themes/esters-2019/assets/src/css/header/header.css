@@ -8,6 +8,7 @@
 	align-items: flex-end;
 	overflow: hidden;
 	text-transform: uppercase;
+	border-bottom: 1px solid currentColor;
 }
 #theme-header__bird {
 	max-width: 100px;
