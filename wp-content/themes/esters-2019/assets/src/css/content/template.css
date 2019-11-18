@@ -82,7 +82,15 @@
 .page .star-heading,
 .page .entry-content h2,
 .page-template .entry-title {
-	font-size: 1.1rem;
+	font-size: 7vw;
+	white-space: nowrap;
+}
+@media (min-width: 346px) {
+	.page .star-heading,
+	.page .entry-content h2,
+	.page-template .entry-title {
+		font-size: 1.1rem;
+	}
 }
 
 .content-bg-pattern #content {

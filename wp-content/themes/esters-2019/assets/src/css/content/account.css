@@ -1,7 +1,16 @@
 .woocommerce-account .entry-content .woocommerce {
+	/*
 	display: grid;
 	grid-template-columns: auto 1fr;
 	grid-gap: 2rem;
+	*/
+}
+@media (min-width: 640px) {
+	.woocommerce-account .entry-content .woocommerce {
+		display: grid;
+		grid-template-columns: auto 1fr;
+		grid-gap: 2rem;
+	}
 }
 /* no grid for login forms */
 .woocommerce-account.user--0 .entry-content .woocommerce {
@@ -10,9 +19,27 @@
 
 .woocommerce-account .woocommerce-MyAccount-navigation ul {
 	display: flex;
-	flex-direction: column;
+	flex-wrap: wrap;
+	align-items: center;
 	line-height: 1.6;
 	font-size: 0.9em;
+}
+@media (max-width: 639px) {
+	.woocommerce-account .woocommerce-MyAccount-navigation {
+		border-bottom: 1px solid currentColor;
+		padding-bottom: 1.7rem;
+	}
+	.woocommerce-account .woocommerce-MyAccount-navigation li {
+		padding: 0;
+		border-bottom-style: none;
+		margin-right: 1em;
+	}
+}
+@media (min-width: 640px) {
+	.woocommerce-account .woocommerce-MyAccount-navigation ul {
+		align-items: flex-start;
+		flex-direction: column;
+	}
 }
 .woocommerce-account .woocommerce-MyAccount-navigation a {
 	color: inherit;
@@ -51,6 +78,29 @@
 	font-size: 0.9em;
 }
 
+/* orders section */
+.woocommerce-account #main .woocommerce-MyAccount-content .my_account_orders .woocommerce-orders-table__header-order-actions,
+.woocommerce-account #main .woocommerce-MyAccount-content .my_account_orders .order-actions,
+.woocommerce-account #main .woocommerce-MyAccount-content .my_account_orders .woocommerce-orders-table__cell-order-actions {
+	text-align: right !important;
+	white-space: nowrap;
+}
+.woocommerce-account .woocommerce-MyAccount-content .my_account_orders {
+	background-color: transparent;
+}
+.woocommerce-account .woocommerce-MyAccount-content .my_account_orders tr:first-child {
+	border-top-style: none;
+}
+.woocommerce-account #main .woocommerce-MyAccount-content .my_account_orders td {
+	background-color: white;
+}
+.woocommerce-account #main .woocommerce-MyAccount-content .my_account_orders .btn {
+	font-size: 0.7em;
+}
+.woocommerce-account #main .woocommerce-MyAccount-content .my_account_orders .btn:last-child {
+	margin-right: 0;
+}
+
 .woocommerce-account .woocommerce-MyAccount-content > .woocommerce-order-details,
 .woocommerce-account .woocommerce-MyAccount-content > .woocommerce-customer-details {
 	float: left;
@@ -62,6 +112,8 @@
 }
 .woocommerce-account .woocommerce-MyAccount-content .woocommerce-Addresses h3 {
 	margin-bottom: 0.5em;
+	font-size: 0.9rem;
+	letter-spacing: 2px;
 }
 
 .woocommerce-account #page .woocommerce-MyAccount-content .woocommerce-EditAccountForm > p:nth-child(1),
