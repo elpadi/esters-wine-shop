@@ -80,11 +80,12 @@ form.woocommerce-checkout,
 }
 
 .woocommerce #primary {
-	margin: 0 calc(5% + 20px);
-	max-width: 1160px;
+	margin: 0 auto;
+	max-width: 980px;
 }
 .woocommerce #main {
 	max-width: none;
+	margin: 0 10px;
 }
 
 body.theme--esters .woocommerce-info {

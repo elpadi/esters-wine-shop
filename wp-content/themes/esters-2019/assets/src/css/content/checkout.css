@@ -75,3 +75,10 @@ form.woocommerce-checkout label {
 .woocommerce-customer-details address {
 	font-size: 0.9em;
 }
+
+@media (max-width: 540px) {
+	.woocommerce form .form-row-first, .woocommerce form .form-row-last, .woocommerce-page form .form-row-first, .woocommerce-page form .form-row-last {
+		width: 100%;
+		float: none;
+	}
+}
