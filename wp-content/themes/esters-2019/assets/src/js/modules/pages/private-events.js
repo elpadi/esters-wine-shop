@@ -16,6 +16,9 @@ class PrivateEventsPage {
 
 	onSlideChange(e, slick, currentSlide, animSlide) {
 		this.selectSlideTitle(animSlide);
+		setTimeout(() => {
+			this.sliderElement[0].dataset.slideHasImage = this.sliderElement.find('.slick-active img').length ? 'true' : 'false';
+		}, 1000);
 	}
 
 	onSlideTitleClick(e) {
@@ -43,7 +46,7 @@ class PrivateEventsPage {
 		this.sliderElement.insertAfter(this.ec).on('beforeChange', this.onSlideChange.bind(this));
 		requestAnimationFrame(() => {
 			new Slider(this.sliderElement);
-			this.selectSlideTitle(0);
+			this.onSlideChange(undefined, undefined, -1, 0); // first slide on change
 		});
 		setTimeout(() => $('#main').addClass('visible'), 200);
 	}

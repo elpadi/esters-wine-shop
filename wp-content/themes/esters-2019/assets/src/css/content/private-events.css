@@ -8,15 +8,10 @@
 	margin-bottom: 0;
 }
 .page.page--private-events #main article.entry {
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
 	max-width: none;
 }
 .page.page--private-events #main .entry-header {
 	display: none;
-}
-.page.page--private-events #main .entry-content {
-	width: calc(100% - 4rem);
 }
 .page--private-events .entry-content > .wp-block-separator {
 	display: none;
@@ -30,7 +25,7 @@
 	text-align: left;
 	margin-bottom: 0.9em;
 	padding-bottom: 0.3em;
-	border-bottom: 1px solid currentColor;
+	white-space: normal;
 }
 .page.page--private-events #main .entry-content > p {
 	margin: 0.5em 0;
@@ -49,9 +44,9 @@
 }
 
 .private-events__slider {
-	width: 50vw;
 	font-size: 0.9em;
 	order: -1;
+	margin-top: 1em;
 }
 .private-events__slide {
 	position: relative;
@@ -59,11 +54,15 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	text-shadow: 0px 0px 5px black;
 }
 .private-events__slide[data-has-image="true"] {
 	color: white;
 	background-color: black;
+	text-shadow: 0px 0px 5px black;
+}
+.private-events__slide[data-has-image="false"] {
+	justify-content: flex-start;
+	padding-top: 1em;
 }
 .private-events__slide,
 .private-events__slide .wp-block-image,
@@ -90,14 +89,41 @@
 	letter-spacing: 3px;
 	margin: 0;
 	padding-bottom: 0.4em;
-	border-bottom: 1px solid currentColor;
 }
 .private-events__slide p {
-	max-width: 540px;
-	padding: 10px;
+	max-width: calc(540px + 4em);
+	padding: 10px 2em;
 }
 
 #content .private-events__slider .slick-arrow {
 	font-size: 1.2rem;
 	top: 44%;
+	color: white;
+}
+#content .private-events__slider[data-slide-has-image="false"] .slick-arrow {
+	color: inherit;
+}
+
+@media (min-width: 768px) {
+	.private-events__slider {
+		width: 50vw;
+		margin-top: 0;
+	}
+	.page.page--private-events #main article.entry {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+	}
+	.page.page--private-events #main .entry-content {
+		width: calc(100% - 4rem);
+	}
+	.page.page--private-events #main .entry-content > h2 {
+		border-bottom: 1px solid currentColor;
+	}
+	.private-events__slide[data-has-image="false"] {
+		justify-content: center;
+	}
+	.private-events__slide h3 {
+		max-width: calc(100% - 4em);
+		border-bottom: 1px solid currentColor;
+	}
 }
