@@ -2,16 +2,18 @@
 .woocommerce-cart-form {
 	font-size: 0.9em;
 }
-.cart_totals th,
-.cart_totals td,
-.woocommerce-cart-form th,
-.woocommerce-cart-form td {
+#content .cart_totals th,
+#content .cart_totals td,
+#content .woocommerce-cart-form th,
+#content .woocommerce-cart-form td {
+	background-color: transparent;
 }
 .cart_totals th,
 .woocommerce-cart-form th {
 	font-size: 0.8em;
 	text-align: left;
 }
+#content .woocommerce-cart-form td.actions,
 .woocommerce-cart-form th {
 	border-top-style: none;
 }
@@ -39,6 +41,11 @@
 	margin-top: 2rem;
 }
 .cart_totals .wc-proceed-to-checkout {
-	text-align: center;
+	text-align: right;
 	margin-bottom: 1.2em;
+}
+@media (min-width: 768px) {
+	.cart_totals .wc-proceed-to-checkout {
+		text-align: center;
+	}
 }
