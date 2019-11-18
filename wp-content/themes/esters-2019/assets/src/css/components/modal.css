@@ -15,7 +15,24 @@ body .modal.visible {
 .modal .modal__close-btn {
 	text-transform: uppercase;
 	position: absolute;
-	top: 1em;
-	right: 1em;
-	font-size: 1.1em;
+	top: 0;
+	right: 0;
+	font-size: 0.9em;
+	letter-spacing: 3px;
+	padding: 0.8em 1.2em;
+}
+
+.admin-bar .modal .modal__close-btn {
+	margin-top: 32px;
+}
+@media screen and (max-width: 782px) {
+	.admin-bar .modal .modal__close-btn {
+		margin-top: 46px;
+	}
+}
+@media (min-width: 768px) {
+	.modal .modal__close-btn {
+		font-size: 1em;
+		padding: 1em 1.6em;
+	}
 }

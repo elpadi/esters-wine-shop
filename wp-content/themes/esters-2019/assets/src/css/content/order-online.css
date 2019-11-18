@@ -32,3 +32,12 @@
 	align-items: center;
 }
 
+
+.admin-bar #order-online-modal header {
+	margin-top: calc(32px + 9%);
+}
+@media screen and (max-width: 782px) {
+	.admin-bar #order-online-modal header {
+		margin-top: calc(46px + 9%);
+	}
+}
