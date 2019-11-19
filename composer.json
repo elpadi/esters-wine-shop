@@ -11,6 +11,9 @@
 	],
 	"minimum-stability": "stable",
 	"autoload": {
+		"psr-4": {
+			"ThemeLib\\": "wp-content/themes/esters-2019/lib/"
+		},
 		"files": ["wplib/vendor/autoload.php"]
 	},
 	"require": {

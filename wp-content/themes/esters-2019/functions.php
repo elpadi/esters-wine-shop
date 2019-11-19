@@ -3,6 +3,7 @@ use Functional as F;
 use WordpressLib\Theme\Assets;
 use WordpressLib\Posts\CustomType;
 use WordpressLib\Customizer\Section as CustomizerSection;
+use ThemeLib\ACF\Fields;
 
 global $themeData;
 
@@ -10,6 +11,7 @@ define('THEME_NAME', 'esters');
 $themeData = [];
 
 require_once ABSPATH.'/vendor/autoload.php';
+require_once __DIR__.'/custom-fields.php';
 
 function theme_svg($name, $dir='img') {
 	if (strpos("$name$dir", '.') !== FALSE) {
@@ -139,27 +141,14 @@ function ajax_action($tag, $fn) {
 }
 
 ajax_action('esters_get_calendar_events', function() {
+	global $themeData;
 	header('Content-type: application/json');
-	$events = get_posts([
-		'post_status' => 'any',
-		'post_type' => 'calendar-event',
-		'nopaging' => TRUE,
-		'order' => 'ASC',
-		/*
-		'date_query' => [
-			['after' => date('c', time() - (60 * 60 * 24))],
-		],
-		 */
-	]);
-	echo json_encode(F\map($events, function($e) {
-		return [
-			'id' => $e->ID,
-			'type' => $e->post_type,
-			'slug' => $e->post_name,
-			'title' => ['rendered' => $e->post_title],
-			'content' => ['rendered' => apply_filters('the_content', $e->post_content)],
-		];
-	}));
+
+	if (isset($themeData['custom_fields'])) {
+		$fields = new Fields();
+		echo json_encode($fields->getPosts());
+	}
+
 	wp_die();
 });
 
