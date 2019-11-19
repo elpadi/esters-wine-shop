@@ -14,26 +14,33 @@ h2:not(.star-heading)::before {
 .page .entry-content h2,
 .page-template .entry-title,
 .site .star-heading {
-	display: flex;
-	justify-content: center;
-	align-items: center;
 	text-transform: uppercase;
 	letter-spacing: 3px;
+	text-align: center;
 }
-.page .entry-content h2::before,
-.page .entry-content h2::after,
-.page-template .entry-title::before,
-.page-template .entry-title::after,
-.site .star-heading::before,
-.site .star-heading::after {
-	content: '*';
-	display: inline !important;
-	background-color: transparent;
-	width: auto;
-	height: auto;
-	margin: 0 0.15em;
-	position: relative;
-	top: 0.15em;
+@media (min-width: 540px) {
+	.page .entry-content h2,
+	.page-template .entry-title,
+	.site .star-heading {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.page .entry-content h2::before,
+	.page .entry-content h2::after,
+	.page-template .entry-title::before,
+	.page-template .entry-title::after,
+	.site .star-heading::before,
+	.site .star-heading::after {
+		content: '*';
+		display: inline !important;
+		background-color: transparent;
+		width: auto;
+		height: auto;
+		margin: 0 0.15em;
+		position: relative;
+		top: 0.15em;
+	}
 }
 
 svg {

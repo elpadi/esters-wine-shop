@@ -38,7 +38,7 @@ class EventFields extends \WordpressLib\ACF\Fields {
 	}
 
 	protected function processPostObject(&$p) {
-		parent::updatePostObject($p);
+		parent::processPostObject($p);
 		$p->image_html = wp_get_attachment_image($p->image_one);
 	}
 
