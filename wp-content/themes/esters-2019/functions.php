@@ -3,7 +3,7 @@ use Functional as F;
 use WordpressLib\Theme\Assets;
 use WordpressLib\Posts\CustomType;
 use WordpressLib\Customizer\Section as CustomizerSection;
-use ThemeLib\ACF\Fields;
+use ThemeLib\ACF\EventFields;
 
 global $themeData;
 
@@ -145,7 +145,7 @@ ajax_action('esters_get_calendar_events', function() {
 	header('Content-type: application/json');
 
 	if (isset($themeData['custom_fields'])) {
-		$fields = new Fields();
+		$fields = new EventFields();
 		echo json_encode($fields->getPosts());
 	}
 
@@ -225,18 +225,6 @@ add_filter('body_class', function($classes) {
 
 	return $classes;
 });
-
-define('ESTERS_HOME_SLIDES_COUNT_DEFAULT', 6);
-$themeData['homeSlides'] = (new CustomizerSection('home_slides','Home Slideshow'))->addFields([
-	['number', 'count', 'Slide Count', [], ESTERS_HOME_SLIDES_COUNT_DEFAULT],
-], 'theme_mod')->addFields([
-	['button', 'rollover', 'Prepend Slide', ['value' => 'Prepend']],
-], 'theme_mod')->addRepeater([
-	['text','title'],
-	['image','image'],
-	['textarea','byline'],
-	['page','page'],
-], get_option('home_slides_count', ESTERS_HOME_SLIDES_COUNT_DEFAULT), 'Slide', 'theme_mod');
 
 $themeData['onlineShops'] = (new CustomizerSection('online_shops','Online Shops'))->addRepeater([
 	['text','title'],

@@ -42,8 +42,13 @@
 #home-slideshow li > h2 {
 	text-transform: uppercase;
 	font-size: 2.3rem;
-	max-width: 470px;
+	max-width: 980px;
 	line-height: 1.1;
+	white-space: normal;
+}
+#home-slideshow li > h2::before,
+#home-slideshow li > h2::after {
+	display: none !important;
 }
 #home-slideshow li > h3 {
 	font-size: 1.1rem;
