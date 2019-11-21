@@ -4,6 +4,7 @@ use WordpressLib\Theme\Assets;
 use WordpressLib\Posts\CustomType;
 use WordpressLib\Customizer\Section as CustomizerSection;
 use ThemeLib\ACF\EventFields;
+use ThemeLib\Esters\Shop\FreeShipping;
 
 global $themeData;
 
@@ -200,6 +201,25 @@ if (is_admin() == false) {
 		return str_replace($end, theme_svg('logo').$end, $html);
 	});
 
+	add_filter('the_title', function($title, $id) {
+		global $post;
+		if ($post && $id == $post->ID && $title == 'Calendar') return 'Tastings At Esters';
+		return $title;
+	}, 10, 2);
+
+	add_filter('the_content', function($content) {
+		if (is_front_page()) {
+			ob_start();
+			get_template_part('template-parts/content/home-slideshow');
+			$content = ob_get_clean().$content;
+		}
+		if (!WP_DEBUG && is_page('about')) {
+			$content .= '<div class="embedded-map full-width"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3306.9544717866524!2d-118.49583638667592!3d34.01937958061484!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2a4ce955a98e5%3A0x9f552a66874e8b9b!2sEsters%20Wine%20Shop%20%26%20Bar!5e0!3m2!1sen!2sus!4v1571803708124!5m2!1sen!2sus" width="800" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe></div>';
+		}
+		return $content;
+	});
+
+	new FreeShipping();
 }
 
 add_filter('body_class', function($classes) {
@@ -264,24 +284,6 @@ add_action('init', function() use ($themeData) {
 
 add_filter('comments_open', function($open, $post_id) {
 	return FALSE;
-}, 10, 2);
-
-add_filter('the_content', function($content) {
-	if (is_front_page()) {
-		ob_start();
-		get_template_part('template-parts/content/home-slideshow');
-		$content = ob_get_clean().$content;
-	}
-	if (!WP_DEBUG && is_page('about')) {
-		$content .= '<div class="embedded-map full-width"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3306.9544717866524!2d-118.49583638667592!3d34.01937958061484!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2a4ce955a98e5%3A0x9f552a66874e8b9b!2sEsters%20Wine%20Shop%20%26%20Bar!5e0!3m2!1sen!2sus!4v1571803708124!5m2!1sen!2sus" width="800" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe></div>';
-	}
-	return $content;
-});
-
-if (!is_admin()) add_filter('the_title', function($title, $id) {
-	global $post;
-	if ($post && $id == $post->ID && $title == 'Calendar') return 'Tastings At Esters';
-	return $title;
 }, 10, 2);
 
 $themeData['generateCartCountHTML'] = function() { return sprintf('<span id="theme-header__cart__num" class="round">%d</span>', function_exists('WC') ? WC()->cart->get_cart_contents_count() : 0); };
