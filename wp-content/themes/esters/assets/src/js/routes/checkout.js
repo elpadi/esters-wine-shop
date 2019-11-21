@@ -11,6 +11,7 @@ class CheckoutRoute {
 		});
 		$(document.forms.checkout).on('change', function() {
 			// disable the gift checkbox if local pickup
+			/*
 			var rad = this.querySelector('.shipping_method:checked');
 			if (rad) {
 				ckbox.prop('disabled', rad.id.indexOf('local_pickup') != -1);
@@ -19,6 +20,7 @@ class CheckoutRoute {
 					gr.slideUp(700);
 				}
 			}
+			*/
 		}).on('submit', function() {
 			// fill the hidden gift recipient fields from the shipping fields
 			var _ = document.getElementById.bind(document);
