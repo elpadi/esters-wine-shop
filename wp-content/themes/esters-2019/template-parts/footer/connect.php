@@ -2,7 +2,7 @@
 <p><a href="mailto:<?= $contact['email']; ?>"><?= $contact['email']; ?></a></p>
 <ul id="theme-footer__social" class="hlist">
 	<?php foreach (['instagram','twitter','facebook'] as $social): ?>
-	<li><a href="<?= $contact[$social]; ?>" target="_blank"><?= theme_svg($social,'icons'); ?></a></li>
+	<li><a href="<?= $contact[$social]; ?>" target="_blank"><?= ThemeLib\Theme::instance()->svg($social,'icons'); ?></a></li>
 	<?php endforeach; ?>
 </ul>
 <div id="theme-footer__newsletter">

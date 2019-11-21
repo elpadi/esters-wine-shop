@@ -9,17 +9,16 @@ class Instagram {
 	fetch() {
 		console.log('Instagram.fetch');
 		return Promise.all([
-			$.getJSON(app.ENV.URLS.AJAX, { action: 'instagram_feed' }),
+			app.ajax({ action: 'instagram_feed' }),
 			app.fetchIcon('instagram')
-		]).then(values => {
-			let resp = values[0], icon = values[1];
-			if (resp && ('data' in resp)) this.parse(resp.data, icon);
+		]).then(responses => {
+			if (responses[0] && responses[0].success) this.parse(JSON.parse(responses[0].data), responses[1].success ? responses[1].data : '');
 		});
 	}
 
-	parse(posts, icon) {
-		console.log('Instagram.parse', posts);
-		this.container.innerHTML = posts.map(p => {
+	parse(feed, icon) {
+		console.log('Instagram.parse', feed);
+		this.container.innerHTML = feed.data.map(p => {
 			return $(document.createElement('a'))
 				.addClass('instagram__post')
 				.attr('target', '_blank')

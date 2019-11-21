@@ -16,9 +16,13 @@ class WP {
 	}
 
 	static ajax(data, method='GET') {
-		if (!data || !('action' in data)) {
-			throw 'Invalid argument for ajax data. Missing the action property.';
+		if (!data || !('action' in data) || typeof(data.action) != 'string') {
+			throw 'Invalid argument for ajax data. Invalid or missing action name.';
 		}
+		// prepend theme name to ajax action
+		let prefix = app.ENV.THEME.NAME + '_';
+		if (data.action.indexOf(prefix) != 0) data.action = prefix + data.action;
+
 		console.log('AdminApp.ajax', data, method);
 		return $[method.toLowerCase()](app.ENV.URLS.AJAX, data, resp => {
 			if (typeof(resp) == 'object') {

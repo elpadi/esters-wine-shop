@@ -1,6 +1,6 @@
 <?php
 global $themeData;
-$legal = current($themeData['legal']->getValues());
+$legal = current(ThemeLib\Theme::instance()->get('customizerSections', 'legal')->getValues());
 ?>
 <p id="legal__copyright"><?= str_replace('%year%', date('Y'), $legal['copyright']); ?></p>
 <ul id="legal__pages" class="hlist">

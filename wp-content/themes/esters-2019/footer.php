@@ -1,6 +1,5 @@
 <?php
-global $themeData;
-$contact = current($themeData['contactInfo']->getValues());
+$contact = current(ThemeLib\Theme::instance()->get('customizerSections', 'contactInfo')->getValues());
 $f_tpl = function($s) use ($contact) { include(__DIR__."/template-parts/footer/$s.php"); };
 ?>
 	</div><!-- #content -->

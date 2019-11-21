@@ -1,10 +1,10 @@
 <?php
-global $themeData;
-$shops = $themeData['onlineShops']->getValues();
+$theme = ThemeLib\Theme::instance();
+$shops = $theme->get('customizerSections', 'onlineShops')->getValues();
 if (count($shops)): ?>
 <header>
-	<div id="order-online__bird"><?= theme_svg('bird'); ?></div>
-	<div id="order-online__logo"><?= theme_svg('logo'); ?></div>
+	<div id="order-online__bird"><?= $theme->svg('bird'); ?></div>
+	<div id="order-online__logo"><?= $theme->svg('logo'); ?></div>
 	<h1>Order Online</h1>
 </header>
 <nav>

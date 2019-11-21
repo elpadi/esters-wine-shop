@@ -4,6 +4,7 @@ const Str = require('./str');
 const DOM = require('./dom');
 const Media = require('./media');
 const WP = require('./wp');
+const Theme = require('./theme');
 const GlobalModule = require('../modules/global');
 
 class App {
@@ -68,6 +69,10 @@ class App {
 
 	fetchPosts(type='pages', params={}) {
 		return WP.fetchPosts(type, params);
+	}
+
+	fetchIcon(name, dir='icons') {
+		return Theme.fetchAsset(`${dir}/${name}.svg`);
 	}
 
 	resize() {

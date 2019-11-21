@@ -8,6 +8,6 @@
 			value="<?= get_search_query(); ?>"
 			name="s">
 	</label>
-	<button type="reset" class="clean-btn btn"><?= theme_svg('no-alt','icons'); ?></button>
-	<button class="clean-btn btn"><?= theme_svg('search','icons'); ?></button>
+	<button type="reset" class="clean-btn btn"><?= ThemeLib\Theme::instance()->svg('no-alt','icons'); ?></button>
+	<button class="clean-btn btn"><?= ThemeLib\Theme::instance()->svg('search','icons'); ?></button>
 </form>

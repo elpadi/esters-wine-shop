@@ -1,5 +1,6 @@
 <?php
-$h_tpl = function($s) { include(__DIR__."/template-parts/header/$s.php"); };
+$theme = ThemeLib\Theme::instance();
+$h_tpl = function($s) use ($theme) { include(__DIR__."/template-parts/header/$s.php"); };
 ?><!doctype html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -20,12 +21,12 @@ $h_tpl = function($s) { include(__DIR__."/template-parts/header/$s.php"); };
 <body <?php body_class(); ?>><?php wp_body_open(); ?>
 	<div id="page" class="site">
 		<header id="masthead" class="site-header">
-			<div id="theme-header__bird"><?= theme_svg('bird'); ?></div>
-			<h1 id="theme-header__logo"><a href="<?= home_url(); ?>"><?= theme_svg('logo'); ?></a></h1>
+			<div id="theme-header__bird"><?= $theme->svg('bird'); ?></div>
+			<h1 id="theme-header__logo"><a href="<?= home_url(); ?>"><?= $theme->svg('logo'); ?></a></h1>
 			<div id="theme-header__account" class="hlist"><?php $h_tpl('account'); ?></div>
 			<div id="theme-header__online-shops"><?php $h_tpl('online-shops'); ?></div>
-			<button class="burger-btn burger-expand-btn clean-btn icon-btn btn"><?= theme_svg('burger','icons'); ?></button>
-			<button class="burger-btn burger-collapse-btn clean-btn icon-btn btn"><?= theme_svg('no-alt','icons'); ?></button>
+			<button class="burger-btn burger-expand-btn clean-btn icon-btn btn"><?= $theme->svg('burger','icons'); ?></button>
+			<button class="burger-btn burger-collapse-btn clean-btn icon-btn btn"><?= $theme->svg('no-alt','icons'); ?></button>
 		</header><!-- #masthead -->
 		<nav id="theme-nav">
 			<?php wp_nav_menu(['theme_location' => 'menu-1', 'menu_class' => 'main-menu hlist']); ?>

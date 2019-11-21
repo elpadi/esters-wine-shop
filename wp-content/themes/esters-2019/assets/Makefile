@@ -12,7 +12,7 @@ ADMIN_TARGETS := customizer
 
 CSS_FRONT_TEMPLATE_DEPS := src/css/fonts.css ../../twentynineteen/style.css $(wildcard src/css/base/*.css) src/css/components/modal.css $(wildcard src/css/header/*.css) $(wildcard src/css/footer/*.css) src/css/content/template.css src/css/content/page.css src/css/content/shop.css src/css/content/notices.css src/css/content/order-online.css src/css/responsive/header.css src/css/responsive/footer.css
 CSS_FRONT_PAGE_HOME_DEPS := $(CSS_SLICK_DEPS) src/css/content/home.css
-CSS_FRONT_PAGE_ABOUT_DEPS := src/css/content/about.css
+CSS_FRONT_PAGE_ABOUT_DEPS := $(CSS_SLICK_DEPS) src/css/content/about.css
 CSS_FRONT_PAGE_MENU_DEPS := src/css/components/tabs.css src/css/content/menu.css
 CSS_FRONT_PAGE_CALENDAR_DEPS := src/css/content/calendar.css
 CSS_FRONT_PAGE_PRIVATE_EVENTS_DEPS := $(CSS_SLICK_DEPS) src/css/content/private-events.css
@@ -29,7 +29,7 @@ JS_APP_DEPS := $(wildcard src/js/base/*.js) src/js/modules/global.js src/js/modu
 
 JS_FRONT_PAGE_DEPS := src/js/modules/page.js src/js/modules/pages/columnize-text.js
 JS_FRONT_PAGE_HOME_DEPS := src/js/modules/pages/home.js src/js/modules/components/slider.js
-JS_FRONT_PAGE_ABOUT_DEPS := src/js/modules/pages/about.js src/js/modules/components/media/grid.js src/js/modules/components/media/instagram-slider.js src/js/modules/components/social/instagram.js
+JS_FRONT_PAGE_ABOUT_DEPS := src/js/modules/pages/about.js src/js/modules/components/media/instagram-slider.js
 JS_FRONT_PAGE_MENU_DEPS := src/js/modules/pages/menu.js $(wildcard src/js/modules/components/tabs/*.js)
 JS_FRONT_PAGE_CALENDAR_DEPS := src/js/modules/pages/calendar.js src/js/modules/components/posts/listing.js src/js/modules/components/posts/events-listing.js
 JS_FRONT_PAGE_PRIVATE_EVENTS_DEPS := src/js/modules/pages/private-events.js src/js/modules/components/slider.js
@@ -131,4 +131,10 @@ dist/frontend/shop/account.dev.css: $(CSS_FRONT_SHOP_ACCOUNT_DEPS)
 dev: $(DEV_TARGETS)
 
 prod: $(PROD_TARGETS)
+
+src/js/modules/pages/about.js: src/js/modules/components/media/grid.js 
+	touch $@
+
+src/js/modules/components/media/instagram-slider.js: src/js/modules/components/slider.js src/js/modules/components/social/instagram.js
+	touch $@
 

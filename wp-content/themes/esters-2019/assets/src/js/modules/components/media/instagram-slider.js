@@ -1,26 +1,24 @@
 const $ = require('jquery');
-const Slick = require('slick-carousel');
+const Slider = require('../slider');
 const Instagram = require('../social/instagram');
 
 class InstagramSlider {
 
 	constructor() {
-		if (Number(app.ENV.DEBUG) == 0) this.addSlider();
+		this.addSlider();
 	}
 
 	addSlider() {
 		let feed = new Instagram();
 		return feed.fetch().then(resp => {
-			document.querySelector('#main .entry-content > .wp-block-gallery')
+			document.querySelector('#main .entry-content > .wp-block-image')
 				.insertAdjacentElement('beforebegin', feed.container);
 			this.initSlider(feed.container);
 		});
 	}
 
 	initSlider(element) {
-		$(element).addClass('instagram-slider').slick({
-			infinite: true,
-			speed: 1000,
+		new Slider($(element).addClass('instagram-slider'), {
 			slidesToShow: 4,
 			slidesToScroll: 4
 		});
