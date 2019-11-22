@@ -1,5 +1,6 @@
 const $ = require('jquery');
 const MediaGrid = require('../components/media/grid');
+const PressListing = require('../components/posts/press-listing');
 
 class AboutPage {
 
@@ -7,20 +8,25 @@ class AboutPage {
 		this.initPressGrid();
 	}
 
+	addPressContent() {
+		document.querySelector('#colophon > .columns').insertAdjacentHTML('afterend', `
+			<section id="press-articles">
+				<header><h2 class="star-heading">Press</h2></header>
+				<main class="columns">${this.articles.getPostsHTML()}</main>
+			</section>
+		`);
+	}
+
+	moveHealthButton() {
+		$('.page--about .entry-content > .wp-block-button').appendTo('#press-articles');
+	}
+
 	initPressGrid() {
-		$('.entry-content > h2')
-			.filter((i, h2) => h2.textContent == 'Press')
-			.each((i, h2) => {
-				let items = [], next = h2.nextElementSibling;
-				while (next && next.nodeName == 'FIGURE') {
-					items.push(next);
-					next = next.nextElementSibling;
-				}
-				let mg = new MediaGrid(items, 'press');
-				mg.container.insertBefore('#theme-footer__legal');
-				$(h2).nextAll('.wp-block-button').insertBefore('#theme-footer__legal');
-				$(h2).addClass('star-heading press-heading').insertBefore(mg.container);
-			});
+		this.articles = new PressListing();
+		this.articles.fetch().then(() => {
+			this.addPressContent();
+			setTimeout(() => this.moveHealthButton(), 500);
+		});
 	}
 
 }

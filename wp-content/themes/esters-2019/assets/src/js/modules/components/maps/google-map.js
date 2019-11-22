@@ -6,7 +6,7 @@ class GoogleMap extends Map {
 		super();
 
 		if (('google' in window) && ('maps' in google)) {
-			google.maps.event.addDomListener(window, 'load', this.createMap.bind(this));
+			//google.maps.event.addDomListener(window, 'load', this.createMap.bind(this));
 		}
 	}
 

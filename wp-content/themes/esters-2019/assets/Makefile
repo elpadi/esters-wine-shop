@@ -29,9 +29,9 @@ JS_APP_DEPS := $(wildcard src/js/base/*.js) src/js/modules/global.js src/js/modu
 
 JS_FRONT_PAGE_DEPS := src/js/modules/page.js src/js/modules/pages/columnize-text.js
 JS_FRONT_PAGE_HOME_DEPS := src/js/modules/pages/home.js src/js/modules/components/slider.js
-JS_FRONT_PAGE_ABOUT_DEPS := src/js/modules/pages/about.js src/js/modules/components/media/instagram-slider.js src/js/modules/components/maps/google-map.js
+JS_FRONT_PAGE_ABOUT_DEPS := src/js/modules/pages/about.js src/js/modules/components/media/instagram-slider.js src/js/modules/components/maps/google-map.js src/js/modules/components/posts/press-listing.js
 JS_FRONT_PAGE_MENU_DEPS := src/js/modules/pages/menu.js $(wildcard src/js/modules/components/tabs/*.js)
-JS_FRONT_PAGE_CALENDAR_DEPS := src/js/modules/pages/calendar.js src/js/modules/components/posts/listing.js src/js/modules/components/posts/events-listing.js
+JS_FRONT_PAGE_CALENDAR_DEPS := src/js/modules/pages/calendar.js src/js/modules/components/posts/events-listing.js
 JS_FRONT_PAGE_PRIVATE_EVENTS_DEPS := src/js/modules/pages/private-events.js src/js/modules/components/slider.js
 JS_FRONT_SHOP_LANDING_DEPS := src/js/modules/pages/shop-landing.js
 JS_FRONT_SHOP_LISTING_DEPS := src/js/modules/shop/product-listing.js
@@ -139,5 +139,11 @@ src/js/modules/components/media/instagram-slider.js: src/js/modules/components/s
 	touch $@
 
 src/js/modules/components/maps/google-map.js: src/js/modules/components/maps/map.js
+	touch $@
+
+src/js/modules/components/posts/events-listing.js: src/js/modules/components/posts/listing.js
+	touch $@
+
+src/js/modules/components/posts/press-listing.js: src/js/modules/components/posts/listing.js
 	touch $@
 

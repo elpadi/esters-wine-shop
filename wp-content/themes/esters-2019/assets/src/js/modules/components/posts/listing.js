@@ -7,7 +7,8 @@ class Listing {
 		return (('apiEndpoint' in this)
 			? app.fetchPosts(this.apiEndpoint, this.apiParams)
 			: app.ajax({ action: this.ajaxAction })
-		).then(posts => {
+		).then(response => {
+			let posts = Array.isArray(response) ? response : (response ? (('success' in response) && response.success ? response.data : []) : []);
 			console.log('Listing.fetch', posts);
 			this.posts = posts;
 		});

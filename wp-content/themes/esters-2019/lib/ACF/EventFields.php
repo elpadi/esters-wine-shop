@@ -1,7 +1,7 @@
 <?php
 namespace ThemeLib\ACF;
 
-use Functional as F;
+use ThemeLib\Theme;
 
 class EventFields extends \WordpressLib\ACF\Fields {
 
@@ -11,8 +11,7 @@ class EventFields extends \WordpressLib\ACF\Fields {
 	}
 
 	protected function getFieldsDefs() {
-		global $themeData;
-		return $themeData['custom_fields']['events'];
+		return Theme::instance()->get('customFields', 'events');
 	}
 
 	protected function getSelectClauses() {

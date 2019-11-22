@@ -44,7 +44,7 @@ body.theme--esters {
 #colophon .wp-block-button__link:hover,
 #content .entry-content .wp-block-button__link:hover,
 #content .entry-content .btn:hover,
-.press-columns .wp-block-image > a::before,
+#press-articles .entry main a::before,
 .page--our-menu #content .entry-content > p,
 .page--shop-landing #content .entry-content .btn,
 .page--shop-landing #content .entry-content .wp-block-button__link,

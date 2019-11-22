@@ -5,6 +5,7 @@ use WordpressLib\Posts\CustomType;
 use WordpressLib\Customizer\Section as CustomizerSection;
 use ThemeLib\Theme;
 use ThemeLib\ACF\EventFields;
+use ThemeLib\ACF\PressFields;
 use ThemeLib\Esters\Shop\Shop;
 use ThemeLib\Esters\Shop\FreeShipping;
 
@@ -21,6 +22,10 @@ Theme::instance()->set('customFields', get_theme_custom_fields_definitions());
 Theme::ajaxActionJSON('get_calendar_events', function() {
 	return Theme::instance()->get('customFields') ? (new EventFields())->getPosts() : FALSE;
 }, "Could not get our calendar events.");
+
+Theme::ajaxActionJSON('get_press_articles', function() {
+	return Theme::instance()->get('customFields') ? (new PressFields())->getPosts() : FALSE;
+}, "Could not get our press articles.");
 
 
 Theme::ajaxActionJSON('instagram_feed', function() {
@@ -98,10 +103,12 @@ Theme::instance()->set('customizerSections', [
 
 Theme::instance()->set('postTypes', [
 	'events' => new CustomType('calendar-event', 'Event'),
+	'press' => new CustomType('press', 'Press Article'),
 ]);
 
 add_action('init', function() {
-	Theme::instance()->get('postTypes', 'events')->register();
+	// no editor, no thumbnail
+	F\invoke(Theme::instance()->get('postTypes'), 'register', [[], ['supports' => ['title']]]);
 });
 
 add_filter('comments_open', function($open, $post_id) {

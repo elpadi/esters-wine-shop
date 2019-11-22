@@ -4,7 +4,7 @@ class EventsListing extends Listing {
 
 	constructor() {
 		super();
-		this.ajaxAction = 'esters_get_calendar_events';
+		this.ajaxAction = 'get_calendar_events';
 	}
 
 	getPostHTML(p) {
