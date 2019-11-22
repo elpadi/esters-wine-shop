@@ -28,6 +28,12 @@ class Theme extends Frontend {
 		return parent::updateBodyClasses($classes);
 	}
 
+	protected function registerVendorScripts() {
+		if ($gMapsKey = get_option('api_tokens_gmaps')) {
+			wp_register_script('google-maps', "https://maps.googleapis.com/maps/api/js?key=$gMapsKey");
+		}
+	}
+
 	protected function enqueueFrontScripts($vars) {
 		global $post;
 
@@ -69,6 +75,7 @@ class Theme extends Frontend {
 			if (!in_array($post->post_name, ['home','our-menu','private-events','shop-landing'])) {
 				$js_paths[] = 'page';
 			}
+			if ($post->post_name == 'about') $js_deps[] = 'google-maps';
 			$js_paths[] = "pages/$post->post_name";
 		}
 

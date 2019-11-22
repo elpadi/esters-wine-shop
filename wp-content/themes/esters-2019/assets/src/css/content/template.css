@@ -71,13 +71,27 @@
 .embedded-map {
 	border-top: 1px solid currentColor;
 	border-bottom: 1px solid currentColor;
+	width: 100%;
+	height: 40vw;
+	margin: 5% auto 0;
 }
+@media (min-width: 1282px) {
+	.embedded-map {
+		border-left: 1px solid currentColor;
+		border-right: 1px solid currentColor;
+		width: 1280px;
+		height: 512px;
+	}
+}
+/*
 .embedded-map iframe {
 	display: block;
 	width: 100%;
 	height: calc(100vw * 9 / 16);
+	min-height: 300px;
 	filter: grayscale(1);
 }
+*/
 
 .page .star-heading,
 .page .entry-content h2,
