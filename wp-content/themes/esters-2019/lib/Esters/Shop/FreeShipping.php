@@ -6,7 +6,7 @@ use Functional as F;
 class FreeShipping {
 
 	const SHIPPING_METHOD_ID = 'free_shipping';
-	const SUBSCRIPTION_CAT_SLUG = 'wine-subscriptions';
+	const CAT_SLUG = 'free-shipping';
 
 	public function __construct() {
 		// disable free shipping, except where needed
@@ -28,7 +28,7 @@ class FreeShipping {
 	}
 
 	protected function productHasFreeShipping($id) {
-		$isSubscription = has_term(self::SUBSCRIPTION_CAT_SLUG, 'product_cat', $id);
+		$isSubscription = has_term(self::CAT_SLUG, 'product_cat', $id);
 		return $isSubscription;
 	}
 
