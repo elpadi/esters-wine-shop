@@ -75,6 +75,9 @@
 	position: absolute;
 	opacity: 0.9;
 }
+.slick-slide[data-slick-index="0"] .private-events__slide .wp-block-image {
+	opacity: 0.5;
+}
 .private-events__slide img {
 	object-fit: cover;
 }

@@ -21,14 +21,14 @@
 	border: 1px solid currentColor;
 	padding: 3.5%;
 	margin: 0 auto;
-	max-width: 940px;
+	max-width: 1140px;
 }
 .product-listing #main {
 	margin: 0;
 }
 @media (min-width: 940px) {
 	.product-listing #primary {
-		padding: 1.5rem;
+		padding: 1.7rem;
 		margin-top: calc((100vw - 940px) * 0.5);
 		margin-bottom: calc((100vw - 940px) * 0.5);
 	}
@@ -48,10 +48,13 @@
 		font-size: 0.85em;
 	}
 }
+.product-listing #main .product {
+	margin-bottom: 2em;
+}
 
 .product-listing #main .products img {
 	width: 100%;
 }
 .product-listing #main .woocommerce-loop-product__title {
-	font-size: 0.95em;
+	font-size: 0.85em;
 }

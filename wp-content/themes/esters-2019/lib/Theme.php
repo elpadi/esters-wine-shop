@@ -15,7 +15,7 @@ class Theme extends Frontend {
 				'private-events',
 			])) $classes[] = "page-template";
 
-			if (in_array($post->post_name, ['our-menu','shop-landing'])) $classes[] = 'content-bg-pattern';
+			if (in_array($post->post_name, ['our-menu','shop-landing','calendar'])) $classes[] = 'content-bg-pattern';
 
 			if (in_array($post->post_name, ['terms-and-conditions','privacy-policy','terms-of-use'])) $classes[] = 'legal-page';
 		}

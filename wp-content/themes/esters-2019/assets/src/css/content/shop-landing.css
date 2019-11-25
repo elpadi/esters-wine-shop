@@ -24,26 +24,30 @@
 
 .page--shop-landing .wp-block-columns {
 	flex-direction: column;
+	padding-bottom: 2rem;
 }
-.page--shop-landing .wp-block-column {
+.page--shop-landing #main .wp-block-column {
 	position: relative;
 	padding: 2rem;
-	margin: 0 0 2rem;
-	margin-bottom: 2rem !important;
+	margin: 2rem 0 0;
+}
+.page--shop-landing #main .wp-block-column:first-child {
+	margin-left: 0 !important;
+}
+.page--shop-landing #main .wp-block-column:last-child {
+	margin-right: 0 !important;
 }
 @media (min-width: 720px) {
 	.page--shop-landing .wp-block-columns {
 		flex-direction: row;
+		padding-bottom: 0;
 	}
-	.page--shop-landing .wp-block-column {
+	.page--shop-landing #main .wp-block-column {
+		margin: 2rem 1rem 0;
 		flex-basis: calc(50% - 1rem);
-		margin: 0 0 2rem 2rem;
 	}
 }
 
-.page--shop-landing .wp-block-column:first-child {
-	margin-left: 0;
-}
 .page--shop-landing .wp-block-column::before {
 	border-width: 1px;
 }
