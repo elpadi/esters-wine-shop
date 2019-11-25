@@ -4,11 +4,33 @@
 }
 
 form.woocommerce-checkout {
+	position: relative;
 	font-size: 0.8em;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 2rem;
+}
+#customer_details.col2-set > div {
+	float: none;
+	width: auto;
+}
+#order_review_heading {
+	position: absolute;
+	top: 0;
+	left: calc(50% + 1rem);
+}
+#order_review {
+	grid-column: 2;
+	padding-top: 3rem;
+}
+
+#order_review_heading,
+#customer_details h3 {
+	font-size: 1.25em;
 }
 
 #customer_details h3 {
-	font-size: 1.25em;
+	margin-top: 0;
 }
 form.woocommerce-checkout label {
 	font-size: 0.9em;
