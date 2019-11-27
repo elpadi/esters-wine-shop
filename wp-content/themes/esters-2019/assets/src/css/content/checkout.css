@@ -57,7 +57,7 @@ form.woocommerce-checkout label {
 }
 .wc_payment_method .payment_box {
 	padding-top: 1px;
-	padding-bottom: 1px;
+	padding-bottom: 1.2rem;
 }
 
 .woocommerce-form-coupon {
@@ -116,4 +116,16 @@ form.woocommerce-checkout label {
 }
 #checkout__gift[data-show-fields="false"] .fields {
 	display: none;
+}
+
+.woocommerce #payment #place_order,
+.woocommerce-page #payment #place_order,
+.woocommerce-checkout #payment div.payment_box .sv-wc-payment-gateway-payment-form-manage-payment-methods,
+#add_payment_method .sv-wc-payment-gateway-payment-form-manage-payment-methods {
+	font-size: 0.9em;
+	margin-top: 0;
+}
+.woocommerce #payment #place_order,
+.woocommerce-page #payment #place_order {
+	padding-top: 0.9em;
 }

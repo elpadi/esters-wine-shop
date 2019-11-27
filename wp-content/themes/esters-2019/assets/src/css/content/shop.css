@@ -31,6 +31,7 @@ body.theme--esters .woocommerce-message,
 	color: inherit !important;
 }
 
+.woocommerce-checkout #payment div.payment_box input.js-sv-wc-payment-gateway-credit-card-form-input[type="tel"], .woocommerce-checkout #payment div.payment_box input.js-sv-wc-payment-gateway-credit-card-form-input[type="text"], .woocommerce-checkout #payment div.payment_box input.js-sv-wc-payment-gateway-echeck-form-input[type="tel"], .woocommerce-checkout #payment div.payment_box input.js-sv-wc-payment-gateway-echeck-form-input[type="text"], .woocommerce-checkout #payment div.payment_box input.js-sv-wc-payment-gateway-form-nickname, #add_payment_method input.js-sv-wc-payment-gateway-credit-card-form-input[type="tel"], #add_payment_method input.js-sv-wc-payment-gateway-credit-card-form-input[type="text"], #add_payment_method input.js-sv-wc-payment-gateway-echeck-form-input[type="tel"], #add_payment_method input.js-sv-wc-payment-gateway-echeck-form-input[type="text"], #add_payment_method input.js-sv-wc-payment-gateway-form-nickname,
 .woocommerce-page #page li,
 .woocommerce #page li,
 .woocommerce-page #page p,
