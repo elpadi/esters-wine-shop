@@ -114,7 +114,7 @@ form.woocommerce-checkout label {
 #checkout__gift header input {
 	transform: scale(1.2);
 }
-#checkout__gift[data-show-fields="false"] .fields {
+#checkout__gift:not(.show-fields) .fields {
 	display: none;
 }
 

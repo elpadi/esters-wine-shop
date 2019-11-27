@@ -37,6 +37,7 @@ JS_FRONT_SHOP_LANDING_DEPS := src/js/modules/pages/shop-landing.js
 JS_FRONT_SHOP_LISTING_DEPS := src/js/modules/shop/product-listing.js
 JS_FRONT_SHOP_PRODUCT_DEPS := src/js/modules/shop/product.js
 JS_FRONT_SHOP_CART_DEPS := src/js/modules/shop/cart.js
+JS_FRONT_SHOP_CHECKOUT_DEPS := src/js/modules/shop/checkout-gift.js
 
 JS_FRONTEND_BUILD_TARGETS := page $(PAGE_TARGETS) $(SHOP_TARGETS)
 
@@ -95,7 +96,7 @@ src/js/main/frontend/shop/product.js: $(JS_FRONT_SHOP_PRODUCT_DEPS)
 src/js/main/frontend/shop/cart.js: $(JS_FRONT_SHOP_CART_DEPS)
 	touch $@
 
-src/js/main/frontend/shop/checkout.js:
+src/js/main/frontend/shop/checkout.js: $(JS_FRONT_SHOP_CHECKOUT_DEPS)
 	touch $@
 
 src/js/main/frontend/shop/account.js:

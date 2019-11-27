@@ -64,6 +64,7 @@ class Theme extends Frontend {
 			}
 			if (is_checkout()) {
 				$css_paths[] = 'shop/checkout';
+				$js_paths[] = 'shop/checkout';
 			}
 			if (is_account_page()) {
 				$css_paths[] = 'shop/account';

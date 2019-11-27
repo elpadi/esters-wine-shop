@@ -82,6 +82,7 @@ class App {
 	}
 
 	addModule(name, module) {
+		console.log('App.addModule', name, this.hasCreatedInstances);
 		if (this.hasCreatedInstances) {
 			if (name in this.instances) throw `Module name "${name}" is already in use.`;
 			this.createModuleInstance(module, name);
@@ -108,6 +109,7 @@ class App {
 	}
 
 	createModuleInstance(module, name) {
+		console.log('App.createModuleInstance', name, module);
 		this.instances[name] = new module(this);
 		this.instances[name].app = this;
 	}

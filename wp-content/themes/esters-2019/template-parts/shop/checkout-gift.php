@@ -1,4 +1,4 @@
-<section id="checkout__gift" data-show-fields="false">
+<section id="checkout__gift">
 	<header><?= woocommerce_form_field('is_order_gift', [
 		'type'          => 'checkbox',
 		'label'         => 'Is this a gift?',
