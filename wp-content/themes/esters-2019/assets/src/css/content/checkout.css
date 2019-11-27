@@ -104,3 +104,16 @@ form.woocommerce-checkout label {
 		float: none;
 	}
 }
+
+#checkout__gift header {
+	font-size: 1.4em;
+}
+#checkout__gift header .optional {
+	display: none;
+}
+#checkout__gift header input {
+	transform: scale(1.2);
+}
+#checkout__gift[data-show-fields="false"] .fields {
+	display: none;
+}

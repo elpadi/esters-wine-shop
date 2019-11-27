@@ -18,6 +18,7 @@ Theme::create(__DIR__);
 Theme::instance()->enqueueScripts();
 Theme::instance()->set('customFields', get_theme_custom_fields_definitions());
 
+new Shop();
 
 Theme::ajaxActionJSON('get_calendar_events', function() {
 	return Theme::instance()->get('customFields') ? (new EventFields())->getPosts() : FALSE;
@@ -69,12 +70,16 @@ if (is_admin() == false) {
 }
 
 Theme::instance()->set('customizerSections', [
-	'onlineShops' => (new CustomizerSection('online_shops','Online Shops'))->addRepeater([
+	'onlineShops' => (new CustomizerSection('online_shops'))->addRepeater([
 		['text','title'],
 		['text','url','URL'],
 	], 4, 'Shop'),
 
-	'contactInfo' => (new CustomizerSection('contact_info','Contact Info'))->addFields([
+	'productPage' => (new CustomizerSection('product_page'))->addFields([
+		['textarea','subscription_disclaimer'],
+	]),
+
+	'contactInfo' => (new CustomizerSection('contact_info'))->addFields([
 		['text','family_heading_text'],
 		['text','family_heading_url'],
 		['textarea','address'],

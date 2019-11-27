@@ -10,6 +10,9 @@
 .woocommerce-breadcrumb {
 	display: none;
 }
+.woocommerce-input-wrapper {
+	display: block;
+}
 
 body.theme--esters.woocommerce-account .woocommerce-MyAccount-navigation,
 body.theme--esters .woocommerce-error,

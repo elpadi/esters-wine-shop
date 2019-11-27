@@ -106,7 +106,7 @@
 }
 
 .single-product #main .entry-summary {
-	margin-bottom: 3rem;
+	margin-bottom: 1.2rem;
 }
 .theme--esters #main .related.products {
 	clear: both;
@@ -132,4 +132,10 @@
 		padding: 1rem;
 		margin-bottom: 1rem;
 	}
+}
+
+.product-disclaimer {
+	clear: both;
+	margin-bottom: 3rem;
+	line-height: 1.4;
 }
