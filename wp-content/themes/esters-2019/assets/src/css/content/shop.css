@@ -32,19 +32,19 @@ body.theme--esters .woocommerce-message,
 }
 
 .woocommerce-checkout #payment div.payment_box input.js-sv-wc-payment-gateway-credit-card-form-input[type="tel"], .woocommerce-checkout #payment div.payment_box input.js-sv-wc-payment-gateway-credit-card-form-input[type="text"], .woocommerce-checkout #payment div.payment_box input.js-sv-wc-payment-gateway-echeck-form-input[type="tel"], .woocommerce-checkout #payment div.payment_box input.js-sv-wc-payment-gateway-echeck-form-input[type="text"], .woocommerce-checkout #payment div.payment_box input.js-sv-wc-payment-gateway-form-nickname, #add_payment_method input.js-sv-wc-payment-gateway-credit-card-form-input[type="tel"], #add_payment_method input.js-sv-wc-payment-gateway-credit-card-form-input[type="text"], #add_payment_method input.js-sv-wc-payment-gateway-echeck-form-input[type="tel"], #add_payment_method input.js-sv-wc-payment-gateway-echeck-form-input[type="text"], #add_payment_method input.js-sv-wc-payment-gateway-form-nickname,
-.woocommerce-page #page li,
-.woocommerce #page li,
-.woocommerce-page #page p,
-.woocommerce #page p {
+.woocommerce-page #content li,
+.woocommerce #content li,
+.woocommerce-page #content p,
+.woocommerce #content p {
 	font-size: 1em;
 	line-height: inherit;
 }
-.woocommerce-page #page p,
-.woocommerce #page p {
+.woocommerce-page #content p,
+.woocommerce #content p {
 	margin: 1em 0;
 }
-.woocommerce-page #page li,
-.woocommerce #page li {
+.woocommerce-page #content li,
+.woocommerce #content li {
 	margin-bottom: 0;
 }
 .woocommerce-page #page .entry-header,

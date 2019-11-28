@@ -61,6 +61,16 @@ h2::before {
 		left: 0.1em;
 	}
 }
+@media (min-width: 768px) {
+	.page .entry-content h2::before,
+	.page .entry-content h2::after,
+	.page-template .entry-title::before,
+	.page-template .entry-title::after,
+	.site .star-heading::before,
+	.site .star-heading::after {
+		font-size: 1.5em;
+	}
+}
 
 svg {
 	width: 1em;

@@ -1,4 +1,9 @@
+#colophon #theme-footer__newsletter > h3,
+#mc_embed_signup_scroll {
+	max-width: 400px;
+}
 #colophon #theme-footer__newsletter > h3 {
+	display: block !important;
 	font-size: 0.85em;
 	letter-spacing: 1px;
 	position: relative;
@@ -27,7 +32,6 @@
 #mc_embed_signup_scroll {
 	display: flex;
 	flex-direction: column;
-	max-width: 300px;
 }
 #mc_embed_signup_scroll br {
 	display: none;
@@ -48,6 +52,10 @@
 }
 
 @media (min-width: 768px) {
+	#colophon #theme-footer__newsletter > h3,
+	#mc_embed_signup_scroll {
+		max-width: 300px;
+	}
 	#mc_embed_signup_scroll {
 		flex-direction: row;
 	}
