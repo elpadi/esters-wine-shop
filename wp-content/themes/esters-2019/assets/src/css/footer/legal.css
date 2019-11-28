@@ -2,19 +2,30 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	font-size: 0.82rem;
+	font-size: 0.6rem;
+	line-height: 1.5;
 	border-top: 1px solid currentColor;
 	margin-top: 0.6em;
 	padding: 0 10px;
 }
+#theme-footer__legal .separator {
+	font-size: 1.6em;
+	line-height: 0;
+	position: relative;
+	vertical-align: middle;
+	top: 1px;
+}
 #legal__copyright {
 }
-#legal__pages {
+@media (min-width: 500px) {
+	#theme-footer__legal {
+		font-size: 0.71rem;
+		line-height: 1.4;
+	}
 }
-#legal__pages > li {
-	margin-left: 24px;
-}
-#legal__pages > li:first-child {
-	list-style-type: none;
-	margin-left: 0;
+@media (min-width: 768px) {
+	#theme-footer__legal {
+		font-size: 0.82rem;
+		line-height: 1.3;
+	}
 }

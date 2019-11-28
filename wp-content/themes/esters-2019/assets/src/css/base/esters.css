@@ -5,18 +5,28 @@ body.theme--esters {
 	margin: 0 !important;
 	padding: 0 !important;
 }
-
-/* remove twentynineteen header bars */
-h1:not(.star-heading)::before,
-h2:not(.star-heading)::before {
-	display: none !important;
+body.theme--esters #page {
+	overflow-x: hidden;
 }
+
 .page .entry-content h2,
 .page-template .entry-title,
 .site .star-heading {
 	text-transform: uppercase;
 	letter-spacing: 3px;
 	text-align: center;
+}
+/* remove twentynineteen header bars */
+h1::before,
+h2::before {
+	display: none !important;
+}
+@media (max-width: 539px) {
+	/* allow star headings */
+	h1:not(.star-heading)::before,
+	h2:not(.star-heading)::before {
+		display: none !important;
+	}
 }
 @media (min-width: 540px) {
 	.page .entry-content h2,
@@ -25,6 +35,7 @@ h2:not(.star-heading)::before {
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		position: relative;
 	}
 	.page .entry-content h2::before,
 	.page .entry-content h2::after,
@@ -37,9 +48,17 @@ h2:not(.star-heading)::before {
 		background-color: transparent;
 		width: auto;
 		height: auto;
-		margin: 0 0.15em;
 		position: relative;
-		top: 0.15em;
+		font-size: 1.8em;
+		line-height: 0;
+		top: 0.2em;
+		right: 0.1em;
+	}
+	.page .entry-content h2::after,
+	.page-template .entry-title::after,
+	.site .star-heading::after {
+		right: auto;
+		left: 0.1em;
 	}
 }
 

@@ -6,7 +6,6 @@
 	max-width: 1060px;
 	margin: 0 auto;
 	align-items: flex-end;
-	overflow: hidden;
 	text-transform: uppercase;
 	border-bottom: 1px solid currentColor;
 }
@@ -31,7 +30,7 @@
 }
 #theme-header__logo svg {
 	height: auto;
-	width: 58vw;
+	width: 68vw;
 	max-width: 374px;
 	max-height: 140px;
 }
@@ -63,9 +62,12 @@
 
 #theme-header__online-shops {
 	position: absolute;
+	left: 50%;
 	top: 0;
+	font-size: 0.9em;
 	padding: 0 0.5em 0.2em;
 	white-space: nowrap;
+	transform: translateX(-50%);
 }
 #theme-header__online-shops::before,
 #theme-header__online-shops::after {
@@ -79,7 +81,7 @@
 
 #masthead .burger-btn {
 	position: absolute;
-	right: 0.7em;
-	top: 0.8rem;
+	right: 0.4em;
+	top: 0.3rem;
 	font-size: 1.5rem;
 }
