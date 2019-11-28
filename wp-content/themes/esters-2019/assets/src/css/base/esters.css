@@ -113,6 +113,8 @@ body.theme--esters .woocommerce-message .button,
 .site input[type="submit"],
 .site input[type="button"],
 .site button,
+#content .woocommerce .button,
+#content .woocommerce .btn,
 .site .btn {
 	display: inline-block;
 	padding: 0.5em 1em;
@@ -138,8 +140,9 @@ body.theme--esters .woocommerce-message .button,
 }
 .site .round {
 	width: 1em;
+	height: 1em;
 	bottom: 1em;
-	line-height: 1;
+	line-height: 1.3;
 }
 .site .round {
 	border-radius: 50%;

@@ -6,22 +6,10 @@
 form.woocommerce-checkout {
 	position: relative;
 	font-size: 0.8em;
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-	grid-gap: 2rem;
 }
 #customer_details.col2-set > div {
 	float: none;
 	width: auto;
-}
-#order_review_heading {
-	position: absolute;
-	top: 0;
-	left: calc(50% + 1rem);
-}
-#order_review {
-	grid-column: 2;
-	padding-top: 3rem;
 }
 
 #order_review_heading,
@@ -29,9 +17,6 @@ form.woocommerce-checkout {
 	font-size: 1.25em;
 }
 
-#customer_details h3 {
-	margin-top: 0;
-}
 form.woocommerce-checkout label {
 	font-size: 0.9em;
 }
@@ -70,8 +55,6 @@ form.woocommerce-checkout label {
 }
 #content .entry-content .woocommerce .woocommerce-form-coupon .form-row {
 	font-size: 0.8em;
-	float: left;
-	margin-right: 2em;
 }
 #content .entry-content .woocommerce .woocommerce-form-coupon .form-row-last {
 }
@@ -81,18 +64,8 @@ form.woocommerce-checkout label {
 	list-style-position: inside;
 	line-height: 1.8;
 }
-.woocommerce-order-details,
-.woocommerce-customer-details {
-	width: 48%;
-}
-.woocommerce-order-details {
-	float: left;
-}
 .woocommerce-table--order-details {
 	font-size: 0.8em;
-}
-.woocommerce-customer-details {
-	float: right;
 }
 .woocommerce-customer-details address {
 	font-size: 0.9em;
@@ -128,4 +101,38 @@ form.woocommerce-checkout label {
 .woocommerce #payment #place_order,
 .woocommerce-page #payment #place_order {
 	padding-top: 0.9em;
+}
+
+@media (min-width: 768px) {
+	form.woocommerce-checkout {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-gap: 2rem;
+	}
+	#order_review_heading {
+		position: absolute;
+		top: 0;
+		left: calc(50% + 1rem);
+	}
+	#order_review {
+		grid-column: 2;
+		padding-top: 3rem;
+	}
+	#customer_details h3 {
+		margin-top: 0;
+	}
+	.woocommerce-order-details,
+	.woocommerce-customer-details {
+		width: 48%;
+	}
+	.woocommerce-order-details {
+		float: left;
+	}
+	#content .entry-content .woocommerce .woocommerce-form-coupon .form-row {
+		float: left;
+		margin-right: 2em;
+	}
+	.woocommerce-customer-details {
+		float: right;
+	}
 }

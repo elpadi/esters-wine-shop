@@ -56,6 +56,7 @@ body.theme--esters .woocommerce-message,
 	border-color: currentColor;
 }
 
+.sv-wc-payment-gateway-my-payment-methods-table,
 .woocommerce-account .woocommerce-MyAccount-content .shop_table.subscription_details,
 .woocommerce-account .woocommerce-MyAccount-content .shop_table.order_details,
 .woocommerce-account .woocommerce-MyAccount-content .woocommerce-table--order-details,
@@ -120,3 +121,24 @@ body.theme--esters .woocommerce-info {
 .woocommerce form .form-row label, .woocommerce-page form .form-row label {
 	font-size: 0.9em;
 }
+
+@media only screen and (max-width: 768px) {
+	.shop_table .btn {
+		margin-left: 1em;
+	}
+	.shop_table .btn:first-child {
+		margin-left: 0;
+	}
+	.shop_table + .btn {
+		margin-top: 1rem;
+		float: right;
+	}
+	#content .woocommerce .shop_table_responsive td:first-child,
+	#content .woocommerce .shop_table_responsive tr {
+		border-top-style: none;
+	}
+	#content .entry-content .woocommerce table {
+		margin-bottom: 0;
+	}
+}
+

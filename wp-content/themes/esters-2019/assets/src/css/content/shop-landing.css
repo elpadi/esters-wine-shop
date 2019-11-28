@@ -3,16 +3,18 @@
 }
 .page--shop-landing.page #main .entry-content {
 	max-width: 1020px;
+    margin-bottom: 1rem;
+    width: calc(100% - 2rem);
 }
 .page--shop-landing .entry-content {
 	background-color: white;
-	padding: 0 2rem !important;
 	border: 1px solid currentColor;
+	padding: 0 1rem 1rem !important;
 }
-@media (min-width: 1020px) {
+@media (min-width: 1064px) {
 	.page--shop-landing #content #main .entry-content {
-		margin-top: calc((100vw - 1020px) * 0.5);
-		margin-bottom: calc((100vw - 1020px) * 0.5);
+		margin-top: calc(1rem + (100vw - 1064px) * 0.5);
+		margin-bottom: calc(1rem + (100vw - 1064px) * 0.5);
 	}
 }
 @media (min-width: 1140px) {
@@ -24,12 +26,11 @@
 
 .page--shop-landing .wp-block-columns {
 	flex-direction: column;
-	padding-bottom: 2rem;
 }
 .page--shop-landing #main .wp-block-column {
 	position: relative;
-	padding: 2rem;
-	margin: 2rem 0 0;
+	padding: 1rem;
+	margin: 1rem 0 0;
 }
 .page--shop-landing #main .wp-block-column:first-child {
 	margin-left: 0 !important;
@@ -38,6 +39,9 @@
 	margin-right: 0 !important;
 }
 @media (min-width: 720px) {
+	.page--shop-landing .entry-content {
+		padding: 0 2rem 2rem !important;
+	}
 	.page--shop-landing .wp-block-columns {
 		flex-direction: row;
 		padding-bottom: 0;
@@ -45,6 +49,7 @@
 	.page--shop-landing #main .wp-block-column {
 		margin: 2rem 1rem 0;
 		flex-basis: calc(50% - 1rem);
+		padding: 2rem;
 	}
 }
 
@@ -90,4 +95,6 @@
 .page--shop-landing #content .wp-block-button .wp-block-button__link {
 	text-transform: uppercase;
 	padding: 0.6em 1.3em 0.5em;
+	font-size: 0.9em;
+	margin: 0 1em 1.6em;
 }
