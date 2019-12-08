@@ -114,34 +114,36 @@
 .single-product #main .entry-summary {
 	margin-bottom: 1.2rem;
 }
-.theme--esters #main .related.products {
+.theme--esters #main .product-sublisting.products {
 	clear: both;
 	margin-bottom: 1.2rem;
 }
-.theme--esters #main .related.products h2.star-heading {
+.theme--esters #main .product-sublisting.products h2.star-heading {
 	font-size: 1.3em;
 	letter-spacing: 2px;
 }
-@media (min-width: 768px) {
-	.theme--esters #main .related.products h2.star-heading {
-		font-size: 1.5em;
-		letter-spacing: 3px;
-	}
-}
-.theme--esters #main .related.products .product {
+.theme--esters #main .product-sublisting.products .product {
 	background-color: white;
 	padding: 3%;
 	margin-bottom: 3%;
-}
-@media (min-width: 768px) {
-	.theme--esters #main .related.products .product {
-		padding: 1rem;
-		margin-bottom: 1rem;
-	}
 }
 
 .product-disclaimer {
 	clear: both;
 	margin-bottom: 3rem;
 	line-height: 1.4;
+}
+
+@media (min-width: 768px) {
+	.theme--esters #main .product-sublisting.products h2.star-heading {
+		font-size: 1.5em;
+		letter-spacing: 3px;
+	}
+	.single-product #content #main > .product .summary,
+	.single-product #content #main > .product .product-disclaimer {
+		float: right;
+		padding: 1rem;
+		margin-bottom: 1rem;
+		width: 48%;
+	}
 }

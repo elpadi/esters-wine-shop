@@ -121,6 +121,7 @@ body[data-is-burger-expanded="true"] .burger-expand-btn {
 	#theme-nav,
 	#menu-main-menu {
 		flex-direction: row;
+		transition: none;
 	}
 	#masthead {
 		align-items: flex-end;
@@ -170,6 +171,9 @@ body[data-is-burger-expanded="true"] .burger-expand-btn {
 	}
 	#theme-nav .menu-main-menu-container {
 		margin: 0.5em auto;
+	}
+	#theme-nav li {
+		margin-bottom: 0.1em;
 	}
 	#theme-nav .search-form {
 		font-size: 0.8em;

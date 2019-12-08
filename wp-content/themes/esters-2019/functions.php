@@ -124,3 +124,10 @@ add_filter('woocommerce_add_to_cart_fragments', function ($fragments) {
     $fragments['#theme-header__cart__num'] = Shop::generateCartCountHTML();
     return $fragments;
 });
+
+// disable debug notices from Square API
+foreach (['success','error'] as $noticeType) add_filter('woocommerce_add_'.$noticeType, function($msg) {
+	foreach (['Array','HTTP'] as $needle) if (strpos($msg, $needle) !== FALSE) return '';
+	return $msg;
+});
+

@@ -21,6 +21,9 @@ body.theme--esters .woocommerce-message .button {
 		flex-direction: row;
 		align-items: center;
 	}
+	body.theme--esters .woocommerce-message > * {
+		margin-left: 0.3em;
+	}
 	body.theme--esters .woocommerce-message .button,
 	body.theme--esters .woocommerce-message .btn {
 		margin-top: 0;

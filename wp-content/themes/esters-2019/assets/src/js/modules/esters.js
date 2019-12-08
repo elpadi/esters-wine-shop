@@ -31,8 +31,11 @@ class Esters {
 	}
 
 	resize() {
-		if (!this.burgerMQL.matches && this.isCollapsed()) {
-			this.setBurgerTransitionStyles();
+		if (this.burgerMQL.matches) {
+			this.unsetBurgerTransitionStyles();
+		}
+		else {
+			if (this.isCollapsed()) this.setBurgerTransitionStyles();
 		}
 	}
 
@@ -56,6 +59,10 @@ class Esters {
 
 	isExpanded() {
 		return document.body.dataset.isBurgerExpanded === 'true';
+	}
+
+	unsetBurgerTransitionStyles() {
+		['#theme-nav', '#masthead'].forEach(s => document.querySelector(s).setAttribute('style',''));
 	}
 
 	setBurgerTransitionStyles() {

@@ -11,7 +11,11 @@ class Shop {
 	}
 
 	public static function getGiftFields() {
-		return [
+		return WC()->cart->needs_shipping() ? [
+			'email' => ['Recipient Email', 'email'],
+			'phone' => ['Phone', 'text'],
+			'note' => ['Gift Note', 'textarea'],
+		] : [
 			'name' => ['Recipient Name', 'text'],
 			'email' => ['Recipient Email', 'email'],
 			'address' => ['Recipient Address', 'text'],
