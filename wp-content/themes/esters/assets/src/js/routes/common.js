@@ -27,21 +27,21 @@ class CommonRoute {
 				topPosition = 0;
 			$(container).each(function() {
 				$el = $(this);
-				$($el).height('auto')
-				topPostion = $el.position().top;
-				if (currentRowStart != topPostion) {
-					for (currentDiv = 0; currentDiv < rowDivs.length; currentDiv++) {
+				$($el).height('auto');
+				topPosition = $el.position().top;
+				if (currentRowStart != topPosition) {
+					for (let currentDiv = 0; currentDiv < rowDivs.length; currentDiv++) {
 						rowDivs[currentDiv].height(currentTallest);
 					}
 					rowDivs.length = 0; // empty the array
-					currentRowStart = topPostion;
+					currentRowStart = topPosition;
 					currentTallest = $el.height();
 					rowDivs.push($el);
 				} else {
 					rowDivs.push($el);
 					currentTallest = (currentTallest < $el.height()) ? ($el.height()) : (currentTallest);
 				}
-				for (currentDiv = 0; currentDiv < rowDivs.length; currentDiv++) {
+				for (let currentDiv = 0; currentDiv < rowDivs.length; currentDiv++) {
 					rowDivs[currentDiv].height(currentTallest);
 				}
 			});

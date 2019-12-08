@@ -103,3 +103,9 @@ function order_online_button($index) {
 		get_field("option_{$index}_text", 'option')
 	);
 }
+
+// disable debug notices
+foreach (['success','error'] as $noticeType) add_filter('woocommerce_add_'.$noticeType, function($msg) {
+	foreach (['Array','HTTP'] as $needle) if (strpos($msg, $needle) !== FALSE) return '';
+	return $msg;
+});

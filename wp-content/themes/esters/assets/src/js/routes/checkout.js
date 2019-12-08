@@ -24,11 +24,12 @@ class CheckoutRoute {
 		}).on('submit', function() {
 			// fill the hidden gift recipient fields from the shipping fields
 			var _ = document.getElementById.bind(document);
-			_('recipient_name').value = _('shipping_first_name').value + ' ' + _('shipping_last_name').value;
-			_('recipient_address').value = _('shipping_address_1').value + ' ' + _('shipping_address_2').value;
-			_('recipient_city').value = _('shipping_city').value;
-			_('recipient_state').value = _('shipping_state').value;
-			_('recipient_zip').value = _('shipping_postcode').value;
+			var prefix = _('shipping_first_name') ? 'shipping' : 'billing';
+			_('recipient_name').value = _(prefix + '_first_name').value + ' ' + _(prefix + '_last_name').value;
+			_('recipient_address').value = _(prefix + '_address_1').value + ' ' + _(prefix + '_address_2').value;
+			_('recipient_city').value = _(prefix + '_city').value;
+			_('recipient_state').value = _(prefix + '_state').value;
+			_('recipient_zip').value = _(prefix + '_postcode').value;
 		});
 	}
 
