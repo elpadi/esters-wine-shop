@@ -9,7 +9,10 @@ class Tabs {
 		this.titles = this.createTitles();
 		this.contents = this.createContents();
 		this.container = this.createContainer().append(this.titles).append(this.contents);
-		if (this.isGlobal) window.addEventListener('hashchange', this.onHashChange.bind(this));
+		if (this.isGlobal) {
+			window.addEventListener('hashchange', this.onHashChange.bind(this));
+			setTimeout(this.onHashChange.bind(this), 500);
+		}
 		requestAnimationFrame(() => this.initTabSwitch());
 	}
 

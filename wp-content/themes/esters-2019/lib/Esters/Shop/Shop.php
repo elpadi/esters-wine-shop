@@ -11,7 +11,7 @@ class Shop {
 	}
 
 	public static function getGiftFields() {
-		return WC()->cart->needs_shipping() ? [
+		return (!is_admin() && ($cart = WC()->cart) && $cart->needs_shipping()) ? [
 			'email' => ['Recipient Email', 'email'],
 			'phone' => ['Phone', 'text'],
 			'note' => ['Gift Note', 'textarea'],

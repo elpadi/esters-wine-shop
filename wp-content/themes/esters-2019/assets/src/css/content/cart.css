@@ -30,6 +30,8 @@
 	color: red;
 }
 
+#content .woocommerce .cart_totals .button,
+#content .woocommerce .woocommerce-cart-form .button,
 #content .woocommerce .cart_totals .btn,
 #content .woocommerce .woocommerce-cart-form .btn {
 	text-transform: uppercase;

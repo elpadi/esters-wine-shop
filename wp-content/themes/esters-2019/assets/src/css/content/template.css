@@ -21,6 +21,16 @@
 	margin-right: auto;
 	line-height: 1.4;
 }
+.page .entry-content > .text-columns ~ h3 {
+	font-size: 1em;
+	text-align: center;
+}
+.page .entry-content > .text-columns ~ h4,
+.page .entry-content > .text-columns ~ h5,
+.page .entry-content > .text-columns ~ h6 {
+	font-size: 0.9em;
+	text-align: center;
+}
 .entry-content .instagram__post {
 	background: #bf9d3e url(../../../icons/instagram.svg) center center no-repeat;
 	position: relative;

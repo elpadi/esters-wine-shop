@@ -25,6 +25,9 @@ class CalendarPage {
 
 	addEventsContent() {
 		document.querySelector('.page--calendar article.entry').insertAdjacentHTML('afterend', this.events.getPostsHTML());
+		setTimeout(() => {
+			$('.event__desc p').filter((i, p) => p.innerText.trim() == '').remove();
+		}, 100);
 	}
 
 }

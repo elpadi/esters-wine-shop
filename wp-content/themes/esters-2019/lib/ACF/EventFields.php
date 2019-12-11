@@ -30,15 +30,28 @@ class EventFields extends \WordpressLib\ACF\Fields {
 		]);
 	}
 
+	protected function getWhereClauses() {
+		global $wpdb;
+
+		return array_merge(parent::getWhereClauses(), [
+			"DATEDIFF(`event_date`.`meta_value`, NOW()) > -2",
+		]);
+	}
+
 	protected function getOrderByClauses() {
 		return [
-			"TIMESTAMP(`event_date`.`meta_value`) DESC",
+			"TIMESTAMP(`event_date`.`meta_value`) ASC",
 		];
+	}
+
+	protected function getLimitCount() {
+		return 0;
 	}
 
 	protected function processPostObject(&$p) {
 		parent::processPostObject($p);
 		$p->image_html = wp_get_attachment_image($p->image_one);
+		$p->full_description = wpautop($p->full_description);
 	}
 
 }

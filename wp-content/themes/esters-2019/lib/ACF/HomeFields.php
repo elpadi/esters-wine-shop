@@ -15,7 +15,7 @@ class HomeFields extends \WordpressLib\ACF\Fields {
 
 	protected function processRepeaterValues(&$groupedValues) {
 		foreach ($groupedValues as &$values) {
-			$values['image'] = wp_get_attachment_image($values['hero_image'], 'large');
+			$values['image'] = sprintf('<img src="%s" alt="">', wp_get_attachment_url($values['hero_image']));
 			$values['page'] = get_permalink($values['call-to-action']);
 		}
 	}

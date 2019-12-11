@@ -1,3 +1,7 @@
+.payment_method_first_data_payeezy_gateway_credit_card {
+	display: none !important;
+}
+
 .woocommerce-checkout h1.entry-title {
 	color: inherit;
 	border-style: none;
@@ -29,6 +33,14 @@ form.woocommerce-checkout label {
 }
 #order_review td label {
 }
+
+.woocommerce-order-received .woocommerce-orders-table th {
+	font-size: 0.8em;
+}
+.woocommerce-order-received #content .woocommerce-order-details .btn {
+	font-size: 0.7em;
+}
+
 .woocommerce-checkout-payment .button {
 	font-size: 0.8em;
 	letter-spacing: 1px;
