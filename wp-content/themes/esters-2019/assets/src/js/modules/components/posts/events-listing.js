@@ -18,14 +18,11 @@ class EventsListing extends Listing {
 				</div>
 				${p.image_html.replace(`class="`, `class="event__image `)}
 				<div class="event__info">
-					<p class="event__title">${p.title}</p>
-					<p class="event__time">${p.time}</p>
+					<h2 class="entry-title event__title">${p.title}<br>${p.time}</h2>
 					<div class="event__brief">${p.brief_description}</div>
 				</div>
 			</header>
 			<main class="entry-content">
-				<h2 class="entry-title event__title">${p.title}</h2>
-				<p class="event__time">${p.time}</p>
 				<div class="event__desc">${p.full_description}</div>
 			</main>
 		</article>`;
