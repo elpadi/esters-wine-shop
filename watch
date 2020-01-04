@@ -1,3 +1,3 @@
 #!/bin/sh
 
-find wp-content/themes/esters-2019/assets/src -type f | entr sh -c 'date; make -C wp-content/themes/esters-2019/assets prod dev'
+find wp-content/themes/esters-2019/assets/src -type f | entr sh -c 'date; make -C wp-content/themes/esters-2019/assets dev'
