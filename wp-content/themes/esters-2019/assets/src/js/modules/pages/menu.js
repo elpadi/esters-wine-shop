@@ -14,11 +14,11 @@ class MenuPage {
 
 	initMenuTabs() {
 		let tabs = [];
-		$('.entry-content').children('.wp-block-separator').each((i, hr) => {
-			tabs.push($(hr).nextUntil('.wp-block-separator'));
+		$('.entry-content').children('.wp-block-group').each((i, grp) => {
+			tabs.push($(grp).find('.wp-block-group__inner-container').children());
 		});
 		this.tabs = new Tabs(tabs.map(t => new TabItem(t.filter('h2'), t.not('h2'))), true, 'menu');
-		this.tabs.container.insertBefore(document.querySelector('.entry-content .wp-block-separator'));
+		this.tabs.container.insertBefore(document.querySelector('.entry-content .wp-block-group'));
 	}
 
 }
