@@ -6,8 +6,8 @@ class Shop {
 	public function __construct() {
 		add_action('woocommerce_after_single_product_summary', [$this, 'addProductDisclaimer'], -10);
 		add_action('woocommerce_after_order_notes', [$this, 'addGiftSection']);
-		add_action('woocommerce_checkout_update_order_meta', [$this, 'saveGiftData']);
-		add_action('add_meta_boxes_shop_order', [$this, 'giftMetaBox']);
+		add_action('woocommerce_checkout_update_order_meta', [$this, 'saveGiftData'], 10, 2);
+		add_action('add_meta_boxes', [$this, 'giftMetaBox'], 40);
 	}
 
 	public static function getGiftFields() {
@@ -29,13 +29,14 @@ class Shop {
 
 	public static function isGift($id) {
 		$order = wc_get_order($id);
-		return ($order->get_meta('is_order_gift') === 'true') ||
+		return $order && is_object($order) && ($order->get_meta('is_order_gift') === 'true' ||
 			// legacy check, checkbox value was not saved so check for name value
-			!empty($order->get_meta('recipient_name'));
+			!empty($order->get_meta('recipient_name')));
 	}
 
-	public function giftMetaBox($post) {
-		if (static::isGift($post->ID)) add_meta_box(
+	public function giftMetaBox() {
+		global $post;
+		if ($post && $post->post_type == 'shop_order' && static::isGift($post->ID)) add_meta_box(
 			'gift_recipient_info',
 			__('Gift Recipient'),
 			[$this, 'giftMetaBoxContent'],
@@ -48,12 +49,16 @@ class Shop {
 		$order = wc_get_order($post->ID);
 		foreach (static::getGiftFields() as $name => $def) {
 			$fieldname = "recipient_$name";
-			printf('<p><strong>%s</strong>:<br>%s</p>', __($def[0]), nl2br($order->get_meta($fieldname)));
+			$value = $order->get_meta($fieldname);
+			if (empty(trim($value))) {
+				continue;
+			}
+			printf('<p><strong>%s</strong>:<br>%s</p>', __($def[0]), nl2br($value));
 		}
 	}
 
-	public function saveGiftData($order_id) {
-		if (isset($_POST['is_order_gift']) && $_POST['is_order_gift'] === 'true') {
+	public function saveGiftData($order_id, $data) {
+		if (!empty($_POST['is_order_gift']) && $_POST['is_order_gift'] !== '0') {
 			$order = wc_get_order($order_id);
 			$order->update_meta_data('is_order_gift', 'true');
 			foreach (static::getGiftFields() as $name => $def) {
