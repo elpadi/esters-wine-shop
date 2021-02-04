@@ -1,0 +1,3 @@
+[submodule "wplib"]
+	path = wplib
+	url = git@github.com:elpadi/wordpress-library.git

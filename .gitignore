@@ -42,7 +42,6 @@ xmlrpc.php
 wp-includes/*
 wp-admin/*
 index.php
-wplib
 
 /*.png
 /*.svg

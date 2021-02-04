@@ -17,6 +17,10 @@
 		"files": ["wplib/vendor/autoload.php"]
 	},
 	"require": {
-		"symfony/var-dumper": "^4.3"
-	}
+        "pimple/pimple": "^3.3"
+	},
+    "require-dev": {
+        "filp/whoops": "^2.9",
+		"symfony/var-dumper": "^5.0"
+    }
 }

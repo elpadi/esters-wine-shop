@@ -1,0 +1,27 @@
+name: esters-wine-shop
+recipe: wordpress
+config:
+  webroot: wordpress
+  php: '7.4'
+services:
+    appserver:
+        start:
+            - composer install -d /app/wplib
+            - composer install
+            - /app/scripts/wp-checks
+    node:
+        type: node
+    phpmyadmin:
+        type: phpmyadmin
+        hosts:
+            - database
+tooling:
+    yarn:
+        service: node
+        cmd: yarn --cwd wp-content/themes/esters-2019/assets
+    make:
+        service: node
+        cmd: make -C wp-content/themes/esters-2019/assets
+excludes:
+    - wordpress
+    - wp-content/uploads

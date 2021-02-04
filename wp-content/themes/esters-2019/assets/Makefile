@@ -1,4 +1,4 @@
-.PHONY: none dev prod
+.PHONY: none dev prod css js
 
 FRONT_CSS_FILES := $(shell find src/css/components -type f -name '*.css') $(wildcard src/css/block-editor/blocks/*.css) $(shell find src/css/content -type f -name '*.css')
 ADMIN_CSS_FILES := $(wildcard src/css/base/*.css) $(shell find src/css/admin -type f -name '*.css')
@@ -43,25 +43,28 @@ JS_FRONTEND_BUILD_TARGETS := page $(PAGE_TARGETS) $(SHOP_TARGETS)
 
 JS_ADMIN_CUSTOMIZER_DEPS := $(wildcard src/js/admin/customizer/*.js)
 
-DEV_TARGETS := dist/app.dev.js $(addprefix dist/frontend/, $(addsuffix .dev.js, $(JS_FRONTEND_BUILD_TARGETS))) $(addprefix dist/frontend/, $(addsuffix .dev.css, $(CSS_FRONTEND_BUILD_TARGETS))) $(addprefix dist/admin/, $(addsuffix .dev.js, $(ADMIN_TARGETS)))
-PROD_TARGETS := $(subst .dev.,.prod.,$(DEV_TARGETS))
+JS_DEV := dist/app.dev.js $(addprefix dist/frontend/, $(addsuffix .dev.js, $(JS_FRONTEND_BUILD_TARGETS))) $(addprefix dist/admin/, $(addsuffix .dev.js, $(ADMIN_TARGETS)))
+JS_PROD := $(subst .dev.,.prod.,$(JS_DEV))
+
+CSS_DEV := $(addprefix dist/frontend/, $(addsuffix .dev.css, $(CSS_FRONTEND_BUILD_TARGETS)))
+CSS_PROD := $(subst .dev.,.prod.,$(CSS_DEV))
 
 none:
 	echo "Please select a target."
 
 dist/%.dev.js: src/js/main/%.js
-	browserify $^ -o $@ --debug 
+	npx browserify $^ -o $@ --debug 
 
 dist/%.prod.js: dist/%.dev.js
-	babel --compact true --minified -o $@ $^
+	npx babel --compact true --minified -o $@ $^
 
 dist/%.dev.css:
-	cleancss --source-map --source-map-inline-sources -O0 $^ -o $@
-	postcss -o $@ $@
+	npx cleancss --source-map --source-map-inline-sources -O0 $^ -o $@
+	npx postcss -o $@ $@
 
 dist/%.prod.css: dist/%.dev.css
-	cleancss -O2 -o $@ $^
-	postcss -o $@ $@
+	npx cleancss -O2 -o $@ $^
+	npx postcss -o $@ $@
 
 src/js/main/app.js: $(JS_APP_DEPS)
 	touch $@
@@ -129,10 +132,6 @@ dist/frontend/shop/checkout.dev.css: $(CSS_FRONT_SHOP_CHECKOUT_DEPS)
 
 dist/frontend/shop/account.dev.css: $(CSS_FRONT_SHOP_ACCOUNT_DEPS)
 
-dev: $(DEV_TARGETS)
-
-prod: $(PROD_TARGETS)
-
 src/js/modules/pages/about.js: src/js/modules/components/media/grid.js 
 	touch $@
 
@@ -148,3 +147,10 @@ src/js/modules/components/posts/events-listing.js: src/js/modules/components/pos
 src/js/modules/components/posts/press-listing.js: src/js/modules/components/posts/listing.js
 	touch $@
 
+dev: $(JS_DEV) $(CSS_DEV)
+
+prod: $(JS_PROD) $(CSS_PROD)
+
+css: $(CSS_PROD)
+
+js: $(JS_PROD)
