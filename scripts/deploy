@@ -1,0 +1,55 @@
+#!/bin/bash
+
+SITE_PATH="/home/kathrynesterswine/esterswineshop.com"
+REPO_PATH="/home/kathrynesterswine/git/esters-wine-shop"
+THEME_PATH="wp-content/themes/esters-2019"
+
+sync_dir() {
+	rsync -avzh --delete "$REPO_PATH/$1" "$SITE_PATH/$1"
+}
+
+sync_file() {
+	cp "$REPO_PATH/$1" "$SITE_PATH/$1"
+}
+
+replace_dir() {
+	cp -r "$REPO_PATH/$1" "$SITE_PATH/$1.new"
+	mv "$SITE_PATH/$1" "$SITE_PATH/$1.old"
+	mv "$SITE_PATH/$1.new" "$SITE_PATH/$1"
+	rm -rf "$SITE_PATH/$1.old"
+}
+
+# Init
+cd "$REPO_PATH"
+
+# Root composer
+composer install
+replace_dir vendor
+
+# WP Lib
+git submodule update --init --recursive
+
+## composer
+cd wplib
+composer install
+replace_dir wplib/vendor
+
+## src
+sync_dir wplib/src/
+
+# Assets
+sync_dir "$THEME_PATH/assets/dist/frontend/"
+
+# Templates
+sync_dir "$THEME_PATH/template-parts/"
+
+# Theme Code
+sync_dir "$THEME_PATH/lib/"
+
+# Theme Files
+sync_file "$THEME_PATH/style.css"
+sync_file "$THEME_PATH/custom-fields.php"
+sync_file "$THEME_PATH/footer.php"
+sync_file "$THEME_PATH/functions.php"
+sync_file "$THEME_PATH/header.php"
+sync_file "$THEME_PATH/searchform.php"
