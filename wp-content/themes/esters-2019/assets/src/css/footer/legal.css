@@ -8,6 +8,9 @@
 	margin-top: 0.6em;
 	padding: 0 10px;
 }
+#theme-footer__legal a {
+    white-space: nowrap;
+}
 #theme-footer__legal .separator {
 	font-size: 1.6em;
 	line-height: 0;
