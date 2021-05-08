@@ -1,26 +1,31 @@
 <?php
+
 namespace ThemeLib\ACF;
 
 use ThemeLib\Theme;
 
-class PressFields extends \WordpressLib\ACF\Fields {
+class PressFields extends \WordpressLib\ACF\Fields
+{
 
-	protected $postType = 'press';
+    protected $postType = 'press';
 
-	public function __construct() {
-	}
+    public function __construct()
+    {
+    }
 
-	protected function getFieldsDefs() {
-		return Theme::instance()->get('customFields', 'press');
-	}
+    protected function getFieldsDefs()
+    {
+        return Theme::instance()->get('customFields', 'press');
+    }
 
-	protected function processPostObject(&$p) {
-		parent::processPostObject($p);
-		$p->image_src = wp_get_attachment_url($p->press_image);
-	}
+    protected function processPostObject(&$p)
+    {
+        parent::processPostObject($p);
+        $p->image_src = wp_get_attachment_url($p->press_image);
+    }
 
-	protected function getLimitCount() {
-		return 12 * 4;
-	}
-
+    protected function getLimitCount()
+    {
+        return 12 * 4;
+    }
 }

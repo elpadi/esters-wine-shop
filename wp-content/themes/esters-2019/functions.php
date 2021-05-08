@@ -103,6 +103,7 @@ Theme::instance()->set('customizerSections', [
         ['page','tnc','Terms and Conditions'],
         ['page','privacy','Privacy Policy'],
         ['page','tou','Terms of Use'],
+        ['page','accessibility','Accessibility Statement'],
     ]),
 
     'apiTokens' => (new CustomizerSection('api_tokens', 'API Tokens'))->addFields([
