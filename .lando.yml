@@ -22,6 +22,3 @@ tooling:
     make:
         service: node
         cmd: make -C wp-content/themes/esters-2019/assets
-excludes:
-    - wordpress
-    - wp-content/uploads
