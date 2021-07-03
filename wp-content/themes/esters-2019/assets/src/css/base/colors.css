@@ -2,7 +2,7 @@
 #theme-nav,
 body.theme--esters {
 	background-color: #f7f7ef;
-	color: #bf9d3e;
+	color: #614e1f;
 }
 .xdebug-error tr:first-child th {
 	color: #007af5;
@@ -37,7 +37,7 @@ body.theme--esters {
 #colophon .wp-block-button__link,
 #content .entry-content .wp-block-button__link,
 #content .entry-content .btn {
-	color: #bf9d3e;
+	color: #614e1f;
 	background-color: white;
 }
 #theme-header__cart__num,
@@ -55,7 +55,7 @@ body.theme--esters {
 #content .entry-content .woocommerce .btn,
 .site .btn {
 	color: white;
-	background-color: #bf9d3e;
+	background-color: #614e1f;
 }
 #content .woocommerce .button:hover,
 .page--shop-landing #content .entry-content .btn:hover,
@@ -84,7 +84,7 @@ body.theme--esters {
 	color: black;
 }
 .page-template #main {
-	border-bottom: 1px solid #bf9d3e;
+	border-bottom: 1px solid #614e1f;
 }
 
 #order-online-modal h1,
