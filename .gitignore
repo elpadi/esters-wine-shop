@@ -17,6 +17,7 @@ wp-content/plugins/*
 /sitemap.xml
 /sitemap.xml.gz
 
+*.map
 wp-content/themes/*
 !wp-content/themes/esters*
 wp-content/themes/esters/assets/fonts
