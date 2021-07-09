@@ -20,11 +20,18 @@ body.theme--esters {
 #masthead a:hover,
 .woocommerce-account #page .woocommerce-MyAccount-navigation a:hover,
 .site a {
-	color: #a08068;
+    color: #007a74;
 }
+
+/* menu page content footer links */
+.page--our-menu #content .entry-content > .menu-tabs ~ p a {
+    color: #d2fffe;
+}
+
 .site a:not(.btn):hover {
 	color: #a16f68;
 }
+
 .theme--esters #main .products a:not(.btn) {
 	color: inherit;
 }
@@ -65,7 +72,7 @@ body.theme--esters {
 .site button:hover,
 .site .btn:hover {
 	color: white;
-	background-color: #a08068;
+    background-color: #007a74;
 }
 #home-slideshow a,
 #theme-nav a,
@@ -75,10 +82,10 @@ body.theme--esters {
 }
 #theme-header__online-shops::before,
 #theme-header__online-shops::after {
-	border-color: #a08068;
+    border-color: #007a74;
 }
 #theme-header__online-shops li::before {
-	border-left: 3px dotted #a08068;
+    border-left: 3px dotted #007a74;
 }
 #theme-header__cart svg {
 	color: black;
