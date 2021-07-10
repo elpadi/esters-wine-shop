@@ -10,12 +10,17 @@ body.theme--esters {
 
 ::-webkit-search-cancel-button,
 ::-webkit-input-placeholder,
+#theme-header__online-shops,
 .woocommerce-page .entry-content mark,
 .woocommerce-page .entry-content ins,
 .menu-tabs .tabs__title,
 .page--our-menu #content .menu-tabs h3,
 .page--our-menu #content .menu-tabs h4,
 #home-slideshow a:hover,
+#theme-header__cart__num,
+#theme-header__account,
+#theme-header__user,
+#theme-nav .current-menu-item a,
 #theme-nav a:hover,
 #masthead a:hover,
 .woocommerce-account #page .woocommerce-MyAccount-navigation a:hover,
@@ -64,6 +69,13 @@ body.theme--esters {
 	color: white;
 	background-color: #614e1f;
 }
+
+/*
+#theme-header__cart__num {
+	background-color: #614e1f;
+}
+*/
+
 #content .woocommerce .button:hover,
 .page--shop-landing #content .entry-content .btn:hover,
 .page--shop-landing #content .entry-content .wp-block-button__link:hover,
