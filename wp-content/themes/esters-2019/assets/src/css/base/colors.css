@@ -1,13 +1,16 @@
+/* dark brown color, light brown background color  */
 .page--calendar #main .type-page.entry,
 #theme-nav,
 body.theme--esters {
-	background-color: #f7f7ef;
-	color: #614e1f;
-}
-.xdebug-error tr:first-child th {
-	color: #007af5;
+    background-color: #f7f7ef;
+    color: #614e1f;
 }
 
+.xdebug-error tr:first-child th {
+    color: #007af5;
+}
+
+/* teal color */
 ::-webkit-search-cancel-button,
 ::-webkit-input-placeholder,
 #theme-header__online-shops,
@@ -28,31 +31,34 @@ body.theme--esters {
     color: #007a74;
 }
 
-/* menu page content footer links */
+/* light blue color */
 .page--our-menu #content .entry-content > .menu-tabs ~ p a {
+    /* menu page content footer links */
     color: #d2fffe;
 }
 
 .site a:not(.btn):hover {
-	color: #a16f68;
+    color: #a16f68;
 }
 
 .theme--esters #main .products a:not(.btn) {
-	color: inherit;
+    color: inherit;
 }
 
 .menu-tabs .tabs__title:hover,
 .menu-tabs .tabs__title.selected {
-	color: #179F9A;
+    color: #179f9a;
 }
 
+/* dark brown color */
 #colophon .wp-block-button__link,
 #content .entry-content .wp-block-button__link,
 #content .entry-content .btn {
-	color: #614e1f;
-	background-color: white;
+    color: #614e1f;
+    background-color: white;
 }
-#theme-header__cart__num,
+
+/* dark brown background */
 #colophon .wp-block-button__link:hover,
 #content .entry-content .wp-block-button__link:hover,
 #content .entry-content .btn:hover,
@@ -66,16 +72,12 @@ body.theme--esters {
 #content .woocommerce .button,
 #content .entry-content .woocommerce .btn,
 .site .btn {
-	color: white;
-	background-color: #614e1f;
+    color: white;
+    background-color: #614e1f;
 }
 
-/*
-#theme-header__cart__num {
-	background-color: #614e1f;
-}
-*/
-
+/* teal background */
+#theme-header__cart__num,
 #content .woocommerce .button:hover,
 .page--shop-landing #content .entry-content .btn:hover,
 .page--shop-landing #content .entry-content .wp-block-button__link:hover,
@@ -83,14 +85,15 @@ body.theme--esters {
 .site input[type="button"]:hover,
 .site button:hover,
 .site .btn:hover {
-	color: white;
+    color: white;
     background-color: #007a74;
 }
+
 #home-slideshow a,
 #theme-nav a,
 #masthead a {
-	color: inherit;
-	text-decoration: none;
+    color: inherit;
+    text-decoration: none;
 }
 #theme-header__online-shops::before,
 #theme-header__online-shops::after {
@@ -100,10 +103,10 @@ body.theme--esters {
     border-left: 3px dotted #007a74;
 }
 #theme-header__cart svg {
-	color: black;
+    color: black;
 }
 .page-template #main {
-	border-bottom: 1px solid #614e1f;
+    border-bottom: 1px solid #614e1f;
 }
 
 #order-online-modal h1,
@@ -111,13 +114,13 @@ body.theme--esters {
 .modal .modal__close-btn,
 #home-slideshow h2,
 #home-slideshow h3 {
-	color: white;
+    color: white;
 }
 
 .page--shop-landing .wp-block-column {
-	background-color: #f6f4eb;
+    background-color: #f6f4eb;
 }
 
 .single-product #main > .product .single_variation_wrap .woocommerce-Price-amount {
-	color: #77a464;
+    color: #77a464;
 }
