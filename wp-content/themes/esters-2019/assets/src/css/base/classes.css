@@ -74,3 +74,17 @@ body .btn.clean-btn:hover {
 	width: 100%;
 	height: 100%;
 }
+
+#customer_details #ship-to-different-address label input[type="checkbox"],
+#payment .wc_payment_method input.input-radio[name="payment_method"],
+.screen-reader-text {
+    display: inline;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+}
