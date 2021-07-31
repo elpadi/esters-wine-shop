@@ -1,15 +1,15 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){/*!
- * jQuery JavaScript Library v3.5.1
+ * jQuery JavaScript Library v3.6.0
  * https://jquery.com/
  *
  * Includes Sizzle.js
  * https://sizzlejs.com/
  *
- * Copyright JS Foundation and other contributors
+ * Copyright OpenJS Foundation and other contributors
  * Released under the MIT license
  * https://jquery.org/license
  *
- * Date: 2020-05-04T22:49Z
+ * Date: 2021-03-02T17:08Z
  */(function(global,factory){"use strict";if(typeof module==="object"&&typeof module.exports==="object"){// For CommonJS and CommonJS-like environments where a proper `window`
 // is present, execute the factory and get jQuery.
 // For environments that do not have a `window` with a `document`
@@ -26,7 +26,10 @@ module.exports=global.document?factory(global,true):function(w){if(!w.document){
 // In some browsers, typeof returns "function" for HTML <object> elements
 // (i.e., `typeof document.createElement( "object" ) === "function"`).
 // We don't want to classify *any* DOM node as a function.
-return typeof obj==="function"&&typeof obj.nodeType!=="number"};var isWindow=function isWindow(obj){return obj!=null&&obj===obj.window};var document=window.document;var preservedScriptAttributes={type:true,src:true,nonce:true,noModule:true};function DOMEval(code,node,doc){doc=doc||document;var i,val,script=doc.createElement("script");script.text=code;if(node){for(i in preservedScriptAttributes){// Support: Firefox 64+, Edge 18+
+// Support: QtWeb <=3.8.5, WebKit <=534.34, wkhtmltopdf tool <=0.12.5
+// Plus for old WebKit, typeof returns "function" for HTML collections
+// (e.g., `typeof document.getElementsByTagName("div") === "function"`). (gh-4756)
+return typeof obj==="function"&&typeof obj.nodeType!=="number"&&typeof obj.item!=="function"};var isWindow=function isWindow(obj){return obj!=null&&obj===obj.window};var document=window.document;var preservedScriptAttributes={type:true,src:true,nonce:true,noModule:true};function DOMEval(code,node,doc){doc=doc||document;var i,val,script=doc.createElement("script");script.text=code;if(node){for(i in preservedScriptAttributes){// Support: Firefox 64+, Edge 18+
 // Some browsers don't support the "nonce" property on scripts.
 // On the other hand, just using `getAttribute` is not enough as
 // the `nonce` attribute is reset to an empty string whenever it
@@ -39,7 +42,7 @@ return typeof obj==="function"&&typeof obj.nodeType!=="number"};var isWindow=fun
 val=node[i]||node.getAttribute&&node.getAttribute(i);if(val){script.setAttribute(i,val)}}}doc.head.appendChild(script).parentNode.removeChild(script)}function toType(obj){if(obj==null){return obj+""}// Support: Android <=2.3 only (functionish RegExp)
 return typeof obj==="object"||typeof obj==="function"?class2type[toString.call(obj)]||"object":typeof obj}/* global Symbol */ // Defining this global in .eslintrc.json would create a danger of using the global
 // unguarded in another place, it seems safer to define global only for this module
-var version="3.5.1",// Define a local copy of jQuery
+var version="3.6.0",// Define a local copy of jQuery
 jQuery=function(selector,context){// The jQuery object is actually just the init constructor 'enhanced'
 // Need init if jQuery is called (just allow error to be thrown if not included)
 return new jQuery.fn.init(selector,context)};jQuery.fn=jQuery.prototype={// The current version of jQuery being used
@@ -95,14 +98,14 @@ jQuery.each("Boolean Number String Function Array Date RegExp Object Error Symbo
 // hasOwn isn't used here due to false negatives
 // regarding Nodelist length in IE
 var length=!!obj&&"length"in obj&&obj.length,type=toType(obj);if(isFunction(obj)||isWindow(obj)){return false}return type==="array"||length===0||typeof length==="number"&&length>0&&length-1 in obj}var Sizzle=/*!
- * Sizzle CSS Selector Engine v2.3.5
+ * Sizzle CSS Selector Engine v2.3.6
  * https://sizzlejs.com/
  *
  * Copyright JS Foundation and other contributors
  * Released under the MIT license
  * https://js.foundation/
  *
- * Date: 2020-03-14
+ * Date: 2021-02-16
  */function(window){var i,support,Expr,getText,isXML,tokenize,compile,select,outermostContext,sortInput,hasDuplicate,// Local document vars
 setDocument,document,docElem,documentIsHTML,rbuggyQSA,rbuggyMatches,matches,contains,// Instance-specific data
 expando="sizzle"+1*new Date,preferredDoc=window.document,dirruns=0,done=0,classCache=createCache(),tokenCache=createCache(),compilerCache=createCache(),nonnativeSelectorCache=createCache(),sortOrder=function(a,b){if(a===b){hasDuplicate=true}return 0},// Instance methods
@@ -246,7 +249,7 @@ support=Sizzle.support={};/**
  * Detects XML nodes
  * @param {Element|Object} elem An element or a document
  * @returns {Boolean} True iff elem is a non-HTML XML node
- */isXML=Sizzle.isXML=function(elem){var namespace=elem.namespaceURI,docElem=(elem.ownerDocument||elem).documentElement;// Support: IE <=8
+ */isXML=Sizzle.isXML=function(elem){var namespace=elem&&elem.namespaceURI,docElem=elem&&(elem.ownerDocument||elem).documentElement;// Support: IE <=8
 // Assume HTML when documentElement doesn't yet exist, such as inside loading iframes
 // https://bugs.jquery.com/ticket/4833
 return!rhtml.test(namespace||docElem&&docElem.nodeName||"HTML")};/**
@@ -592,7 +595,7 @@ if(!assert(function(el){el.innerHTML="<a href='#'></a>";return el.firstChild.get
 if(!support.attributes||!assert(function(el){el.innerHTML="<input/>";el.firstChild.setAttribute("value","");return el.firstChild.getAttribute("value")===""})){addHandle("value",function(elem,_name,isXML){if(!isXML&&elem.nodeName.toLowerCase()==="input"){return elem.defaultValue}})}// Support: IE<9
 // Use getAttributeNode to fetch booleans when getAttribute lies
 if(!assert(function(el){return el.getAttribute("disabled")==null})){addHandle(booleans,function(elem,name,isXML){var val;if(!isXML){return elem[name]===true?name.toLowerCase():(val=elem.getAttributeNode(name))&&val.specified?val.value:null}})}return Sizzle}(window);jQuery.find=Sizzle;jQuery.expr=Sizzle.selectors;// Deprecated
-jQuery.expr[":"]=jQuery.expr.pseudos;jQuery.uniqueSort=jQuery.unique=Sizzle.uniqueSort;jQuery.text=Sizzle.getText;jQuery.isXMLDoc=Sizzle.isXML;jQuery.contains=Sizzle.contains;jQuery.escapeSelector=Sizzle.escape;var dir=function(elem,dir,until){var matched=[],truncate=until!==undefined;while((elem=elem[dir])&&elem.nodeType!==9){if(elem.nodeType===1){if(truncate&&jQuery(elem).is(until)){break}matched.push(elem)}}return matched};var siblings=function(n,elem){var matched=[];for(;n;n=n.nextSibling){if(n.nodeType===1&&n!==elem){matched.push(n)}}return matched};var rneedsContext=jQuery.expr.match.needsContext;function nodeName(elem,name){return elem.nodeName&&elem.nodeName.toLowerCase()===name.toLowerCase()};var rsingleTag=/^<([a-z][^\/\0>:\x20\t\r\n\f]*)[\x20\t\r\n\f]*\/?>(?:<\/\1>|)$/i;// Implement the identical functionality for filter and not
+jQuery.expr[":"]=jQuery.expr.pseudos;jQuery.uniqueSort=jQuery.unique=Sizzle.uniqueSort;jQuery.text=Sizzle.getText;jQuery.isXMLDoc=Sizzle.isXML;jQuery.contains=Sizzle.contains;jQuery.escapeSelector=Sizzle.escape;var dir=function(elem,dir,until){var matched=[],truncate=until!==undefined;while((elem=elem[dir])&&elem.nodeType!==9){if(elem.nodeType===1){if(truncate&&jQuery(elem).is(until)){break}matched.push(elem)}}return matched};var siblings=function(n,elem){var matched=[];for(;n;n=n.nextSibling){if(n.nodeType===1&&n!==elem){matched.push(n)}}return matched};var rneedsContext=jQuery.expr.match.needsContext;function nodeName(elem,name){return elem.nodeName&&elem.nodeName.toLowerCase()===name.toLowerCase()}var rsingleTag=/^<([a-z][^\/\0>:\x20\t\r\n\f]*)[\x20\t\r\n\f]*\/?>(?:<\/\1>|)$/i;// Implement the identical functionality for filter and not
 function winnow(elements,qualifier,not){if(isFunction(qualifier)){return jQuery.grep(elements,function(elem,i){return!!qualifier.call(elem,i,elem)!==not})}// Single element
 if(qualifier.nodeType){return jQuery.grep(elements,function(elem){return elem===qualifier!==not})}// Arraylike of elements (jQuery, arguments, Array)
 if(typeof qualifier!=="string"){return jQuery.grep(elements,function(elem){return indexOf.call(qualifier,elem)>-1!==not})}// Filtered directly for both simple and complex selectors
@@ -788,12 +791,12 @@ return deferred},// Deferred helper
 when:function(singleValue){var// count of uncompleted subordinates
 remaining=arguments.length,// count of unprocessed arguments
 i=remaining,// subordinate fulfillment data
-resolveContexts=Array(i),resolveValues=slice.call(arguments),// the master Deferred
-master=jQuery.Deferred(),// subordinate callback factory
-updateFunc=function(i){return function(value){resolveContexts[i]=this;resolveValues[i]=arguments.length>1?slice.call(arguments):value;if(! --remaining){master.resolveWith(resolveContexts,resolveValues)}}};// Single- and empty arguments are adopted like Promise.resolve
-if(remaining<=1){adoptValue(singleValue,master.done(updateFunc(i)).resolve,master.reject,!remaining);// Use .then() to unwrap secondary thenables (cf. gh-3000)
-if(master.state()==="pending"||isFunction(resolveValues[i]&&resolveValues[i].then)){return master.then()}}// Multiple arguments are aggregated like Promise.all array elements
-while(i--){adoptValue(resolveValues[i],updateFunc(i),master.reject)}return master.promise()}});// These usually indicate a programmer mistake during development,
+resolveContexts=Array(i),resolveValues=slice.call(arguments),// the primary Deferred
+primary=jQuery.Deferred(),// subordinate callback factory
+updateFunc=function(i){return function(value){resolveContexts[i]=this;resolveValues[i]=arguments.length>1?slice.call(arguments):value;if(! --remaining){primary.resolveWith(resolveContexts,resolveValues)}}};// Single- and empty arguments are adopted like Promise.resolve
+if(remaining<=1){adoptValue(singleValue,primary.done(updateFunc(i)).resolve,primary.reject,!remaining);// Use .then() to unwrap secondary thenables (cf. gh-3000)
+if(primary.state()==="pending"||isFunction(resolveValues[i]&&resolveValues[i].then)){return primary.then()}}// Multiple arguments are aggregated like Promise.all array elements
+while(i--){adoptValue(resolveValues[i],updateFunc(i),primary.reject)}return primary.promise()}});// These usually indicate a programmer mistake during development,
 // warn about them ASAP rather than swallowing them by default.
 var rerrorNames=/^(Eval|Internal|Range|Reference|Syntax|Type|URI)Error$/;jQuery.Deferred.exceptionHook=function(error,stack){// Support: IE 8 - 9 only
 // Console exists when dev tools are open, which can happen at any time
@@ -981,7 +984,7 @@ fragment.textContent="";i=0;while(elem=nodes[i++]){// Skip elements already in t
 if(selection&&jQuery.inArray(elem,selection)>-1){if(ignored){ignored.push(elem)}continue}attached=isAttached(elem);// Append to fragment
 tmp=getAll(fragment.appendChild(elem),"script");// Preserve script evaluation history
 if(attached){setGlobalEval(tmp)}// Capture executables
-if(scripts){j=0;while(elem=tmp[j++]){if(rscriptType.test(elem.type||"")){scripts.push(elem)}}}}return fragment}var rkeyEvent=/^key/,rmouseEvent=/^(?:mouse|pointer|contextmenu|drag|drop)|click/,rtypenamespace=/^([^.]*)(?:\.(.+)|)/;function returnTrue(){return true}function returnFalse(){return false}// Support: IE <=9 - 11+
+if(scripts){j=0;while(elem=tmp[j++]){if(rscriptType.test(elem.type||"")){scripts.push(elem)}}}}return fragment}var rtypenamespace=/^([^.]*)(?:\.(.+)|)/;function returnTrue(){return true}function returnFalse(){return false}// Support: IE <=9 - 11+
 // focus() and blur() are asynchronous, except when they are no-op.
 // So expect focus to be synchronous when the element is already active,
 // and blur to be synchronous when the element is not already active.
@@ -1077,7 +1080,12 @@ saved=slice.call(arguments);dataPriv.set(this,type,saved);// Trigger the native 
 // Support: IE <=9 - 11+
 // focus() and blur() are asynchronous
 notAsync=expectSync(this,type);this[type]();result=dataPriv.get(this,type);if(saved!==result||notAsync){dataPriv.set(this,type,false)}else{result={}}if(saved!==result){// Cancel the outer synthetic event
-event.stopImmediatePropagation();event.preventDefault();return result.value}// If this is an inner synthetic event for an event with a bubbling surrogate
+event.stopImmediatePropagation();event.preventDefault();// Support: Chrome 86+
+// In Chrome, if an element having a focusout handler is blurred by
+// clicking outside of it, it invokes the handler synchronously. If
+// that handler calls `.remove()` on the element, the data is cleared,
+// leaving `result` undefined. We need to guard against this.
+return result&&result.value}// If this is an inner synthetic event for an event with a bubbling surrogate
 // (focus or blur), assume that the surrogate already propagated from triggering the
 // native event and prevent that from happening again here.
 // This technically gets the ordering wrong w.r.t. to `.trigger()` (in which the
@@ -1105,16 +1113,16 @@ this.timeStamp=src&&src.timeStamp||Date.now();// Mark it as fixed
 this[jQuery.expando]=true};// jQuery.Event is based on DOM3 Events as specified by the ECMAScript Language Binding
 // https://www.w3.org/TR/2003/WD-DOM-Level-3-Events-20030331/ecma-script-binding.html
 jQuery.Event.prototype={constructor:jQuery.Event,isDefaultPrevented:returnFalse,isPropagationStopped:returnFalse,isImmediatePropagationStopped:returnFalse,isSimulated:false,preventDefault:function(){var e=this.originalEvent;this.isDefaultPrevented=returnTrue;if(e&&!this.isSimulated){e.preventDefault()}},stopPropagation:function(){var e=this.originalEvent;this.isPropagationStopped=returnTrue;if(e&&!this.isSimulated){e.stopPropagation()}},stopImmediatePropagation:function(){var e=this.originalEvent;this.isImmediatePropagationStopped=returnTrue;if(e&&!this.isSimulated){e.stopImmediatePropagation()}this.stopPropagation()}};// Includes all common event props including KeyEvent and MouseEvent specific props
-jQuery.each({altKey:true,bubbles:true,cancelable:true,changedTouches:true,ctrlKey:true,detail:true,eventPhase:true,metaKey:true,pageX:true,pageY:true,shiftKey:true,view:true,"char":true,code:true,charCode:true,key:true,keyCode:true,button:true,buttons:true,clientX:true,clientY:true,offsetX:true,offsetY:true,pointerId:true,pointerType:true,screenX:true,screenY:true,targetTouches:true,toElement:true,touches:true,which:function(event){var button=event.button;// Add which for key events
-if(event.which==null&&rkeyEvent.test(event.type)){return event.charCode!=null?event.charCode:event.keyCode}// Add which for click: 1 === left; 2 === middle; 3 === right
-if(!event.which&&button!==undefined&&rmouseEvent.test(event.type)){if(button&1){return 1}if(button&2){return 3}if(button&4){return 2}return 0}return event.which}},jQuery.event.addProp);jQuery.each({focus:"focusin",blur:"focusout"},function(type,delegateType){jQuery.event.special[type]={// Utilize native event if possible so blur/focus sequence is correct
+jQuery.each({altKey:true,bubbles:true,cancelable:true,changedTouches:true,ctrlKey:true,detail:true,eventPhase:true,metaKey:true,pageX:true,pageY:true,shiftKey:true,view:true,"char":true,code:true,charCode:true,key:true,keyCode:true,button:true,buttons:true,clientX:true,clientY:true,offsetX:true,offsetY:true,pointerId:true,pointerType:true,screenX:true,screenY:true,targetTouches:true,toElement:true,touches:true,which:true},jQuery.event.addProp);jQuery.each({focus:"focusin",blur:"focusout"},function(type,delegateType){jQuery.event.special[type]={// Utilize native event if possible so blur/focus sequence is correct
 setup:function(){// Claim the first handler
 // dataPriv.set( this, "focus", ... )
 // dataPriv.set( this, "blur", ... )
 leverageNative(this,type,expectSync);// Return false to allow normal processing in the caller
 return false},trigger:function(){// Force setup before trigger
 leverageNative(this,type);// Return non-false to allow normal event-path propagation
-return true},delegateType:delegateType}});// Create mouseenter/leave events using mouseover/out and event-time checks
+return true},// Suppress native focus or blur as it's already being fired
+// in leverageNative.
+_default:function(){return true},delegateType:delegateType}});// Create mouseenter/leave events using mouseover/out and event-time checks
 // so that event delegation works in jQuery.
 // Do the same for pointerenter/pointerleave and pointerover/pointerout
 //
@@ -1196,7 +1204,20 @@ div.style.backgroundClip="content-box";div.cloneNode(true).style.backgroundClip=
 // set in CSS while `offset*` properties report correct values.
 // Behavior in IE 9 is more subtle than in newer versions & it passes
 // some versions of this test; make sure not to make it pass there!
-reliableTrDimensions:function(){var table,tr,trChild,trStyle;if(reliableTrDimensionsVal==null){table=document.createElement("table");tr=document.createElement("tr");trChild=document.createElement("div");table.style.cssText="position:absolute;left:-11111px";tr.style.height="1px";trChild.style.height="9px";documentElement.appendChild(table).appendChild(tr).appendChild(trChild);trStyle=window.getComputedStyle(tr);reliableTrDimensionsVal=parseInt(trStyle.height)>3;documentElement.removeChild(table)}return reliableTrDimensionsVal}})})();function curCSS(elem,name,computed){var width,minWidth,maxWidth,ret,// Support: Firefox 51+
+//
+// Support: Firefox 70+
+// Only Firefox includes border widths
+// in computed dimensions. (gh-4529)
+reliableTrDimensions:function(){var table,tr,trChild,trStyle;if(reliableTrDimensionsVal==null){table=document.createElement("table");tr=document.createElement("tr");trChild=document.createElement("div");table.style.cssText="position:absolute;left:-11111px;border-collapse:separate";tr.style.cssText="border:1px solid";// Support: Chrome 86+
+// Height set through cssText does not get applied.
+// Computed height then comes back as 0.
+tr.style.height="1px";trChild.style.height="9px";// Support: Android 8 Chrome 86+
+// In our bodyBackground.html iframe,
+// display for all div elements is set to "inline",
+// which causes a problem only in Android 8 Chrome 86.
+// Ensuring the div is display: block
+// gets around this issue.
+trChild.style.display="block";documentElement.appendChild(table).appendChild(tr).appendChild(trChild);trStyle=window.getComputedStyle(tr);reliableTrDimensionsVal=parseInt(trStyle.height,10)+parseInt(trStyle.borderTopWidth,10)+parseInt(trStyle.borderBottomWidth,10)===tr.offsetHeight;documentElement.removeChild(table)}return reliableTrDimensionsVal}})})();function curCSS(elem,name,computed){var width,minWidth,maxWidth,ret,// Support: Firefox 51+
 // Retrieving style before computed somehow
 // fixes an issue with getting wrong values
 // on detached elements
@@ -1481,9 +1502,9 @@ if(!support.focusin){jQuery.each({focus:"focusin",blur:"focusout"},function(orig
 var handler=function(event){jQuery.event.simulate(fix,event.target,jQuery.event.fix(event))};jQuery.event.special[fix]={setup:function(){// Handle: regular nodes (via `this.ownerDocument`), window
 // (via `this.document`) & document (via `this`).
 var doc=this.ownerDocument||this.document||this,attaches=dataPriv.access(doc,fix);if(!attaches){doc.addEventListener(orig,handler,true)}dataPriv.access(doc,fix,(attaches||0)+1)},teardown:function(){var doc=this.ownerDocument||this.document||this,attaches=dataPriv.access(doc,fix)-1;if(!attaches){doc.removeEventListener(orig,handler,true);dataPriv.remove(doc,fix)}else{dataPriv.access(doc,fix,attaches)}}}})}var location=window.location;var nonce={guid:Date.now()};var rquery=/\?/;// Cross-browser xml parsing
-jQuery.parseXML=function(data){var xml;if(!data||typeof data!=="string"){return null}// Support: IE 9 - 11 only
+jQuery.parseXML=function(data){var xml,parserErrorElem;if(!data||typeof data!=="string"){return null}// Support: IE 9 - 11 only
 // IE throws on parseFromString with invalid input.
-try{xml=new window.DOMParser().parseFromString(data,"text/xml")}catch(e){xml=undefined}if(!xml||xml.getElementsByTagName("parsererror").length){jQuery.error("Invalid XML: "+data)}return xml};var rbracket=/\[\]$/,rCRLF=/\r?\n/g,rsubmitterTypes=/^(?:submit|button|image|reset|file)$/i,rsubmittable=/^(?:input|select|textarea|keygen)/i;function buildParams(prefix,obj,traditional,add){var name;if(Array.isArray(obj)){// Serialize array item.
+try{xml=new window.DOMParser().parseFromString(data,"text/xml")}catch(e){}parserErrorElem=xml&&xml.getElementsByTagName("parsererror")[0];if(!xml||parserErrorElem){jQuery.error("Invalid XML: "+(parserErrorElem?jQuery.map(parserErrorElem.childNodes,function(el){return el.textContent}).join("\n"):data))}return xml};var rbracket=/\[\]$/,rCRLF=/\r?\n/g,rsubmitterTypes=/^(?:submit|button|image|reset|file)$/i,rsubmittable=/^(?:input|select|textarea|keygen)/i;function buildParams(prefix,obj,traditional,add){var name;if(Array.isArray(obj)){// Serialize array item.
 jQuery.each(obj,function(i,v){if(traditional||rbracket.test(prefix)){// Treat each array item as a scalar.
 add(prefix,v)}else{// Item is non-scalar (array or object), encode its numeric index.
 buildParams(prefix+"["+(typeof v==="object"&&v!=null?i:"")+"]",v,traditional,add)}})}else if(!traditional&&toType(obj)==="object"){// Serialize object item.
@@ -1659,8 +1680,8 @@ transport=undefined;// Cache response headers
 responseHeadersString=headers||"";// Set readyState
 jqXHR.readyState=status>0?4:0;// Determine if successful
 isSuccess=status>=200&&status<300||status===304;// Get response data
-if(responses){response=ajaxHandleResponses(s,jqXHR,responses)}// Use a noop converter for missing script
-if(!isSuccess&&jQuery.inArray("script",s.dataTypes)>-1){s.converters["text script"]=function(){}}// Convert no matter what (that way responseXXX fields are always set)
+if(responses){response=ajaxHandleResponses(s,jqXHR,responses)}// Use a noop converter for missing script but not if jsonp
+if(!isSuccess&&jQuery.inArray("script",s.dataTypes)>-1&&jQuery.inArray("json",s.dataTypes)<0){s.converters["text script"]=function(){}}// Convert no matter what (that way responseXXX fields are always set)
 response=ajaxConvert(s,response,jqXHR,isSuccess);// If successful, handle type chaining
 if(isSuccess){// Set the If-Modified-Since and/or If-None-Match header, if in ifModified mode.
 if(s.ifModified){modified=jqXHR.getResponseHeader("Last-Modified");if(modified){jQuery.lastModified[cacheURL]=modified}modified=jqXHR.getResponseHeader("etag");if(modified){jQuery.etag[cacheURL]=modified}}// if no content
@@ -1768,7 +1789,7 @@ responseText);// If the request succeeds, this function gets "data", "status", "
 if(position==="static"){elem.style.position="relative"}curOffset=curElem.offset();curCSSTop=jQuery.css(elem,"top");curCSSLeft=jQuery.css(elem,"left");calculatePosition=(position==="absolute"||position==="fixed")&&(curCSSTop+curCSSLeft).indexOf("auto")>-1;// Need to be able to calculate position if either
 // top or left is auto and position is either absolute or fixed
 if(calculatePosition){curPosition=curElem.position();curTop=curPosition.top;curLeft=curPosition.left}else{curTop=parseFloat(curCSSTop)||0;curLeft=parseFloat(curCSSLeft)||0}if(isFunction(options)){// Use jQuery.extend here to allow modification of coordinates argument (gh-1848)
-options=options.call(elem,i,jQuery.extend({},curOffset))}if(options.top!=null){props.top=options.top-curOffset.top+curTop}if(options.left!=null){props.left=options.left-curOffset.left+curLeft}if("using"in options){options.using.call(elem,props)}else{if(typeof props.top==="number"){props.top+="px"}if(typeof props.left==="number"){props.left+="px"}curElem.css(props)}}};jQuery.fn.extend({// offset() relates an element's border box to the document origin
+options=options.call(elem,i,jQuery.extend({},curOffset))}if(options.top!=null){props.top=options.top-curOffset.top+curTop}if(options.left!=null){props.left=options.left-curOffset.left+curLeft}if("using"in options){options.using.call(elem,props)}else{curElem.css(props)}}};jQuery.fn.extend({// offset() relates an element's border box to the document origin
 offset:function(options){// Preserve chaining for setter
 if(arguments.length){return options===undefined?this:this.each(function(i){jQuery.offset.setOffset(this,options,i)})}var rect,win,elem=this[0];if(!elem){return}// Return zeros for disconnected and hidden (display: none) elements (gh-2310)
 // Support: IE <=11 only
@@ -1982,7 +2003,7 @@ return`<article id="post-${p.id}" class="entry type-${p.type}">
 			<footer>
 				<a href="${p.article_link}" target="_blank" rel="nofollow">${p.source_name}</a>
 			</footer>
-		</article>`}}module.exports=PressListing},{"./listing":8}],10:[function(require,module,exports){const $=require("jquery");const Slick=require("slick-carousel");class Slider{constructor(element,options={}){("fn"in element?element:$(element)).slick($.extend({infinite:true,speed:1000,prevArrow:`<button type="button" class="slick-prev"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><rect x="0" fill="none" width="20" height="20"/><g><path d="M14 5l-5 5 5 5-1 2-7-7 7-7z"/></g></svg></button>`,nextArrow:`<button type="button" class="slick-next"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><rect x="0" fill="none" width="20" height="20"/><g><path d="M6 15l5-5-5-5 1-2 7 7-7 7z"/></g></svg></button>`},options))}}module.exports=Slider},{"jquery":1,"slick-carousel":2}],11:[function(require,module,exports){const $=require("jquery");class Instagram{constructor(){this.container=document.createElement("div")}fetch(){console.log("Instagram.fetch");return Promise.all([app.ajax({action:"instagram_feed"}),app.fetchIcon("instagram")]).then(responses=>{if(responses[0]&&responses[0].success)this.parse(JSON.parse(responses[0].data),responses[1].success?responses[1].data:"")})}parse(feed,icon){console.log("Instagram.parse",feed);this.container.innerHTML=feed.data.map(p=>{return $(document.createElement("a")).addClass("instagram__post").attr("target","_blank").attr("href",p.link).html(`
+		</article>`}}module.exports=PressListing},{"./listing":8}],10:[function(require,module,exports){const $=require("jquery");const Slick=require("slick-carousel");class Slider{constructor(element,options={}){("fn"in element?element:$(element)).slick($.extend({infinite:true,speed:1000,prevArrow:`<button type="button" aria-label="Previous Image" class="slick-prev"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><rect x="0" fill="none" width="20" height="20"/><g><path d="M14 5l-5 5 5 5-1 2-7-7 7-7z"/></g></svg></button>`,nextArrow:`<button type="button" aria-label="Next Image" class="slick-next"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><rect x="0" fill="none" width="20" height="20"/><g><path d="M6 15l5-5-5-5 1-2 7 7-7 7z"/></g></svg></button>`},options))}}module.exports=Slider},{"jquery":1,"slick-carousel":2}],11:[function(require,module,exports){const $=require("jquery");class Instagram{constructor(){this.container=document.createElement("div")}fetch(){console.log("Instagram.fetch");return Promise.all([app.ajax({action:"instagram_feed"}),app.fetchIcon("instagram")]).then(responses=>{if(responses[0]&&responses[0].success)this.parse(JSON.parse(responses[0].data),responses[1].success?responses[1].data:"")})}parse(feed,icon){console.log("Instagram.parse",feed);this.container.innerHTML=feed.data.map(p=>{return $(document.createElement("a")).addClass("instagram__post").attr("target","_blank").attr("href",p.link).html(`
 					<img src="${p.images.standard_resolution.url}" alt="">
 					<p>${p.caption.text}</p>
 					${icon}
