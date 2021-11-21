@@ -7,6 +7,19 @@ use WordpressLib\Theme\Frontend;
 
 class Theme extends Frontend
 {
+    public function disableCustomSelectDropdowns()
+    {
+        add_action('wp_enqueue_scripts', function() {
+            foreach (['selectWoo'] as $customStyle) {
+                wp_dequeue_style($customStyle);
+                wp_deregister_style($customStyle);
+            }
+            foreach (['selectWoo'] as $customScript) {
+                wp_dequeue_script($customScript);
+                wp_deregister_script($customScript);
+            }
+        }, 100);
+    }
 
     public function updateBodyClasses($classes)
     {

@@ -21,6 +21,10 @@ form.woocommerce-checkout {
 	font-size: 1.25em;
 }
 
+#customer_details select {
+    height: 46px;
+}
+
 form.woocommerce-checkout label {
 	font-size: 0.9em;
 }

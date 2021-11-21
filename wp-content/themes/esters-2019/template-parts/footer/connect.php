@@ -3,7 +3,12 @@
 <p><a href="mailto:<?= $contact['email']; ?>"><?= $contact['email']; ?></a></p>
 <ul id="theme-footer__social" class="hlist">
     <?php foreach (['instagram','twitter','facebook'] as $social) : ?>
-    <li><a href="https://<?= $social; ?>.com/<?= $contact[$social]; ?>" target="_blank" rel="nofollow"><?= ThemeLib\Theme::instance()->svg($social, 'icons'); ?></a></li>
+    <li><a
+        href="https://<?= $social; ?>.com/<?= $contact[$social]; ?>"
+        target="_blank"
+        title="Follow Esters Wine Shop on <?= ucfirst($social); ?>"
+        rel="nofollow"
+    ><?= ThemeLib\Theme::instance()->svg($social, 'icons'); ?></a></li>
     <?php endforeach; ?>
 </ul>
 <div id="theme-footer__newsletter">

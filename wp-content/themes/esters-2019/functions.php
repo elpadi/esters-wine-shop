@@ -10,13 +10,14 @@ use ThemeLib\ACF\PressFields;
 use ThemeLib\Esters\Shop\Shop;
 use ThemeLib\Esters\Shop\FreeShipping;
 
-require_once ROOT_PATH . '/vendor/autoload.php';
+require_once ABSPATH . '/vendor/autoload.php';
 require_once __DIR__ . '/custom-fields.php';
 
 define('THEME_NAME', 'esters');
 
 Theme::create(__DIR__);
 Theme::instance()->enqueueScripts();
+Theme::instance()->disableCustomSelectDropdowns();
 Theme::instance()->set('customFields', get_theme_custom_fields_definitions());
 
 new Shop();
