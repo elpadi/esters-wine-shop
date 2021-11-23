@@ -35,6 +35,15 @@ class WP {
 		});
 	}
 
+    static replaceImageHost(newHost) {
+        for (let img of document.getElementsByTagName('img')) {
+            if (img.naturalWidth || img.complete === false || img.src.indexOf(newHost) !== -1) {
+                continue;
+            }
+            img.src = img.src.replace(location.hostname, newHost);
+        }
+    }
+
 }
 
 module.exports = WP;

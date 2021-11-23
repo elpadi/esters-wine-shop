@@ -10,15 +10,25 @@ use ThemeLib\ACF\PressFields;
 use ThemeLib\Esters\Shop\Shop;
 use ThemeLib\Esters\Shop\FreeShipping;
 
-require_once ABSPATH . '/vendor/autoload.php';
-require_once __DIR__ . '/custom-fields.php';
+foreach (
+    [
+        rtrim(ABSPATH, '/'),
+        dirname(ABSPATH),
+    ] as $vendorContainer
+) {
+    $autoloadPath = "$vendorContainer/vendor/autoload.php";
+    if (is_file($autoloadPath)) {
+        require_once $autoloadPath;
+    }
+}
 
-define('THEME_NAME', 'esters');
+require_once __DIR__ . '/custom-fields.php';
 
 Theme::create(__DIR__);
 Theme::instance()->enqueueScripts();
 Theme::instance()->disableCustomSelectDropdowns();
 Theme::instance()->set('customFields', get_theme_custom_fields_definitions());
+Theme::instance()->replaceImageHost('https://www.esterswineshop.com');
 
 new Shop();
 

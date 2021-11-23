@@ -27,6 +27,7 @@ class App {
 		setTimeout(() => document.body.classList.add('content-loaded'), 200);
 		this.vw = window.innerWidth;
 		this.vh = window.innerHeight;
+        WP.replaceImageHost('www.esterswineshop.com');
 
 		this.dispatch('load');
 	}
