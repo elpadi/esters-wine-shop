@@ -7,6 +7,7 @@ class Esters {
 		this.initSiteElementClasses();
 		this.initSearchForm();
 		this.initBurger();
+        this.addBookTableToMobileNav();
 	}
 
 	initSiteElementClasses() {
@@ -86,6 +87,23 @@ class Esters {
 		});
 	}
 
+    addBookTableToMobileNav() {
+        const bookBtn = document.querySelector('#theme-header__book-table .resy-btn'),
+            btnLi = document.createElement('li'),
+            navUl = document.querySelector('#menu-main-menu');
+
+        if (!bookBtn) {
+            return;
+        }
+
+        const newBtn = bookBtn.cloneNode(true);
+        newBtn.id = '';
+
+        btnLi.classList.add('book-table');
+
+        btnLi.appendChild(newBtn);
+        navUl.appendChild(btnLi);
+    }
 }
 
 module.exports = Esters;

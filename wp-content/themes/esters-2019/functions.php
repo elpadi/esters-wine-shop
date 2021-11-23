@@ -28,7 +28,9 @@ Theme::create(__DIR__);
 Theme::instance()->enqueueScripts();
 Theme::instance()->disableCustomSelectDropdowns();
 Theme::instance()->set('customFields', get_theme_custom_fields_definitions());
-Theme::instance()->replaceImageHost('https://www.esterswineshop.com');
+if (strpos($_SERVER['HTTP_HOST'] ?? '', 'lndo.site') !== false) {
+    Theme::instance()->replaceImageHost('https://www.esterswineshop.com');
+}
 
 new Shop();
 
@@ -89,7 +91,7 @@ Theme::instance()->set('customizerSections', [
     'onlineShops' => (new CustomizerSection('online_shops'))->addRepeater([
         ['text','title'],
         ['text','url','URL'],
-    ], 4, 'Shop'),
+    ], 5, 'Shop'),
 
     'productPage' => (new CustomizerSection('product_page'))->addFields([
         ['textarea','subscription_disclaimer'],

@@ -59,6 +59,7 @@ body.theme--esters {
 }
 
 /* dark brown background */
+#theme-header__book-table:hover,
 #colophon .wp-block-button__link:hover,
 #content .entry-content .wp-block-button__link:hover,
 #content .entry-content .btn:hover,
@@ -77,6 +78,7 @@ body.theme--esters {
 }
 
 /* teal background */
+#theme-header__book-table,
 #theme-header__cart__num,
 #content .woocommerce .button:hover,
 .page--shop-landing #content .entry-content .btn:hover,

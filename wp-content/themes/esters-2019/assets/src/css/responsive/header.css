@@ -134,10 +134,12 @@ body[data-is-burger-expanded="true"] .burger-expand-btn {
 	#theme-header__logo {
 		margin: 0.5em auto 0;
 	}
+	#theme-header__book-table,
 	#theme-header__online-shops {
 		left: auto;
 		font-size: 1em;
 		right: 1.9em;
+		transform: translateY(0);
 	}
 	#theme-header__account {
 		position: static;
@@ -147,12 +149,14 @@ body[data-is-burger-expanded="true"] .burger-expand-btn {
 	#theme-header__user a:last-child {
 		display: inline;
 	}
-	#theme-header__online-shops {
-		transform: translateY(0);
-	}
 	#theme-header__online-shops button {
 		margin: 0.9em 0.8em 0.8em;
 	}
+	#theme-header__book-table {
+        margin-right: 190px;
+    }
+	#theme-header__book-table a {
+    }
 	#masthead .burger-btn {
 		display: none;
 	}
@@ -188,4 +192,16 @@ body[data-is-burger-expanded="true"] .burger-expand-btn {
 	#theme-nav {
 		font-size: 0.7em;
 	}
+}
+
+@media (min-width: 1014px) {
+	#theme-nav .book-table {
+        display: none;
+    }
+	#theme-header__book-table {
+        display: block;
+    }
+	#theme-header__book-table a {
+        padding: 13px 18px 11px;
+    }
 }
