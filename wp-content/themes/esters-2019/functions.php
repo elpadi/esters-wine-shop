@@ -87,6 +87,11 @@ if (is_admin() == false) {
     new FreeShipping();
 }
 
+add_filter('body_class', function ($classes, $additionalClasses) {
+    $classes[] = 'theme--esters';
+    return $classes;
+}, 10, 2);
+
 Theme::instance()->set('customizerSections', [
     'onlineShops' => (new CustomizerSection('online_shops'))->addRepeater([
         ['text','title'],
