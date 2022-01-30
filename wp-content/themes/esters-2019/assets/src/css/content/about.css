@@ -45,6 +45,9 @@
     max-width: 1110px;
     padding: 1rem;
 }
+#press-articles h2 {
+    margin-top: 0;
+}
 #press-articles .columns {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);

@@ -14,6 +14,7 @@ body.theme--esters {
 ::-webkit-search-cancel-button,
 ::-webkit-input-placeholder,
 #theme-header__online-shops,
+#theme-header__online-shops a,
 .woocommerce-page .entry-content mark,
 .woocommerce-page .entry-content ins,
 .menu-tabs .tabs__title,

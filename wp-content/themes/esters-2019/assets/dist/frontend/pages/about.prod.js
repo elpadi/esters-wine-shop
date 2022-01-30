@@ -2007,7 +2007,7 @@ return`<article id="post-${p.id}" class="entry type-${p.type}">
 					<img src="${p.images.standard_resolution.url}" alt="">
 					<p>${p.caption.text}</p>
 					${icon}
-				`).get(0).outerHTML}).join("")}}module.exports=Instagram},{"jquery":1}],12:[function(require,module,exports){const $=require("jquery");const MediaGrid=require("../components/media/grid");const PressListing=require("../components/posts/press-listing");class AboutPage{constructor(){this.initPressGrid()}addPressContent(){document.querySelector("#colophon > .columns").insertAdjacentHTML("afterend",`
+				`).get(0).outerHTML}).join("")}}module.exports=Instagram},{"jquery":1}],12:[function(require,module,exports){const $=require("jquery");const MediaGrid=require("../components/media/grid");const PressListing=require("../components/posts/press-listing");class AboutPage{constructor(){this.initPressGrid()}addPressContent(){document.querySelector("#colophon > .columns").insertAdjacentHTML("beforebegin",`
 			<section id="press-articles">
 				<header><h2 class="star-heading">Press</h2></header>
 				<main class="columns">${this.articles.getPostsHTML()}</main>
