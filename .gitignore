@@ -51,3 +51,4 @@ site.webmanifest
 /favicon.*
 TODO.md
 screenshot.png
+lando/*.sql
