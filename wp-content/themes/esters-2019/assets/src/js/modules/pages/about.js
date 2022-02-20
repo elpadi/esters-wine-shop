@@ -9,7 +9,7 @@ class AboutPage {
 	}
 
 	addPressContent() {
-		document.querySelector('#colophon > .columns').insertAdjacentHTML('afterend', `
+		document.querySelector('#colophon > .columns').insertAdjacentHTML('beforebegin', `
 			<section id="press-articles">
 				<header><h2 class="star-heading">Press</h2></header>
 				<main class="columns">${this.articles.getPostsHTML()}</main>

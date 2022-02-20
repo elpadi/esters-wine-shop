@@ -1,5 +1,4 @@
-<?php
-$shops = ThemeLib\Theme::instance()->get('customizerSections', 'onlineShops')->getValues();
-if (count($shops)) :
-    ?><button class="btn clean-btn modal-btn" data-modal-id="order-online">Order Online!</button><?php
-endif; ?>
+<a
+    class="btn clean-btn"
+    href="https://direct.chownow.com/order/24390/locations/37753"
+>Order Online!</a>
